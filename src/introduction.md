@@ -2,36 +2,31 @@
 
 # Helix Golf
 
-Helix Golf is a collection of refactoring examples using the
-[Helix Editor](https://github.com/helix-editor/helix),
-a next generation terminal IDE written in Rust.
+Helix Golf는 Rust로 작성된 차세대 터미널 IDE인
+[Helix 에디터](https://github.com/helix-editor/helix)를 사용한 리팩토링 예제 모음입니다.
 
-Each example is described in-depth, is tested using the latest
-version of Helix and has a satisfying video demo. Examples aren't
-just made-up, all of them were created from real situations.
+각 예제는 상세히 설명되어 있으며 최신 버전의 Helix로 테스트되었고 비디오 데모가 포함되어 있습니다.
+예제들은 단순한 가상이 아니며, 모두 실제 상황에서 만들어졌습니다.
 
-In many cases the Helix Golf examples are much easier to understand
-_and come up with on your own_ than similar Vim Golf examples,
-while often being shorter due to multiple cursors being a
-core editing primitive in Helix.
+다중 커서가 Helix의 핵심 편집 기본 요소이기 때문에, 많은 경우 Helix Golf 예제는
+유사한 Vim Golf 예제보다 훨씬 이해하기 쉽고 _직접 떠올리기 쉬우며_ 종종 더 짧습니다.
 
-This makes Helix a perfect swiss army knife text-editor
-for developers and anyone who seeks to become faster at editing text.
-It's not just about becoming more productive - it's also really fun!
+이는 Helix를 개발자와 텍스트 편집 속도를 높이고자 하는 모든 사람을 위한
+완벽한 맥가이버 칼 같은 텍스트 에디터로 만들어 줍니다.
+생산성이 향상될 뿐만 아니라 정말 재미있습니다!
 
-# Demo for each example
-
-The entire website and all examples are available in a single
-code block you can copy-paste and work on locally:
+# 각 예제 데모
 
 <details>
 
-<summary>All Examples (single markdown file)</summary>
+<summary>모든 예제는 하나의 코드 블록으로도 제공됩니다</summary>
 
-````````````md
+인터넷 없이도 Helix에 복사하여 붙여넣고 직접 연습해 볼 수 있습니다!
+
+``````````md
 # snake_case to camelCase
 
-Rename all fields to be camelCase.
+모든 필드명을 camelCase로 변경합니다.
 
 ## Before
 
@@ -77,16 +72,16 @@ const userProfile = {
 %s_<enter>5)<alt-,>d~
 ```
 
-1. `%` selects the entire file
-2. `s_<enter>` selects all underscores
-3. `5)` rotates the main selection forward 5 times
-4. `<alt-,>` removes the primary selection - the lone underscore we want to keep
-5. `d` deletes the selections
-6. `~` toggles the case
+1. `%` 전체 파일 선택
+2. `s_<enter>` 모든 밑줄(_) 선택
+3. `5)` 메인 선택 영역을 앞으로 5번 회전
+4. `<alt-,>` 유지하려는 단독 밑줄(주 선택 영역) 제거
+5. `d` 선택 영역 삭제
+6. `~` 대소문자 전환
 
 # Text into Array
 
-Join newline-separated data into an array of strings
+줄바꿈으로 구분된 데이터를 문자열 배열로 결합합니다.
 
 ## Before
 
@@ -109,15 +104,15 @@ Helix
 %<alt-s>ms"<alt-J>i,<esc>xms[
 ```
 
-1. `%` selects full file
-1. `<alt-s>` split selection into multiple selections on newlines
-1. `ms"` surrounds each word with quotes
-1. `<alt-J>i,` join lines inside selection, select the inserted space, and insert ","s
-1. `<esc>xms[` surround by "[]"
+1. `%` 전체 파일 선택
+1. `<alt-s>` 줄바꿈을 기준으로 여러 선택 영역으로 분할
+1. `ms"` 각 단어를 큰따옴표로 감싸기
+1. `<alt-J>i,` 선택 영역 내부 라인들을 합치고 삽입된 공백을 선택한 뒤 쉼표(,) 삽입
+1. `<esc>xms[` "[]"로 감싸기
 
 # Export from Rust Module
 
-Each module contains a function, which we want to export.
+각 모듈에 포함된 함수를 re-export(pub use)합니다.
 
 ## Before
 
@@ -149,18 +144,18 @@ pub use validate::validate;
 cpub use<esc>leypi::
 ```
 
-1. `%` select all 3 "mod" statements
-1. `yp` duplicate them
-1. `[<space>` add a blank line above the 3 duplicated statements
-1. `<alt-s>gse` create 3 selections for each "mod" in the duplicated statements
-1. `cpub use<esc>` convert each "mod" into "pub use"
-1. `ley` copy name of each module
-1. `p` duplicate name of each module at the end, since each module contains a function named the same as the module
-1. `i::` add a double-colon path separator between them
+1. `%` 3개의 "mod" 구문 모두 선택
+1. `yp` 해당 구문들 복제
+1. `[<space>` 복제된 3개 구문 위에 빈 줄 추가
+1. `<alt-s>gse` 복제된 구문의 각 "mod"에 3개의 선택 영역 생성
+1. `cpub use<esc>` 각 "mod"를 "pub use"로 변경
+1. `ley` 각 모듈 이름 복사
+1. `p` 각 모듈에 모듈명과 동일한 이름의 함수가 있으므로 끝에 모듈 이름 붙여넣기
+1. `i::` 사이에 더블 콜론(::) 경로 구분자 삽입
 
 # Enumerate and Align
 
-Add a new field `rank` to each object, it starts at 1 and increments and align fields to look neat.
+각 객체에 1부터 시작하여 증가하는 `rank` 필드를 추가하고, 보기 좋게 필드를 정렬합니다.
 
 ## Before
 
@@ -206,21 +201,21 @@ Add a new field `rank` to each object, it starts at 1 and increments and align f
 #,<esc>%s |\d+<enter>&
 ```
 
-1.  `%` selects full file
-1.  Use `s` to enter select mode, which searches inside our selection and creates sub-selections based on a pattern
-1.  Input `\{` and then hit `<enter>`, which will place a cursor on every "\{", creating many single-width selections
-1.  `a ` to go into insert mode after the "\{"
-1.  Input `rank: `
-1.  `<ctrl-r>` followed by `#` inserts an increasing number for every selection starting with 1
-1.  Input `,`
-1.  `<esc>` goes back to normal mode
-1.  Use `%s` to enter select mode again
-1.  Input ` |\d+` which is a regular expression selecting all spaces and numbers, then hit `<enter>`
-1.  `&` to align all selections in columns, note that the numbers get right-aligned
+1. `%` 전체 파일 선택
+1. `s` 선택 모드로 진입하여 패턴에 따라 하위 선택 영역 생성
+1. `\{` 입력 후 `<enter>`를 눌러 모든 "\{"에 커서를 두고 단일 폭 선택 영역 생성
+1. `a ` "\{" 뒤에서 삽입 모드로 진입
+1. `rank: ` 입력
+1. `<ctrl-r>` 누른 뒤 `#` 입력하여 1부터 증가하는 번호 삽입
+1. `,` 입력
+1. `<esc>` 일반 모드로 복귀
+1. `%s` 다시 선택 모드로 진입
+1. ` |\d+` 모든 공백과 숫자를 선택하는 정규식을 입력하고 `<enter>` 누르기
+1. `&` 모든 선택 영역을 열에 맞춰 정렬 (숫자가 우측 정렬됨)
 
 # Object into Array
 
-Convert object into a list of tuples representing the field and the value.
+객체를 필드와 값으로 이루어진 튜플 리스트로 변환합니다.
 
 ## Before
 
@@ -247,22 +242,19 @@ const palette = [
 ```
 jmr{[mi[s:<enter>
 
-r,t,;vgsms[lems"
+r,bems"vt,ms[
 ```
 
-1. Go to the line below with `j`, this is because we need to be inside of the object for the next step.
-1. `mr{[` replaces the nearest pair of curly braces "\{" with square brackets "["
-1. `mi[` selects inside the entire array
-1. Use `s` to enter select mode, which searches inside our selection and creates sub-selections based on a pattern
-1. Input `:` and then hit `<enter>`, which will place a cursor on every ":" creating many single-width selections
-1. `r,` replaces each selection with a ",". Essentially we've replaced each colon with a comma
-1. `t,` moves the cursor on each line to the ending comma
-1. `;` collapses the selection around each cursor into a single selection
-1. `vgs` selects each line excluding the final comma
-1. `ms[` surrounds each individual selection with "[" to turn it into an array. We're almost done here. We just need to transform the first item in each sub-array into a string.
-1. `l` moves 1 character forward, replacing the selection with just a 1-width selection
-1. `e` selects until the end of each word. Since we start at the first character and select until the end, this selects the entire word.
-1. `ms"` surrounds each word with double quotes to make strings
+1. `j` 다음 단계 수행을 위해 객체 내부로 이동하도록 아래 줄로 이동
+1. `mr{[` 가장 가까운 중괄호 쌍 "\{"를 대괄호 "["로 교체
+1. `mi[` 전체 배열 내부 선택
+1. `s` 선택 모드로 진입하여 패턴에 따라 하위 선택 영역 생성
+1. `:` 입력 후 `<enter>`를 눌러 모든 ":"에 커서를 두고 단일 폭 선택 영역 생성
+1. `r,` 각 선택 영역을 ","로 교체 (콜론을 쉼표로 교체)
+1. `be` 각 줄의 이전 단어를 선택하고 각 커서를 각 단어의 끝으로 이동
+1. `ms"` 각 단어를 큰따옴표로 감싸 문자열 생성
+1. `vt,` 각 줄에서 마지막 쉼표를 제외하고 선택
+1. `ms[` 각 선택 영역을 "["로 감싸 배열로 변환
 
 # CSV to SQL
 
@@ -300,51 +292,51 @@ AVALUES (<esc>
 "yPS,<enter>ms'A;<esc>Fl;~
 ```
 
-1.  `%` selects full file
-1.  `<alt-s>` split selection into multiple selections on newlines
-1.  `"yy` yanks the selections into "y" register. We'll need it for later
-1.  `s` and then input the pattern `\d` then `<enter>` which creates a selection on all digits
-1.  `d` deletes the selections. Essentially we've removed all the digits.
-1.  `hh` goes backwards 2 chars, important to make sure we are at the end of each word
-1.  Use `b` to select till the beginning of every word, which also nicely selects all the words that there are
-1.  `` ms` `` surrounds each word with a backtick
-1.  `` ` `` switches all characters to lowercase
-1.  `x` selects each line then use `_` to trim the trailing whitespace
-1.  `ms(` surrounds each line with parentheses
-1.  `I` goes into insert mode at the beginning of each line
-1.  Type the following:
+1. `%` 전체 파일 선택
+1. `<alt-s>` 줄바꿈을 기준으로 여러 선택 영역으로 분할
+1. `"yy` 나중에 사용하기 위해 "y" 레지스터에 복사(yank)
+1. `s` 누르고 패턴 `\d` 입력 후 `<enter>`를 눌러 모든 숫자에 선택 영역 생성
+1. `d` 선택 영역 삭제 (모든 숫자 제거)
+1. `hh` 각 단어의 끝에 위치하도록 뒤로 2글자 이동
+1. `b` 각 단어의 시작 부분까지 선택하여 모든 단어를 선택
+1. `` ms` `` 각 단어를 백틱으로 감싸기
+1. `` ` `` 모든 문자를 소문자로 변환
+1. `x` 각 줄을 선택한 다음 `_`로 끝 공백 제거
+1. `ms(` 각 줄을 괄호로 감싸기
+1. `I` 각 줄의 맨 앞에서 삽입 모드 진입
+1. 다음 내용 입력:
 
     ```
     INSERT INTO `database
     ```
 
-1.  `<esc>` goes back to normal mode
-1.  `a` to go into insert mode after the backtick then type:
+1. `<esc>` 일반 모드로 복귀
+1. `a` 백틱 뒤에서 삽입 모드로 진입한 후 다음 입력:
 
     ```
     .`table
     ```
 
-1.  `<esc>` goes back into normal mode, then `la` to enter insert mode just before the opening parentheses
-1.  Add a space ` ` then `<esc>` to go back into normal mode again
-1.  `A` goes into insert mode at the end of each line, now type:
+1. `<esc>` 일반 모드로 복귀 후 `la`로 여는 괄호 바로 앞에서 삽입 모드 진입
+1. 공백 ` ` 추가 후 다시 `<esc>`로 일반 모드 복귀
+1. `A` 각 줄 끝에서 삽입 모드로 진입하여 다음 입력:
 
     ```
     VALUES (
     ```
 
-1.  Hit `<esc>` to leave insert mode. Your cursor will be at the closing parenthesis.
-1.  `"yP` pastes our previously yanked items from the "y" register
-1.  `S,<enter>` splits current selection into multiple selections on each comma
-1.  `ms'` surrounds each item with a single quote
-1.  `A;` adds a semicolon at the end of each line
-1.  `<esc>` goes back to normal mode and `Fl` to place your cursor on the lowercase "l" of each "location"
-1.  `;` collapses each selection into a single-width selection
-1.  `~` toggles the case for each "l" into "L"
+1. `<esc>` 눌러 삽입 모드 종료 (닫는 괄호 위치에 커서 배치)
+1. `"yP` "y" 레지스터에 복사해 둔 항목들 붙여넣기
+1. `S,<enter>` 각 쉼표를 기준으로 현재 선택 영역을 여러 개로 분할
+1. `ms'` 각 항목을 작은따옴표로 감싸기
+1. `A;` 각 줄 끝에 세미콜론 추가
+1. `<esc>` 일반 모드로 복귀 후 `Fl`로 각 "location"의 소문자 "l"에 커서 위치
+1. `;` 각 선택 영역을 단일 폭 선택 영역으로 축소
+1. `~` 각 "l"을 "L"로 대소문자 전환
 
 # Function into Class
 
-Convert 3 functions into a class with 3 methods.
+3개의 함수를 3개의 메서드를 가진 클래스로 변환합니다.
 
 ## Before
 
@@ -384,64 +376,54 @@ class Calculator:
 ```
 %scalculate<enter>cget<esc>
 
-O@staticmethod
+O@staticmethod<esc>jj
 
-<esc>jxxs\w+<enter>s
+vglyx<alt-d>xbRkxx
 
-length|width|height<enter>
+slength|width|height<enter>
 
-bllled%sresult =<enter>C
-
-<alt-(>;ddss<enter>
-
-xd%>O<backspace>
+bllled%>O<backspace>
 
 class Calculator:
 ```
 
-1.  `%` selects the entire file
-1.  `s` searches inside the current selection and creates sub-selections based on a pattern. Input `calculate` then hit `<enter>` to make a selection on all instances of the word
-1.  `c` then type `get` to change each "calculate" word into a "get"
-1.  `<esc>` to go back to normal mode
-1.  Use `O` to create an empty line above each cursor, write:
+1. `%` 전체 파일 선택
+1. `s` 현재 선택 영역 내에서 검색하여 하위 선택 영역 생성. `calculate` 입력 후 `<enter>`를 눌러 해당 단어의 모든 항목 선택
+1. `c` 누른 후 `get` 입력하여 각 "calculate" 단어를 "get"으로 변경
+1. `<esc>` 일반 모드로 복귀
+1. `O` 각 커서 위에 빈 줄 생성 후 다음 입력:
 
     ```
     @staticmethod
     ```
 
-1.  Hit `<esc>` to go into normal mode.
-1.  We need to select 2 lines below the current line, first go down with `j` and then press `xx` which will select the current line, and then select the next line
-    In total we now have 3 cursors each with 2 lines selected, which includes the first line of the bodies of each function and the function definition themselves
-
-1.  `s` brings up a prompt to select sub-selections by a given regex. The `\w+` regex selects each word, type it and then `<enter>`
-1.  `s` again then type `length|width|height` followed by `<enter>`. This will look at the contents of the current selections, and create sub-selections where it finds the regex which means "length or width or height". So we select each instance of those 3 words
-1.  Our cursor is currently at the end of each word. Let's go to the beginning with `b`
-1.  We want to keep the first 3 characters and discard the rest from each of the parameters. To do this, move to the 4th character with `lll`
-1.  Use `e` to select until the end of each word and then `d` to delete it
-1.  Select the entire file again with `%` followed by `s` to bring up selection prompt again
-1.  Write `result =` followed by `<enter>` to select all instances of that string
-1.  `C` creates a new selection on the line directly below, for each cursor
-1.  Use `<alt-(>` to rotate the _contents_ of the selection backward
-1.  `;` collapses each cursor into a single selection
-1.  `dd` deletes two characters on each of the 6 lines
-1.  `s` to bring up the prompt, then input `s` followed by `<enter>` to select all "s" characters
-1.  Select each of the lines with `x` followed by `d` to delete
-1.  Select whole file with `%` and indent with `>`
-1.  `O` creates a newline above and enters Insert mode, then `<backspace>` to delete an extra tab
-1.  Write this:
+1. `<esc>` 일반 모드로 복귀
+1. `jj` 각 커서를 아래로 두 줄 이동
+1. `vgl` 각 커서 이후 줄의 나머지 부분 선택
+1. `y` 각 선택 영역 복사
+1. `x<alt-d>` 각 커서의 줄을 선택하고 선택 영역을 복사하지 않고 줄 삭제
+1. `xb` 각 커서 줄의 마지막 단어 선택
+1. `R` 각 선택 영역을 이전에 복사한 선택 항목으로 교체
+1. `kxx` 각 커서를 한 줄 위로 이동하고 해당 줄과 아래 줄 선택
+1. `s` 정규식으로 하위 선택 영역 생성. `length|width|height` 입력 후 `<enter>`를 눌러 length, width, height 단어 선택
+1. `b` 각 단어의 시작 부분으로 이동
+1. 매개변수에서 처음 3글자만 유지하고 나머지를 버리기 위해 `lll`로 4번째 문자로 이동
+1. `e` 각 단어 끝까지 선택 후 `d`로 삭제
+1. `%` 전체 파일 선택 후 `>`로 들여쓰기
+1. `O` 위에 새 줄 생성하고 삽입 모드 진입, `<backspace>`로 추가 탭 삭제
+1. 다음 내용 입력:
 
     ```
     class Calculator:
     ```
 
-
-````````````
+``````````
 
 </details>
 
 ## [snake_case to camelCase](snake_case_to_camel_case.md)
 
-Rename all fields to be camelCase.
+모든 필드명을 camelCase로 변경합니다.
 
 <video autoplay controls loop>
   <source src="generated/snake_case_to_camel_case.mp4">
@@ -450,7 +432,7 @@ Rename all fields to be camelCase.
 
 ## [Text into Array](text_into_array.md)
 
-Join newline-separated data into an array of strings
+줄바꿈으로 구분된 데이터를 문자열 배열로 결합합니다.
 
 <video autoplay controls loop>
   <source src="generated/text_into_array.mp4">
@@ -459,7 +441,7 @@ Join newline-separated data into an array of strings
 
 ## [Export from Rust Module](export_from_mod.md)
 
-Each module contains a function, which we want to export.
+각 모듈에 포함된 함수를 re-export(pub use)합니다.
 
 <video autoplay controls loop>
   <source src="generated/export_from_mod.mp4">
@@ -468,7 +450,7 @@ Each module contains a function, which we want to export.
 
 ## [Enumerate and Align](enumerate_and_align.md)
 
-Add a new field `rank` to each object, it starts at 1 and increments and align fields to look neat.
+각 객체에 1부터 시작하여 증가하는 `rank` 필드를 추가하고, 보기 좋게 필드를 정렬합니다.
 
 <video autoplay controls loop>
   <source src="generated/enumerate_and_align.mp4">
@@ -477,7 +459,7 @@ Add a new field `rank` to each object, it starts at 1 and increments and align f
 
 ## [Object into Array](object_into_array.md)
 
-Convert object into a list of tuples representing the field and the value.
+객체를 필드와 값으로 이루어진 튜플 리스트로 변환합니다.
 
 <video autoplay controls loop>
   <source src="generated/object_into_array.mp4">
@@ -495,10 +477,11 @@ Convert object into a list of tuples representing the field and the value.
 
 ## [Function into Class](function_into_class.md)
 
-Convert 3 functions into a class with 3 methods.
+3개의 함수를 3개의 메서드를 가진 클래스로 변환합니다.
 
 <video autoplay controls loop>
   <source src="generated/function_into_class.mp4">
 </video>
+
 
 

@@ -1,6 +1,6 @@
 # snake_case to camelCase
 
-Rename all fields to be camelCase.
+모든 필드명을 camelCase로 변경합니다.
 
 ## Before
 
@@ -46,9 +46,9 @@ const userProfile = {
 %s_<enter>5)<alt-,>d~
 ```
 
-1. `%` selects the entire file
-2. `s_<enter>` selects all underscores
-3. `5)` rotates the main selection forward 5 times
-4. `<alt-,>` removes the primary selection - the lone underscore we want to keep
-5. `d` deletes the selections
-6. `~` toggles the case
+1. `%` 전체 파일 선택
+2. `s_<enter>` 모든 밑줄(_) 선택
+3. `5)` 메인 선택 영역을 앞으로 5번 회전
+4. `<alt-,>` 유지하려는 단독 밑줄(주 선택 영역) 제거
+5. `d` 선택 영역 삭제
+6. `~` 대소문자 전환

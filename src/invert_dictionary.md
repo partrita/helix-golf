@@ -1,6 +1,6 @@
 # Invert Dictionary
 
-Switch the key-value pairs of a dictionary.
+딕셔너리의 키-값 쌍을 반전시킵니다.
 
 ## Before
 
@@ -38,14 +38,14 @@ webS_to_<enter><alt-(>
 Qxt,S=<enter>_<alt-(>Q6q
 ```
 
-1. `web` selects the second word without whitespace
-1. `S` splits the selection on regex match. We type in `_to_` for the regex and hit `<enter>` to split it into two sections
-1. `<alt-(>` rotates the contents of the selections
-1. Pressing `Q` for the first time begins recording a macro
-1. `x` selects the whole line
-1. `t,` selects until (but not including) the next comma
-1. `S` splits the whole line on regex match. We type in `=` for the regex and hit `<enter>` to split it into two sections
-1. `_` trims trailing whitespace on all selections
-1. `<alt-(>` rotates the contents of the selections
-1. Pressing `Q` for the second time ends the recording of the macro
-1. `6q` repeats the recorded macro sequence 6 times
+1. `web` 공백을 제외한 두 번째 단어 선택
+1. `S` 정규식 일치 기준으로 선택 영역 분할. `_to_`를 정규식으로 입력하고 `<enter>`를 눌러 두 부분으로 분할
+1. `<alt-(>` 선택 영역 내용의 순서 회전
+1. `Q` 첫 번째 입력으로 매크로 녹화 시작
+1. `x` 전체 줄 선택
+1. `t,` 다음 쉼표 바로 앞까지 선택
+1. `S` 정규식 일치 기준으로 전체 줄 분할. `=`를 정규식으로 입력하고 `<enter>`를 눌러 두 부분으로 분할
+1. `_` 모든 선택 영역의 후행 공백 제거
+1. `<alt-(>` 선택 영역 내용의 순서 회전
+1. `Q` 두 번째 입력으로 매크로 녹화 종료
+1. `6q` 녹화된 매크로 시퀀스를 6회 반복

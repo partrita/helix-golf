@@ -1,6 +1,6 @@
 # Enumerate and Align
 
-Add a new field `rank` to each object, it starts at 1 and increments and align fields to look neat.
+각 객체에 1부터 시작하여 증가하는 `rank` 필드를 추가하고, 보기 좋게 필드를 정렬합니다.
 
 ## Before
 
@@ -46,14 +46,14 @@ Add a new field `rank` to each object, it starts at 1 and increments and align f
 #,<esc>%s |\d+<enter>&
 ```
 
-1.  `%` selects full file
-1.  Use `s` to enter select mode, which searches inside our selection and creates sub-selections based on a pattern
-1.  Input `\{` and then hit `<enter>`, which will place a cursor on every "\{", creating many single-width selections
-1.  `a ` to go into insert mode after the "\{"
-1.  Input `rank: `
-1.  `<ctrl-r>` followed by `#` inserts an increasing number for every selection starting with 1
-1.  Input `,`
-1.  `<esc>` goes back to normal mode
-1.  Use `%s` to enter select mode again
-1.  Input ` |\d+` which is a regular expression selecting all spaces and numbers, then hit `<enter>`
-1.  `&` to align all selections in columns, note that the numbers get right-aligned
+1. `%` 전체 파일 선택
+1. `s` 선택 모드로 진입하여 패턴에 따라 하위 선택 영역 생성
+1. `\{` 입력 후 `<enter>`를 눌러 모든 "\{"에 커서를 두고 단일 폭 선택 영역 생성
+1. `a ` "\{" 뒤에서 삽입 모드로 진입
+1. `rank: ` 입력
+1. `<ctrl-r>` 누른 뒤 `#` 입력하여 1부터 증가하는 번호 삽입
+1. `,` 입력
+1. `<esc>` 일반 모드로 복귀
+1. `%s` 다시 선택 모드로 진입
+1. ` |\d+` 모든 공백과 숫자를 선택하는 정규식을 입력하고 `<enter>` 누르기
+1. `&` 모든 선택 영역을 열에 맞춰 정렬 (숫자가 우측 정렬됨)

@@ -1,10 +1,10 @@
 [book]
 authors = ["Nik Revenco"]
-language = "en"
+language = "ko"
 multilingual = false
 src = "src"
 title = "Helix Golf"
-description = "Using Helix to its true potential"
+description = "Helix 에디터의 진정한 잠재력 활용하기"
 
 [output.html]
 site-url = "https://nik-rev.github.io/helix-golf"

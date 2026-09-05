@@ -1,25 +1,25 @@
 # Helix Golf
 
-Helix is _very_ good at editing text and this website has examples of how I've refactored some snippets of code using it.
+Helix는 텍스트 편집에 _매우_ 강력한 에디터입니다. 이 웹사이트는 Helix를 활용하여 코드 스니펫을 어떻게 리팩토링했는지 보여주는 예제들을 모아둔 곳입니다.
 
 https://github.com/user-attachments/assets/d79d583e-f79b-40ce-add7-e60a8307156a
 
-All examples here:
+전체 예제 보러가기:
 
 [https://nik-rev.github.io/helix-golf](https://nik-rev.github.io/helix-golf/)
 
-## Contributing
+## 기여하기 (Contributing)
 
-If you want to suggest a new example, make an issue and I'll add it.
+새로운 예제를 제안하고 싶다면 이슈를 생성해 주세요. 확인 후 추가하겠습니다.
 
 ---
 
-If you want to add a new example yourself: create `src/your_example.md` using the following template.
+직접 새 예제를 추가하고 싶다면 아래 템플릿을 사용하여 `src/your_example.md` 파일을 생성하세요.
 
 ````md
 # Title
 
-Made `h` capital and added exclamation mark.
+`h`를 대문자로 변경하고 느낌표를 추가했습니다.
 
 ## Before
 
@@ -39,48 +39,48 @@ Hello world!
 ~A!
 ```
 
-1. `~` changes case of the selection
-1. `A` go to end and enter insert mode
-1. `!` write the exclamation mark
+1. `~` 선택 영역의 대소문자 전환
+1. `A` 줄 끝으로 이동하고 삽입 모드 진입
+1. `!` 느낌표 입력
 ````
 
-### Dependencies
+### 필수 프로그램 (Dependencies)
 
 - [Helix](https://docs.helix-editor.com/install.html)
 - [Rust](https://www.rust-lang.org/tools/install)
 - [mdbook](https://rust-lang.github.io/mdBook/guide/installation.html)
-- [VHS](https://github.com/charmbracelet/vhs?tab=readme-ov-file#installation) to generate the demo files and test examples for correctness
+- [VHS](https://github.com/charmbracelet/vhs?tab=readme-ov-file#installation) (데모 파일 생성 및 예제 정확성 테스트용)
 
-If you don't want to install them but still would like to contribute, you can edit the markdown example files in the [`src/`](src/) folder, send a pull request and the GitHub CI will automatically test your PR.
+위 도구들을 직접 설치하지 않고도 기여하고 싶다면, [`src/`](src/) 폴더의 마크다운 예제 파일을 수정한 뒤 Pull Request를 보내면 GitHub CI가 자동으로 PR을 테스트합니다.
 
-### Validate
+### 유효성 검증 (Validate)
 
-Verify that your example is correctly structured by running the following command in the project root:
+프로젝트 루트에서 다음 명령어를 실행하여 예제 구조가 올바른지 확인하세요:
 
 ```sh
 cargo validate
 ```
 
-### Generate Demos
+### 데모 생성 (Generate Demos)
 
-The demos for each example are generated and tested by running the following command:
+다음 명령어를 실행하여 각 예제의 데모를 생성하고 테스트할 수 있습니다:
 
 ```sh
 cargo generate-demos
 ```
 
-You can specify exactly which demos to generate:
+특정 데모만 지정해서 생성할 수도 있습니다:
 
 ```sh
 cargo generate-demos export_from_mod
 ```
 
-### Running locally
+### 로컬에서 실행하기 (Running locally)
 
-You can run the website locally by running:
+다음 명령어로 웹사이트를 로컬에서 실행할 수 있습니다:
 
 ```sh
 mdbook serve
 ```
 
-It will be available on `http://localhost:3000`.
+`http://localhost:3000`에서 접속할 수 있습니다.

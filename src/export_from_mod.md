@@ -1,6 +1,6 @@
 # Export from Rust Module
 
-Each module contains a function, which we want to export.
+각 모듈에 포함된 함수를 re-export(pub use)합니다.
 
 ## Before
 
@@ -32,11 +32,11 @@ pub use validate::validate;
 cpub use<esc>leypi::
 ```
 
-1. `%` select all 3 "mod" statements
-1. `yp` duplicate them
-1. `[<space>` add a blank line above the 3 duplicated statements
-1. `<alt-s>gse` create 3 selections for each "mod" in the duplicated statements
-1. `cpub use<esc>` convert each "mod" into "pub use"
-1. `ley` copy name of each module
-1. `p` duplicate name of each module at the end, since each module contains a function named the same as the module
-1. `i::` add a double-colon path separator between them
+1. `%` 3개의 "mod" 구문 모두 선택
+1. `yp` 해당 구문들 복제
+1. `[<space>` 복제된 3개 구문 위에 빈 줄 추가
+1. `<alt-s>gse` 복제된 구문의 각 "mod"에 3개의 선택 영역 생성
+1. `cpub use<esc>` 각 "mod"를 "pub use"로 변경
+1. `ley` 각 모듈 이름 복사
+1. `p` 각 모듈에 모듈명과 동일한 이름의 함수가 있으므로 끝에 모듈 이름 붙여넣기
+1. `i::` 사이에 더블 콜론(::) 경로 구분자 삽입

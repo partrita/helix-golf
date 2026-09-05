@@ -1,6 +1,6 @@
 # Invert Dictionary 2
 
-Another way to switch the key-value pairs of a dictionary.
+딕셔너리의 키-값 쌍을 반전시키는 또 다른 방법입니다.
 
 ## Before
 
@@ -38,11 +38,11 @@ webS_to_<enter><alt-(>
 xt}S,|=<enter>_2<alt-(>
 ```
 
-1. `web` selects the second word without whitespace
-1. `S` splits the selection on regex match. We type in `_to_` for the regex and hit `<enter>` to split it into two sections
-1. `<alt-(>` rotates the contents of the selections
-1. `x` selects the whole line
-1. `t}` selects until (but not including) the next "}" character
-1. `S` splits the selection on regex match. We type in `,|=` for the regex and hit `<enter>` to split it into sub-selections
-1. `_` trims trailing whitespace on all selections
-1. `2<alt-(>` rotates the contents of selections, but only between pairs of selections.
+1. `web` 공백을 제외한 두 번째 단어 선택
+1. `S` 정규식 일치 기준으로 선택 영역 분할. `_to_`를 정규식으로 입력하고 `<enter>`를 눌러 두 부분으로 분할
+1. `<alt-(>` 선택 영역 내용의 순서 회전
+1. `x` 전체 줄 선택
+1. `t}` 다음 "}" 문자 바로 앞까지 선택
+1. `S` 정규식 일치 기준으로 선택 영역 분할. `,|=`를 정규식으로 입력하고 `<enter>`를 눌러 하위 선택 영역으로 분할
+1. `_` 모든 선택 영역의 후행 공백 제거
+1. `2<alt-(>` 선택 영역 쌍 사이에서만 내용 순서 회전

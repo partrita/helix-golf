@@ -90,30 +90,26 @@ pub fn validate() -> miette::Result<Vec<Example>> {
 
 # Helix Golf
 
-Helix Golf is a collection of refactoring examples using the
-[Helix Editor](https://github.com/helix-editor/helix),
-a next generation terminal IDE written in Rust.
+Helix Golf는 Rust로 작성된 차세대 터미널 IDE인
+[Helix 에디터](https://github.com/helix-editor/helix)를 사용한 리팩토링 예제 모음입니다.
 
-Each example is described in-depth, is tested using the latest
-version of Helix and has a satisfying video demo. Examples aren't
-just made-up, all of them were created from real situations.
+각 예제는 상세히 설명되어 있으며 최신 버전의 Helix로 테스트되었고 비디오 데모가 포함되어 있습니다.
+예제들은 단순한 가상이 아니며, 모두 실제 상황에서 만들어졌습니다.
 
-In many cases the Helix Golf examples are much easier to understand
-_and come up with on your own_ than similar Vim Golf examples,
-while often being shorter due to multiple cursors being a
-core editing primitive in Helix.
+다중 커서가 Helix의 핵심 편집 기본 요소이기 때문에, 많은 경우 Helix Golf 예제는
+유사한 Vim Golf 예제보다 훨씬 이해하기 쉽고 _직접 떠올리기 쉬우며_ 종종 더 짧습니다.
 
-This makes Helix a perfect swiss army knife text-editor
-for developers and anyone who seeks to become faster at editing text.
-It's not just about becoming more productive - it's also really fun!
+이는 Helix를 개발자와 텍스트 편집 속도를 높이고자 하는 모든 사람을 위한
+완벽한 맥가이버 칼 같은 텍스트 에디터로 만들어 줍니다.
+생산성이 향상될 뿐만 아니라 정말 재미있습니다!
 
-# Demo for each example
+# 각 예제 데모
 
 <details>
 
-<summary>All examples are also available in a single code block</summary>
+<summary>모든 예제는 하나의 코드 블록으로도 제공됩니다</summary>
 
-You can copy-paste it into Helix and work through it without need for internet!
+인터넷 없이도 Helix에 복사하여 붙여넣고 직접 연습해 볼 수 있습니다!
 
 ````````````md
 {md_file_with_everything}

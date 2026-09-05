@@ -1,6 +1,6 @@
 # Function into Class
 
-Convert 3 functions into a class with 3 methods.
+3개의 함수를 3개의 메서드를 가진 클래스로 변환합니다.
 
 ## Before
 
@@ -51,31 +51,31 @@ bllled%>O<backspace>
 class Calculator:
 ```
 
-1.  `%` selects the entire file
-1.  `s` searches inside the current selection and creates sub-selections based on a pattern. Input `calculate` then hit `<enter>` to make a selection on all instances of the word
-1.  `c` then type `get` to change each "calculate" word into a "get"
-1.  `<esc>` to go back to normal mode
-1.  Use `O` to create an empty line above each cursor, write:
+1. `%` 전체 파일 선택
+1. `s` 현재 선택 영역 내에서 검색하여 하위 선택 영역 생성. `calculate` 입력 후 `<enter>`를 눌러 해당 단어의 모든 항목 선택
+1. `c` 누른 후 `get` 입력하여 각 "calculate" 단어를 "get"으로 변경
+1. `<esc>` 일반 모드로 복귀
+1. `O` 각 커서 위에 빈 줄 생성 후 다음 입력:
 
     ```
     @staticmethod
     ```
 
-1.  Hit `<esc>` to go into normal mode.
-1. `jj` moves each cursor down two lines
-1. `vgl` selects the rest of each line past each cursor
-1. `y` copies each selection
-1. `x<alt-d>` selects each cursor's line and deletes the line without copying the selection
-1. `xb` selects the last word of each cursor's line
-1. `R` replaces each selection with the copied selections from earlier
-1. `kxx` moves each cursor up one line and selects that line as well as the line below
-1.  `s` brings up a prompt to select sub-selections by a given regex. Typing `length|width|height` followed by `<enter>` will select each instance of those 3 words: length, width, and height
-1.  Our cursor is currently at the end of each word. Let's go to the beginning with `b`
-1.  We want to keep the first 3 characters and discard the rest from each of the parameters. To do this, move to the 4th character with `lll`
-1.  Use `e` to select until the end of each word and then `d` to delete it
-1.  Select whole file with `%` and indent with `>`
-1.  `O` creates a newline above and enters Insert mode, then `<backspace>` to delete an extra tab
-1.  Write this:
+1. `<esc>` 일반 모드로 복귀
+1. `jj` 각 커서를 아래로 두 줄 이동
+1. `vgl` 각 커서 이후 줄의 나머지 부분 선택
+1. `y` 각 선택 영역 복사
+1. `x<alt-d>` 각 커서의 줄을 선택하고 선택 영역을 복사하지 않고 줄 삭제
+1. `xb` 각 커서 줄의 마지막 단어 선택
+1. `R` 각 선택 영역을 이전에 복사한 선택 항목으로 교체
+1. `kxx` 각 커서를 한 줄 위로 이동하고 해당 줄과 아래 줄 선택
+1. `s` 정규식으로 하위 선택 영역 생성. `length|width|height` 입력 후 `<enter>`를 눌러 length, width, height 단어 선택
+1. `b` 각 단어의 시작 부분으로 이동
+1. 매개변수에서 처음 3글자만 유지하고 나머지를 버리기 위해 `lll`로 4번째 문자로 이동
+1. `e` 각 단어 끝까지 선택 후 `d`로 삭제
+1. `%` 전체 파일 선택 후 `>`로 들여쓰기
+1. `O` 위에 새 줄 생성하고 삽입 모드 진입, `<backspace>`로 추가 탭 삭제
+1. 다음 내용 입력:
 
     ```
     class Calculator:

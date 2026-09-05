@@ -1,6 +1,6 @@
 # Reverse Golf Example
 
-Switch the "Before" and "After" cases for a Helix Golf example.
+Helix Golf 예제의 "Before"와 "After" 케이스를 서로 맞바꿉니다.
 
 ## Before
 
@@ -50,16 +50,16 @@ ebyxb*Rv""Nn<alt-)>
 %s`+j<enter>f;<alt-(>
 ```
 
-1. `eb` selects the next word and trims whitespace
-1. `y` copies the selected word and yanks it into the " (double quote) register
-1. `xb` selects the last word in the line
-1. `*` sets the current selection as the search pattern
-1. `R` replaces the selected word with the copied selection from earlier
-1. `v` enters select mode
-1. `""` selects the " (double quote) register. Pressing `N` will add a new selection at the previous occurrence of the word saved to the register
-1. `n` adds a new selection at the next occurrence of the search pattern assigned earlier
-1. `<alt-)>` rotates the contents of the selections forward
-1. `%` selects the entire contents of the file
-1. `s` brings up a prompt to select sub-selections by a given regex. We type in `` `+j `` for the regex and select all matches with `<enter>` 
-1. Since we're still in select mode, typing `f;` moves each cursor to select up until (and including) the next occurrence of a semicolon
-1. `<alt-(>` rotates the contents of the selections backwards 
+1. `eb` 다음 단어를 선택하고 공백 제거
+1. `y` 선택한 단어를 복사하여 " (큰따옴표) 레지스터에 저장
+1. `xb` 줄의 마지막 단어 선택
+1. `*` 현재 선택 영역을 검색 패턴으로 설정
+1. `R` 선택한 단어를 이전에 복사한 선택 항목으로 교체
+1. `v` 선택 모드 진입
+1. `""` " (큰따옴표) 레지스터를 지정. `N`을 누르면 레지스터에 저장된 단어의 이전 일치 항목에 새 선택 영역 추가
+1. `n` 이전에 지정된 검색 패턴의 다음 일치 항목에 새 선택 영역 추가
+1. `<alt-)>` 선택 영역 내용의 순서를 앞으로 회전
+1. `%` 파일 전체 내용 선택
+1. `s` 정규식 일치 기준으로 하위 선택 영역 생성. `` `+j ``를 정규식으로 입력하고 `<enter>`를 눌러 모든 일치 항목 선택
+1. 여전히 선택 모드이므로 `f;`를 입력하여 각 커서가 다음 세미콜론(;)까지(포함) 선택하도록 이동
+1. `<alt-(>` 선택 영역 내용의 순서를 뒤로 회전 

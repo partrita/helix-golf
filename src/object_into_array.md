@@ -1,6 +1,6 @@
 # Object into Array
 
-Convert object into a list of tuples representing the field and the value.
+객체를 필드와 값으로 이루어진 튜플 리스트로 변환합니다.
 
 ## Before
 
@@ -30,13 +30,13 @@ jmr{[mi[s:<enter>
 r,bems"vt,ms[
 ```
 
-1. Go to the line below with `j`, this is because we need to be inside of the object for the next step.
-1. `mr{[` replaces the nearest pair of curly braces "\{" with square brackets "["
-1. `mi[` selects inside the entire array
-1. Use `s` to enter select mode, which searches inside our selection and creates sub-selections based on a pattern
-1. Input `:` and then hit `<enter>`, which will place a cursor on every ":" creating many single-width selections
-1. `r,` replaces each selection with a ",". Essentially we've replaced each colon with a comma
-1. `be` selects the previous word on each line and moves each cursor to the end of each word
-1. `ms"` surrounds each word with double quotes to make strings
-1. `vt,` selects each line excluding the final comma
-1. `ms[` surrounds each individual selection with "[" to turn it into an array
+1. `j` 다음 단계 수행을 위해 객체 내부로 이동하도록 아래 줄로 이동
+1. `mr{[` 가장 가까운 중괄호 쌍 "\{"를 대괄호 "["로 교체
+1. `mi[` 전체 배열 내부 선택
+1. `s` 선택 모드로 진입하여 패턴에 따라 하위 선택 영역 생성
+1. `:` 입력 후 `<enter>`를 눌러 모든 ":"에 커서를 두고 단일 폭 선택 영역 생성
+1. `r,` 각 선택 영역을 ","로 교체 (콜론을 쉼표로 교체)
+1. `be` 각 줄의 이전 단어를 선택하고 각 커서를 각 단어의 끝으로 이동
+1. `ms"` 각 단어를 큰따옴표로 감싸 문자열 생성
+1. `vt,` 각 줄에서 마지막 쉼표를 제외하고 선택
+1. `ms[` 각 선택 영역을 "["로 감싸 배열로 변환
