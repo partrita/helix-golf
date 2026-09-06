@@ -1,33 +1,25 @@
 # Replace an Identifier
 
-반복해서 등장하는 변수 이름을 한 번에 변경합니다.
+커서가 놓인 변수 이름을 다른 이름으로 변경합니다.
 
 ## Before
 
 ```rs
-fn main() {
-    let count = 1;
-    let next = count + 1;
-    println!("{}", count);
-}
+count
 ```
 
 ## After
 
 ```rs
-fn main() {
-    let total = 1;
-    let next = total + 1;
-    println!("{}", total);
-}
+total
 ```
 
 ## Command
 
 ```
-:s/count/total/g<ret>
+ciwtotal<esc>
 ```
 
-1. `:` 명령 모드로 진입
-1. `s/count/total/g` 현재 버퍼에서 `count`를 `total`로 모두 치환
-1. `<ret>` 명령 실행
+1. `ciw` 현재 단어를 선택하여 삽입 모드로 변경
+1. `total` 새 변수 이름 입력
+1. `<esc>` 일반 모드로 돌아가기
