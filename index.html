@@ -242,6 +242,33 @@ const userProfile = {
 5. `d` 선택 영역 삭제
 6. `~` 대소문자 전환
 
+# Replace Surrounding Characters
+
+같은 형태로 감싸진 여러 텍스트의 괄호를 한 번에 다른 괄호로 변경합니다.
+
+## Before
+
+```text
+(use)
+(use)
+```
+
+## After
+
+```text
+[use]
+[use]
+```
+
+## Command
+
+```
+%suse&lt;ret&gt;mr([
+```
+
+1. `%` 문서 전체를 선택
+1. `suse&lt;ret&gt;` 선택 영역 안의 모든 텍스트를 정규식으로 찾아 다중 선택
+1. `mr([` 선택된 텍스트를 감싸는 괄호를 변경
 # Replace an Identifier
 
 커서가 놓인 변수 이름을 다른 이름으로 변경합니다.
@@ -299,6 +326,82 @@ Helix
 1. `ms"` 각 단어를 큰따옴표로 감싸기
 1. `&lt;alt-J&gt;i,` 선택 영역 내부 라인들을 합치고 삽입된 공백을 선택한 뒤 쉼표(,) 삽입
 1. `&lt;esc&gt;xms[` "[]"로 감싸기
+
+# Replace a Regex-Sensitive Literal
+
+문서 전체에서 정규식 메타문자가 포함된 문자열을 다른 문자열로 한 번에 변경합니다.
+
+## Before
+
+```text
+C++ is widely used.
+I learned C++ before Rust.
+This project does not use C++ anymore.
+```
+
+## After
+
+```text
+Rust is widely used.
+I learned Rust before Rust.
+This project does not use Rust anymore.
+```
+
+## Command
+
+```
+%sC\+\+&lt;ret&gt;cRust&lt;esc&gt;
+```
+
+1. `%` 문서 전체를 하나의 선택 영역으로 만듭니다.
+1. `s` 정규식 선택 명령을 시작합니다.
+1. `C\+\+` 메타문자 플러스를 이스케이프하여 문자 그대로의 C++만 찾습니다.
+1. `&lt;ret&gt;` 정규식을 확정하고 문서 전체의 모든 C++ 일치 항목을 각각의 선택 영역으로 만듭니다.
+1. `c` 선택 영역의 내용을 삭제하고 입력 모드로 진입합니다.
+1. `Rust` 변경할 텍스트를 입력합니다.
+1. `&lt;esc&gt;` 일반 모드로 돌아갑니다.
+
+# Replace a Selection with the System Clipboard
+
+선택 영역을 시스템 클립보드에 복사한 뒤 다른 선택 영역을 클립보드 내용으로 교체합니다. Helix의 `d`는 삭제한 내용을 yank하므로, 시스템 클립보드의 내용을 보존하면서 교체하려면 `&lt;space&gt;R`을 사용합니다.
+
+## Before
+
+```rs
+fn greet() {
+    println!("Hello, world!");
+}
+
+fn main() {
+    println!("Hello, Rust!");
+}
+```
+
+## After
+
+```rs
+fn greet() {
+    println!("Hello, Rust!");
+}
+
+fn main() {
+    println!("Hello, Rust!");
+}
+```
+
+## Command
+
+```
+/Rust&lt;ret&gt;&lt;space&gt;ygg/world&lt;ret&gt;&lt;space&gt;R
+```
+
+1. `/Rust&lt;ret&gt;` 선택 영역을 검색
+1. `&lt;space&gt;y` 선택 영역을 시스템 클립보드에 복사
+1. `gg` 파일의 첫 줄로 이동
+1. `/world&lt;ret&gt;` 다른 선택 영역을 검색
+1. `&lt;space&gt;R` 시스템 클립보드의 내용으로 선택 영역을 교체
+
+&gt; `&lt;space&gt;R`은 시스템 클립보드의 내용으로 현재 선택 영역을 바로 교체하므로, `d`나 `&lt;alt-d&gt;`로 먼저 삭제할 필요가 없습니다.
 
 # Invert Dictionary 2
 
@@ -782,6 +885,11 @@ class Calculator:
 <video autoplay controls loop>
   <source src="generated/snake_case_to_camel_case.mp4">
 </video>
+<h2 id="replace-surrounding-characters"><a class="header" href="#replace-surrounding-characters"><a href="replace_surround.html">Replace Surrounding Characters</a></a></h2>
+<p>같은 형태로 감싸진 여러 텍스트의 괄호를 한 번에 다른 괄호로 변경합니다.</p>
+<video autoplay controls loop>
+  <source src="generated/replace_surround.mp4">
+</video>
 <h2 id="replace-an-identifier"><a class="header" href="#replace-an-identifier"><a href="replace_identifier.html">Replace an Identifier</a></a></h2>
 <p>커서가 놓인 변수 이름을 다른 이름으로 변경합니다.</p>
 <video autoplay controls loop>
@@ -791,6 +899,16 @@ class Calculator:
 <p>줄바꿈으로 구분된 데이터를 문자열 배열로 결합합니다.</p>
 <video autoplay controls loop>
   <source src="generated/text_into_array.mp4">
+</video>
+<h2 id="replace-a-regex-sensitive-literal"><a class="header" href="#replace-a-regex-sensitive-literal"><a href="replace_regex_literal.html">Replace a Regex-Sensitive Literal</a></a></h2>
+<p>문서 전체에서 정규식 메타문자가 포함된 문자열을 다른 문자열로 한 번에 변경합니다.</p>
+<video autoplay controls loop>
+  <source src="generated/replace_regex_literal.mp4">
+</video>
+<h2 id="replace-a-selection-with-the-system-clipboard"><a class="header" href="#replace-a-selection-with-the-system-clipboard"><a href="replace_with_system_clipboard.html">Replace a Selection with the System Clipboard</a></a></h2>
+<p>선택 영역을 시스템 클립보드에 복사한 뒤 다른 선택 영역을 클립보드 내용으로 교체합니다. Helix의 <code>d</code>는 삭제한 내용을 yank하므로, 시스템 클립보드의 내용을 보존하면서 교체하려면 <code>&lt;space&gt;R</code>을 사용합니다.</p>
+<video autoplay controls loop>
+  <source src="generated/replace_with_system_clipboard.mp4">
 </video>
 <h2 id="invert-dictionary-2"><a class="header" href="#invert-dictionary-2"><a href="invert_dictionary_2.html">Invert Dictionary 2</a></a></h2>
 <p>딕셔너리의 키-값 쌍을 반전시키는 또 다른 방법입니다.</p>

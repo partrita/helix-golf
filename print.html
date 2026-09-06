@@ -240,6 +240,33 @@ const userProfile = {
 5. `d` 선택 영역 삭제
 6. `~` 대소문자 전환
 
+# Replace Surrounding Characters
+
+같은 형태로 감싸진 여러 텍스트의 괄호를 한 번에 다른 괄호로 변경합니다.
+
+## Before
+
+```text
+(use)
+(use)
+```
+
+## After
+
+```text
+[use]
+[use]
+```
+
+## Command
+
+```
+%suse&lt;ret&gt;mr([
+```
+
+1. `%` 문서 전체를 선택
+1. `suse&lt;ret&gt;` 선택 영역 안의 모든 텍스트를 정규식으로 찾아 다중 선택
+1. `mr([` 선택된 텍스트를 감싸는 괄호를 변경
 # Replace an Identifier
 
 커서가 놓인 변수 이름을 다른 이름으로 변경합니다.
@@ -297,6 +324,82 @@ Helix
 1. `ms"` 각 단어를 큰따옴표로 감싸기
 1. `&lt;alt-J&gt;i,` 선택 영역 내부 라인들을 합치고 삽입된 공백을 선택한 뒤 쉼표(,) 삽입
 1. `&lt;esc&gt;xms[` "[]"로 감싸기
+
+# Replace a Regex-Sensitive Literal
+
+문서 전체에서 정규식 메타문자가 포함된 문자열을 다른 문자열로 한 번에 변경합니다.
+
+## Before
+
+```text
+C++ is widely used.
+I learned C++ before Rust.
+This project does not use C++ anymore.
+```
+
+## After
+
+```text
+Rust is widely used.
+I learned Rust before Rust.
+This project does not use Rust anymore.
+```
+
+## Command
+
+```
+%sC\+\+&lt;ret&gt;cRust&lt;esc&gt;
+```
+
+1. `%` 문서 전체를 하나의 선택 영역으로 만듭니다.
+1. `s` 정규식 선택 명령을 시작합니다.
+1. `C\+\+` 메타문자 플러스를 이스케이프하여 문자 그대로의 C++만 찾습니다.
+1. `&lt;ret&gt;` 정규식을 확정하고 문서 전체의 모든 C++ 일치 항목을 각각의 선택 영역으로 만듭니다.
+1. `c` 선택 영역의 내용을 삭제하고 입력 모드로 진입합니다.
+1. `Rust` 변경할 텍스트를 입력합니다.
+1. `&lt;esc&gt;` 일반 모드로 돌아갑니다.
+
+# Replace a Selection with the System Clipboard
+
+선택 영역을 시스템 클립보드에 복사한 뒤 다른 선택 영역을 클립보드 내용으로 교체합니다. Helix의 `d`는 삭제한 내용을 yank하므로, 시스템 클립보드의 내용을 보존하면서 교체하려면 `&lt;space&gt;R`을 사용합니다.
+
+## Before
+
+```rs
+fn greet() {
+    println!("Hello, world!");
+}
+
+fn main() {
+    println!("Hello, Rust!");
+}
+```
+
+## After
+
+```rs
+fn greet() {
+    println!("Hello, Rust!");
+}
+
+fn main() {
+    println!("Hello, Rust!");
+}
+```
+
+## Command
+
+```
+/Rust&lt;ret&gt;&lt;space&gt;ygg/world&lt;ret&gt;&lt;space&gt;R
+```
+
+1. `/Rust&lt;ret&gt;` 선택 영역을 검색
+1. `&lt;space&gt;y` 선택 영역을 시스템 클립보드에 복사
+1. `gg` 파일의 첫 줄로 이동
+1. `/world&lt;ret&gt;` 다른 선택 영역을 검색
+1. `&lt;space&gt;R` 시스템 클립보드의 내용으로 선택 영역을 교체
+
+&gt; `&lt;space&gt;R`은 시스템 클립보드의 내용으로 현재 선택 영역을 바로 교체하므로, `d`나 `&lt;alt-d&gt;`로 먼저 삭제할 필요가 없습니다.
 
 # Invert Dictionary 2
 
@@ -780,6 +883,11 @@ class Calculator:
 <video autoplay controls loop>
   <source src="generated/snake_case_to_camel_case.mp4">
 </video>
+<h2 id="replace-surrounding-characters"><a class="header" href="#replace-surrounding-characters"><a href="replace_surround.html">Replace Surrounding Characters</a></a></h2>
+<p>같은 형태로 감싸진 여러 텍스트의 괄호를 한 번에 다른 괄호로 변경합니다.</p>
+<video autoplay controls loop>
+  <source src="generated/replace_surround.mp4">
+</video>
 <h2 id="replace-an-identifier"><a class="header" href="#replace-an-identifier"><a href="replace_identifier.html">Replace an Identifier</a></a></h2>
 <p>커서가 놓인 변수 이름을 다른 이름으로 변경합니다.</p>
 <video autoplay controls loop>
@@ -789,6 +897,16 @@ class Calculator:
 <p>줄바꿈으로 구분된 데이터를 문자열 배열로 결합합니다.</p>
 <video autoplay controls loop>
   <source src="generated/text_into_array.mp4">
+</video>
+<h2 id="replace-a-regex-sensitive-literal"><a class="header" href="#replace-a-regex-sensitive-literal"><a href="replace_regex_literal.html">Replace a Regex-Sensitive Literal</a></a></h2>
+<p>문서 전체에서 정규식 메타문자가 포함된 문자열을 다른 문자열로 한 번에 변경합니다.</p>
+<video autoplay controls loop>
+  <source src="generated/replace_regex_literal.mp4">
+</video>
+<h2 id="replace-a-selection-with-the-system-clipboard"><a class="header" href="#replace-a-selection-with-the-system-clipboard"><a href="replace_with_system_clipboard.html">Replace a Selection with the System Clipboard</a></a></h2>
+<p>선택 영역을 시스템 클립보드에 복사한 뒤 다른 선택 영역을 클립보드 내용으로 교체합니다. Helix의 <code>d</code>는 삭제한 내용을 yank하므로, 시스템 클립보드의 내용을 보존하면서 교체하려면 <code>&lt;space&gt;R</code>을 사용합니다.</p>
+<video autoplay controls loop>
+  <source src="generated/replace_with_system_clipboard.mp4">
 </video>
 <h2 id="invert-dictionary-2"><a class="header" href="#invert-dictionary-2"><a href="invert_dictionary_2.html">Invert Dictionary 2</a></a></h2>
 <p>딕셔너리의 키-값 쌍을 반전시키는 또 다른 방법입니다.</p>
@@ -878,19 +996,41 @@ class Calculator:
 <li><code>d</code> 선택 영역 삭제</li>
 <li><code>~</code> 대소문자 전환</li>
 </ol>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="replace-an-identifier-1"><a class="header" href="#replace-an-identifier-1">Replace an Identifier</a></h1>
-<p>커서가 놓인 변수 이름을 다른 이름으로 변경합니다.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="replace-surrounding-characters-1"><a class="header" href="#replace-surrounding-characters-1">Replace Surrounding Characters</a></h1>
+<p>같은 형태로 감싸진 여러 텍스트의 괄호를 한 번에 다른 괄호로 변경합니다.</p>
 <h2 id="before-1"><a class="header" href="#before-1">Before</a></h2>
-<pre><code class="language-rs">count
+<pre><code class="language-text">(use)
+(use)
 </code></pre>
 <h2 id="after-1"><a class="header" href="#after-1">After</a></h2>
-<pre><code class="language-rs">total
+<pre><code class="language-text">[use]
+[use]
 </code></pre>
 <h2 id="preview-1"><a class="header" href="#preview-1">Preview</a></h2>
 <video controls>
-  <source src="generated/replace_identifier.mp4" type="video/mp4">
+  <source src="generated/replace_surround.mp4" type="video/mp4">
 </video>
 <h2 id="command-1"><a class="header" href="#command-1">Command</a></h2>
+<pre><code>%suse&lt;ret&gt;mr([
+</code></pre>
+<ol>
+<li><code>%</code> 문서 전체를 선택</li>
+<li><code>suse&lt;ret&gt;</code> 선택 영역 안의 모든 텍스트를 정규식으로 찾아 다중 선택</li>
+<li><code>mr([</code> 선택된 텍스트를 감싸는 괄호를 변경</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="replace-an-identifier-1"><a class="header" href="#replace-an-identifier-1">Replace an Identifier</a></h1>
+<p>커서가 놓인 변수 이름을 다른 이름으로 변경합니다.</p>
+<h2 id="before-2"><a class="header" href="#before-2">Before</a></h2>
+<pre><code class="language-rs">count
+</code></pre>
+<h2 id="after-2"><a class="header" href="#after-2">After</a></h2>
+<pre><code class="language-rs">total
+</code></pre>
+<h2 id="preview-2"><a class="header" href="#preview-2">Preview</a></h2>
+<video controls>
+  <source src="generated/replace_identifier.mp4" type="video/mp4">
+</video>
+<h2 id="command-2"><a class="header" href="#command-2">Command</a></h2>
 <pre><code>miwctotal&lt;esc&gt;
 </code></pre>
 <ol>
@@ -901,20 +1041,20 @@ class Calculator:
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="text-into-array-1"><a class="header" href="#text-into-array-1">Text into Array</a></h1>
 <p>줄바꿈으로 구분된 데이터를 문자열 배열로 결합합니다.</p>
-<h2 id="before-2"><a class="header" href="#before-2">Before</a></h2>
+<h2 id="before-3"><a class="header" href="#before-3">Before</a></h2>
 <pre><code>Hello
 This
 Is
 Helix
 </code></pre>
-<h2 id="after-2"><a class="header" href="#after-2">After</a></h2>
+<h2 id="after-3"><a class="header" href="#after-3">After</a></h2>
 <pre><code class="language-js">["Hello", "This", "Is", "Helix"]
 </code></pre>
-<h2 id="preview-2"><a class="header" href="#preview-2">Preview</a></h2>
+<h2 id="preview-3"><a class="header" href="#preview-3">Preview</a></h2>
 <video controls>
   <source src="generated/text_into_array.mp4" type="video/mp4">
 </video>
-<h2 id="command-2"><a class="header" href="#command-2">Command</a></h2>
+<h2 id="command-3"><a class="header" href="#command-3">Command</a></h2>
 <pre><code>%&lt;alt-s&gt;ms"&lt;alt-J&gt;i,&lt;esc&gt;xms[
 </code></pre>
 <ol>
@@ -924,9 +1064,74 @@ Helix
 <li><code>&lt;alt-J&gt;i,</code> 선택 영역 내부 라인들을 합치고 삽입된 공백을 선택한 뒤 쉼표(,) 삽입</li>
 <li><code>&lt;esc&gt;xms[</code> "[]"로 감싸기</li>
 </ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="replace-a-regex-sensitive-literal-1"><a class="header" href="#replace-a-regex-sensitive-literal-1">Replace a Regex-Sensitive Literal</a></h1>
+<p>문서 전체에서 정규식 메타문자가 포함된 문자열을 다른 문자열로 한 번에 변경합니다.</p>
+<h2 id="before-4"><a class="header" href="#before-4">Before</a></h2>
+<pre><code class="language-text">C++ is widely used.
+I learned C++ before Rust.
+This project does not use C++ anymore.
+</code></pre>
+<h2 id="after-4"><a class="header" href="#after-4">After</a></h2>
+<pre><code class="language-text">Rust is widely used.
+I learned Rust before Rust.
+This project does not use Rust anymore.
+</code></pre>
+<h2 id="preview-4"><a class="header" href="#preview-4">Preview</a></h2>
+<video controls>
+  <source src="generated/replace_regex_literal.mp4" type="video/mp4">
+</video>
+<h2 id="command-4"><a class="header" href="#command-4">Command</a></h2>
+<pre><code>%sC\+\+&lt;ret&gt;cRust&lt;esc&gt;
+</code></pre>
+<ol>
+<li><code>%</code> 문서 전체를 하나의 선택 영역으로 만듭니다.</li>
+<li><code>s</code> 정규식 선택 명령을 시작합니다.</li>
+<li><code>C\+\+</code> 메타문자 플러스를 이스케이프하여 문자 그대로의 C++만 찾습니다.</li>
+<li><code>&lt;ret&gt;</code> 정규식을 확정하고 문서 전체의 모든 C++ 일치 항목을 각각의 선택 영역으로 만듭니다.</li>
+<li><code>c</code> 선택 영역의 내용을 삭제하고 입력 모드로 진입합니다.</li>
+<li><code>Rust</code> 변경할 텍스트를 입력합니다.</li>
+<li><code>&lt;esc&gt;</code> 일반 모드로 돌아갑니다.</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="replace-a-selection-with-the-system-clipboard-1"><a class="header" href="#replace-a-selection-with-the-system-clipboard-1">Replace a Selection with the System Clipboard</a></h1>
+<p>선택 영역을 시스템 클립보드에 복사한 뒤 다른 선택 영역을 클립보드 내용으로 교체합니다. Helix의 <code>d</code>는 삭제한 내용을 yank하므로, 시스템 클립보드의 내용을 보존하면서 교체하려면 <code>&lt;space&gt;R</code>을 사용합니다.</p>
+<h2 id="before-5"><a class="header" href="#before-5">Before</a></h2>
+<pre><code class="language-rs">fn greet() {
+    println!("Hello, world!");
+}
+
+fn main() {
+    println!("Hello, Rust!");
+}
+</code></pre>
+<h2 id="after-5"><a class="header" href="#after-5">After</a></h2>
+<pre><code class="language-rs">fn greet() {
+    println!("Hello, Rust!");
+}
+
+fn main() {
+    println!("Hello, Rust!");
+}
+</code></pre>
+<h2 id="preview-5"><a class="header" href="#preview-5">Preview</a></h2>
+<video controls>
+  <source src="generated/replace_with_system_clipboard.mp4" type="video/mp4">
+</video>
+<h2 id="command-5"><a class="header" href="#command-5">Command</a></h2>
+<pre><code>/Rust&lt;ret&gt;&lt;space&gt;ygg/world&lt;ret&gt;&lt;space&gt;R
+</code></pre>
+<ol>
+<li><code>/Rust&lt;ret&gt;</code> 선택 영역을 검색</li>
+<li><code>&lt;space&gt;y</code> 선택 영역을 시스템 클립보드에 복사</li>
+<li><code>gg</code> 파일의 첫 줄로 이동</li>
+<li><code>/world&lt;ret&gt;</code> 다른 선택 영역을 검색</li>
+<li><code>&lt;space&gt;R</code> 시스템 클립보드의 내용으로 선택 영역을 교체</li>
+</ol>
+<blockquote>
+<p><code>&lt;space&gt;R</code>은 시스템 클립보드의 내용으로 현재 선택 영역을 바로 교체하므로, <code>d</code>나 <code>&lt;alt-d&gt;</code>로 먼저 삭제할 필요가 없습니다.</p>
+</blockquote>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="invert-dictionary-2-1"><a class="header" href="#invert-dictionary-2-1">Invert Dictionary 2</a></h1>
 <p>딕셔너리의 키-값 쌍을 반전시키는 또 다른 방법입니다.</p>
-<h2 id="before-3"><a class="header" href="#before-3">Before</a></h2>
+<h2 id="before-6"><a class="header" href="#before-6">Before</a></h2>
 <pre><code class="language-gdscript">var color_to_points = {
     "red" = 0,
     "orange" = 5,
@@ -937,7 +1142,7 @@ Helix
     "black" = 50,
 }
 </code></pre>
-<h2 id="after-3"><a class="header" href="#after-3">After</a></h2>
+<h2 id="after-6"><a class="header" href="#after-6">After</a></h2>
 <pre><code class="language-gdscript">var points_to_color = {
     0 = "red",
     5 = "orange",
@@ -948,11 +1153,11 @@ Helix
     50 = "black",
 }
 </code></pre>
-<h2 id="preview-3"><a class="header" href="#preview-3">Preview</a></h2>
+<h2 id="preview-6"><a class="header" href="#preview-6">Preview</a></h2>
 <video controls>
   <source src="generated/invert_dictionary_2.mp4" type="video/mp4">
 </video>
-<h2 id="command-3"><a class="header" href="#command-3">Command</a></h2>
+<h2 id="command-6"><a class="header" href="#command-6">Command</a></h2>
 <pre><code>webS_to_&lt;enter&gt;&lt;alt-(&gt;
 
 xt}S,|=&lt;enter&gt;_2&lt;alt-(&gt;
@@ -969,7 +1174,7 @@ xt}S,|=&lt;enter&gt;_2&lt;alt-(&gt;
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="invert-dictionary-1"><a class="header" href="#invert-dictionary-1">Invert Dictionary</a></h1>
 <p>딕셔너리의 키-값 쌍을 반전시킵니다.</p>
-<h2 id="before-4"><a class="header" href="#before-4">Before</a></h2>
+<h2 id="before-7"><a class="header" href="#before-7">Before</a></h2>
 <pre><code class="language-gdscript">var color_to_points = {
     "red" = 0,
     "orange" = 5,
@@ -980,7 +1185,7 @@ xt}S,|=&lt;enter&gt;_2&lt;alt-(&gt;
     "black" = 50,
 }
 </code></pre>
-<h2 id="after-4"><a class="header" href="#after-4">After</a></h2>
+<h2 id="after-7"><a class="header" href="#after-7">After</a></h2>
 <pre><code class="language-gdscript">var points_to_color = {
     0 = "red",
     5 = "orange",
@@ -991,11 +1196,11 @@ xt}S,|=&lt;enter&gt;_2&lt;alt-(&gt;
     50 = "black",
 }
 </code></pre>
-<h2 id="preview-4"><a class="header" href="#preview-4">Preview</a></h2>
+<h2 id="preview-7"><a class="header" href="#preview-7">Preview</a></h2>
 <video controls>
   <source src="generated/invert_dictionary.mp4" type="video/mp4">
 </video>
-<h2 id="command-4"><a class="header" href="#command-4">Command</a></h2>
+<h2 id="command-7"><a class="header" href="#command-7">Command</a></h2>
 <pre><code>webS_to_&lt;enter&gt;&lt;alt-(&gt;
 
 Qxt,S=&lt;enter&gt;_&lt;alt-(&gt;Q6q
@@ -1015,7 +1220,7 @@ Qxt,S=&lt;enter&gt;_&lt;alt-(&gt;Q6q
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="reverse-golf-example-1"><a class="header" href="#reverse-golf-example-1">Reverse Golf Example</a></h1>
 <p>Helix Golf 예제의 "Before"와 "After" 케이스를 서로 맞바꿉니다.</p>
-<h2 id="before-5"><a class="header" href="#before-5">Before</a></h2>
+<h2 id="before-8"><a class="header" href="#before-8">Before</a></h2>
 <pre><code class="language-md"># snake_case to camelCase
 
 Rename all fields to be camelCase.
@@ -1032,7 +1237,7 @@ const user_profile = {first_name: "John"};
 const userProfile = {firstName: "John"};
 ```
 </code></pre>
-<h2 id="after-5"><a class="header" href="#after-5">After</a></h2>
+<h2 id="after-8"><a class="header" href="#after-8">After</a></h2>
 <pre><code class="language-md"># camelCase to snake_case
 
 Rename all fields to be snake_case.
@@ -1049,11 +1254,11 @@ const userProfile = {firstName: "John"};
 const user_profile = {first_name: "John"};
 ```
 </code></pre>
-<h2 id="preview-5"><a class="header" href="#preview-5">Preview</a></h2>
+<h2 id="preview-8"><a class="header" href="#preview-8">Preview</a></h2>
 <video controls>
   <source src="generated/reverse_golf_example.mp4" type="video/mp4">
 </video>
-<h2 id="command-5"><a class="header" href="#command-5">Command</a></h2>
+<h2 id="command-8"><a class="header" href="#command-8">Command</a></h2>
 <pre><code>ebyxb*Rv""Nn&lt;alt-)&gt;
 
 %s`+j&lt;enter&gt;f;&lt;alt-(&gt;
@@ -1075,25 +1280,25 @@ const user_profile = {first_name: "John"};
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="object-into-array-1"><a class="header" href="#object-into-array-1">Object into Array</a></h1>
 <p>객체를 필드와 값으로 이루어진 튜플 리스트로 변환합니다.</p>
-<h2 id="before-6"><a class="header" href="#before-6">Before</a></h2>
+<h2 id="before-9"><a class="header" href="#before-9">Before</a></h2>
 <pre><code class="language-js">const palette = {
   apricot: "#f47868",
   lightning: "#ffcd1c",
   delta: "6f44f0",
 };
 </code></pre>
-<h2 id="after-6"><a class="header" href="#after-6">After</a></h2>
+<h2 id="after-9"><a class="header" href="#after-9">After</a></h2>
 <pre><code class="language-js">const palette = [
   ["apricot", "#f47868"],
   ["lightning", "#ffcd1c"],
   ["delta", "6f44f0"],
 ];
 </code></pre>
-<h2 id="preview-6"><a class="header" href="#preview-6">Preview</a></h2>
+<h2 id="preview-9"><a class="header" href="#preview-9">Preview</a></h2>
 <video controls>
   <source src="generated/object_into_array.mp4" type="video/mp4">
 </video>
-<h2 id="command-6"><a class="header" href="#command-6">Command</a></h2>
+<h2 id="command-9"><a class="header" href="#command-9">Command</a></h2>
 <pre><code>jmr{[mi[s:&lt;enter&gt;
 
 r,bems"vt,ms[
@@ -1112,12 +1317,12 @@ r,bems"vt,ms[
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="export-from-rust-module-1"><a class="header" href="#export-from-rust-module-1">Export from Rust Module</a></h1>
 <p>각 모듈에 포함된 함수를 re-export(pub use)합니다.</p>
-<h2 id="before-7"><a class="header" href="#before-7">Before</a></h2>
+<h2 id="before-10"><a class="header" href="#before-10">Before</a></h2>
 <pre><code class="language-rs">mod generate_demos;
 mod mdbook_preprocessor;
 mod validate;
 </code></pre>
-<h2 id="after-7"><a class="header" href="#after-7">After</a></h2>
+<h2 id="after-10"><a class="header" href="#after-10">After</a></h2>
 <pre><code class="language-rs">mod generate_demos;
 mod mdbook_preprocessor;
 mod validate;
@@ -1126,11 +1331,11 @@ pub use generate_demos::generate_demos;
 pub use mdbook_preprocessor::mdbook_preprocessor;
 pub use validate::validate;
 </code></pre>
-<h2 id="preview-7"><a class="header" href="#preview-7">Preview</a></h2>
+<h2 id="preview-10"><a class="header" href="#preview-10">Preview</a></h2>
 <video controls>
   <source src="generated/export_from_mod.mp4" type="video/mp4">
 </video>
-<h2 id="command-7"><a class="header" href="#command-7">Command</a></h2>
+<h2 id="command-10"><a class="header" href="#command-10">Command</a></h2>
 <pre><code>%yp[&lt;space&gt;
 
 &lt;alt-s&gt;gse
@@ -1149,7 +1354,7 @@ cpub use&lt;esc&gt;leypi::
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="enumerate-and-align-1"><a class="header" href="#enumerate-and-align-1">Enumerate and Align</a></h1>
 <p>각 객체에 1부터 시작하여 증가하는 <code>rank</code> 필드를 추가하고, 보기 좋게 필드를 정렬합니다.</p>
-<h2 id="before-8"><a class="header" href="#before-8">Before</a></h2>
+<h2 id="before-11"><a class="header" href="#before-11">Before</a></h2>
 <pre><code class="language-js">[
   { word: "a", count: 2565 },
   { word: "and", count: 1777 },
@@ -1164,7 +1369,7 @@ cpub use&lt;esc&gt;leypi::
   { word: "for", count: 630 },
 ];
 </code></pre>
-<h2 id="after-8"><a class="header" href="#after-8">After</a></h2>
+<h2 id="after-11"><a class="header" href="#after-11">After</a></h2>
 <pre><code class="language-js">[
   { rank:  1, word: "a",    count: 2565 },
   { rank:  2, word: "and",  count: 1777 },
@@ -1179,11 +1384,11 @@ cpub use&lt;esc&gt;leypi::
   { rank: 11, word: "for",  count:  630 },
 ];
 </code></pre>
-<h2 id="preview-8"><a class="header" href="#preview-8">Preview</a></h2>
+<h2 id="preview-11"><a class="header" href="#preview-11">Preview</a></h2>
 <video controls>
   <source src="generated/enumerate_and_align.mp4" type="video/mp4">
 </video>
-<h2 id="command-8"><a class="header" href="#command-8">Command</a></h2>
+<h2 id="command-11"><a class="header" href="#command-11">Command</a></h2>
 <pre><code>%s\{&lt;enter&gt;a rank: &lt;ctrl-r&gt;
 
 #,&lt;esc&gt;%s |\d+&lt;enter&gt;&amp;
@@ -1202,21 +1407,21 @@ cpub use&lt;esc&gt;leypi::
 <li><code>&amp;</code> 모든 선택 영역을 열에 맞춰 정렬 (숫자가 우측 정렬됨)</li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="csv-to-sql-1"><a class="header" href="#csv-to-sql-1">CSV to SQL</a></h1>
-<h2 id="before-9"><a class="header" href="#before-9">Before</a></h2>
+<h2 id="before-12"><a class="header" href="#before-12">Before</a></h2>
 <pre><code class="language-csv">id 1,Item 1,cost 1,location 1
 id 2,Item 2,cost 2,location 2
 id 10,Item 10,cost 10,location 10
 </code></pre>
-<h2 id="after-9"><a class="header" href="#after-9">After</a></h2>
+<h2 id="after-12"><a class="header" href="#after-12">After</a></h2>
 <pre><code class="language-sql">INSERT INTO `database`.`table` (`id` ,`item` ,`cost` ,`location`) VALUES ('id 1','Item 1','cost 1','Location 1');
 INSERT INTO `database`.`table` (`id` ,`item` ,`cost` ,`location`) VALUES ('id 2','Item 2','cost 2','Location 2');
 INSERT INTO `database`.`table` (`id` ,`item` ,`cost` ,`location`) VALUES ('id 10','Item 10','cost 10','Location 10');
 </code></pre>
-<h2 id="preview-9"><a class="header" href="#preview-9">Preview</a></h2>
+<h2 id="preview-12"><a class="header" href="#preview-12">Preview</a></h2>
 <video controls>
   <source src="generated/csv_to_sql.mp4" type="video/mp4">
 </video>
-<h2 id="command-9"><a class="header" href="#command-9">Command</a></h2>
+<h2 id="command-12"><a class="header" href="#command-12">Command</a></h2>
 <pre><code>%&lt;alt-s&gt;"yys\d&lt;enter&gt;
 
 dhhbms
@@ -1319,7 +1524,7 @@ AVALUES (&lt;esc&gt;
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="function-into-class-1"><a class="header" href="#function-into-class-1">Function into Class</a></h1>
 <p>3개의 함수를 3개의 메서드를 가진 클래스로 변환합니다.</p>
-<h2 id="before-10"><a class="header" href="#before-10">Before</a></h2>
+<h2 id="before-13"><a class="header" href="#before-13">Before</a></h2>
 <pre><code class="language-py">def calculate_area(length, width):
     result = length * width
     return result
@@ -1332,7 +1537,7 @@ def calculate_volume(length, width, height):
     result = length * width * height
     return result
 </code></pre>
-<h2 id="after-10"><a class="header" href="#after-10">After</a></h2>
+<h2 id="after-13"><a class="header" href="#after-13">After</a></h2>
 <pre><code class="language-py">class Calculator:
     @staticmethod
     def get_area(len, wid):
@@ -1346,11 +1551,11 @@ def calculate_volume(length, width, height):
     def get_volume(len, wid, hei):
         return len * wid * hei
 </code></pre>
-<h2 id="preview-10"><a class="header" href="#preview-10">Preview</a></h2>
+<h2 id="preview-13"><a class="header" href="#preview-13">Preview</a></h2>
 <video controls>
   <source src="generated/function_into_class.mp4" type="video/mp4">
 </video>
-<h2 id="command-10"><a class="header" href="#command-10">Command</a></h2>
+<h2 id="command-13"><a class="header" href="#command-13">Command</a></h2>
 <pre><code>%scalculate&lt;enter&gt;cget&lt;esc&gt;
 
 O@staticmethod&lt;esc&gt;jj
