@@ -6,8 +6,6 @@ https://github.com/user-attachments/assets/d79d583e-f79b-40ce-add7-e60a8307156a
 
 전체 예제 보러가기:
 
-[https://nik-rev.github.io/helix-golf](https://nik-rev.github.io/helix-golf/)
-
 ## 기여하기 (Contributing)
 
 새로운 예제를 제안하고 싶다면 이슈를 생성해 주세요. 확인 후 추가하겠습니다.

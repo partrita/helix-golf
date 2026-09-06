@@ -23,7 +23,7 @@ Helix Golf는 Rust로 작성된 차세대 터미널 IDE인
 
 인터넷 없이도 Helix에 복사하여 붙여넣고 직접 연습해 볼 수 있습니다!
 
-``````````md
+````````````md
 # snake_case to camelCase
 
 모든 필드명을 camelCase로 변경합니다.
@@ -109,6 +109,216 @@ Helix
 1. `ms"` 각 단어를 큰따옴표로 감싸기
 1. `<alt-J>i,` 선택 영역 내부 라인들을 합치고 삽입된 공백을 선택한 뒤 쉼표(,) 삽입
 1. `<esc>xms[` "[]"로 감싸기
+
+# Invert Dictionary 2
+
+딕셔너리의 키-값 쌍을 반전시키는 또 다른 방법입니다.
+
+## Before
+
+```gdscript
+var color_to_points = {
+    "red" = 0,
+    "orange" = 5,
+    "yellow" = 10,
+    "green" = 15,
+    "blue" = 20,
+    "purple" = 30,
+    "black" = 50,
+}
+```
+
+## After
+
+```gdscript
+var points_to_color = {
+    0 = "red",
+    5 = "orange",
+    10 = "yellow",
+    15 = "green",
+    20 = "blue",
+    30 = "purple",
+    50 = "black",
+}
+```
+
+## Command
+
+```
+webS_to_<enter><alt-(>
+
+xt}S,|=<enter>_2<alt-(>
+```
+
+1. `web` 공백을 제외한 두 번째 단어 선택
+1. `S` 정규식 일치 기준으로 선택 영역 분할. `_to_`를 정규식으로 입력하고 `<enter>`를 눌러 두 부분으로 분할
+1. `<alt-(>` 선택 영역 내용의 순서 회전
+1. `x` 전체 줄 선택
+1. `t}` 다음 "}" 문자 바로 앞까지 선택
+1. `S` 정규식 일치 기준으로 선택 영역 분할. `,|=`를 정규식으로 입력하고 `<enter>`를 눌러 하위 선택 영역으로 분할
+1. `_` 모든 선택 영역의 후행 공백 제거
+1. `2<alt-(>` 선택 영역 쌍 사이에서만 내용 순서 회전
+
+# Invert Dictionary
+
+딕셔너리의 키-값 쌍을 반전시킵니다.
+
+## Before
+
+```gdscript
+var color_to_points = {
+    "red" = 0,
+    "orange" = 5,
+    "yellow" = 10,
+    "green" = 15,
+    "blue" = 20,
+    "purple" = 30,
+    "black" = 50,
+}
+```
+
+## After
+
+```gdscript
+var points_to_color = {
+    0 = "red",
+    5 = "orange",
+    10 = "yellow",
+    15 = "green",
+    20 = "blue",
+    30 = "purple",
+    50 = "black",
+}
+```
+
+## Command
+
+```
+webS_to_<enter><alt-(>
+
+Qxt,S=<enter>_<alt-(>Q6q
+```
+
+1. `web` 공백을 제외한 두 번째 단어 선택
+1. `S` 정규식 일치 기준으로 선택 영역 분할. `_to_`를 정규식으로 입력하고 `<enter>`를 눌러 두 부분으로 분할
+1. `<alt-(>` 선택 영역 내용의 순서 회전
+1. `Q` 첫 번째 입력으로 매크로 녹화 시작
+1. `x` 전체 줄 선택
+1. `t,` 다음 쉼표 바로 앞까지 선택
+1. `S` 정규식 일치 기준으로 전체 줄 분할. `=`를 정규식으로 입력하고 `<enter>`를 눌러 두 부분으로 분할
+1. `_` 모든 선택 영역의 후행 공백 제거
+1. `<alt-(>` 선택 영역 내용의 순서 회전
+1. `Q` 두 번째 입력으로 매크로 녹화 종료
+1. `6q` 녹화된 매크로 시퀀스를 6회 반복
+
+# Reverse Golf Example
+
+Helix Golf 예제의 "Before"와 "After" 케이스를 서로 맞바꿉니다.
+
+## Before
+
+````md
+# snake_case to camelCase
+
+Rename all fields to be camelCase.
+
+## Before
+
+```js
+const user_profile = {first_name: "John"};
+```
+
+## After
+
+```js
+const userProfile = {firstName: "John"};
+```
+````
+
+## After
+
+````md
+# camelCase to snake_case
+
+Rename all fields to be snake_case.
+
+## Before
+
+```js
+const userProfile = {firstName: "John"};
+```
+
+## After
+
+```js
+const user_profile = {first_name: "John"};
+```
+````
+
+## Command
+
+```
+ebyxb*Rv""Nn<alt-)>
+
+%s`+j<enter>f;<alt-(>
+```
+
+1. `eb` 다음 단어를 선택하고 공백 제거
+1. `y` 선택한 단어를 복사하여 " (큰따옴표) 레지스터에 저장
+1. `xb` 줄의 마지막 단어 선택
+1. `*` 현재 선택 영역을 검색 패턴으로 설정
+1. `R` 선택한 단어를 이전에 복사한 선택 항목으로 교체
+1. `v` 선택 모드 진입
+1. `""` " (큰따옴표) 레지스터를 지정. `N`을 누르면 레지스터에 저장된 단어의 이전 일치 항목에 새 선택 영역 추가
+1. `n` 이전에 지정된 검색 패턴의 다음 일치 항목에 새 선택 영역 추가
+1. `<alt-)>` 선택 영역 내용의 순서를 앞으로 회전
+1. `%` 파일 전체 내용 선택
+1. `s` 정규식 일치 기준으로 하위 선택 영역 생성. `` `+j ``를 정규식으로 입력하고 `<enter>`를 눌러 모든 일치 항목 선택
+1. 여전히 선택 모드이므로 `f;`를 입력하여 각 커서가 다음 세미콜론(;)까지(포함) 선택하도록 이동
+1. `<alt-(>` 선택 영역 내용의 순서를 뒤로 회전 
+
+# Object into Array
+
+객체를 필드와 값으로 이루어진 튜플 리스트로 변환합니다.
+
+## Before
+
+```js
+const palette = {
+  apricot: "#f47868",
+  lightning: "#ffcd1c",
+  delta: "6f44f0",
+};
+```
+
+## After
+
+```js
+const palette = [
+  ["apricot", "#f47868"],
+  ["lightning", "#ffcd1c"],
+  ["delta", "6f44f0"],
+];
+```
+
+## Command
+
+```
+jmr{[mi[s:<enter>
+
+r,bems"vt,ms[
+```
+
+1. `j` 다음 단계 수행을 위해 객체 내부로 이동하도록 아래 줄로 이동
+1. `mr{[` 가장 가까운 중괄호 쌍 "\{"를 대괄호 "["로 교체
+1. `mi[` 전체 배열 내부 선택
+1. `s` 선택 모드로 진입하여 패턴에 따라 하위 선택 영역 생성
+1. `:` 입력 후 `<enter>`를 눌러 모든 ":"에 커서를 두고 단일 폭 선택 영역 생성
+1. `r,` 각 선택 영역을 ","로 교체 (콜론을 쉼표로 교체)
+1. `be` 각 줄의 이전 단어를 선택하고 각 커서를 각 단어의 끝으로 이동
+1. `ms"` 각 단어를 큰따옴표로 감싸 문자열 생성
+1. `vt,` 각 줄에서 마지막 쉼표를 제외하고 선택
+1. `ms[` 각 선택 영역을 "["로 감싸 배열로 변환
 
 # Export from Rust Module
 
@@ -212,49 +422,6 @@ cpub use<esc>leypi::
 1. `%s` 다시 선택 모드로 진입
 1. ` |\d+` 모든 공백과 숫자를 선택하는 정규식을 입력하고 `<enter>` 누르기
 1. `&` 모든 선택 영역을 열에 맞춰 정렬 (숫자가 우측 정렬됨)
-
-# Object into Array
-
-객체를 필드와 값으로 이루어진 튜플 리스트로 변환합니다.
-
-## Before
-
-```js
-const palette = {
-  apricot: "#f47868",
-  lightning: "#ffcd1c",
-  delta: "6f44f0",
-};
-```
-
-## After
-
-```js
-const palette = [
-  ["apricot", "#f47868"],
-  ["lightning", "#ffcd1c"],
-  ["delta", "6f44f0"],
-];
-```
-
-## Command
-
-```
-jmr{[mi[s:<enter>
-
-r,bems"vt,ms[
-```
-
-1. `j` 다음 단계 수행을 위해 객체 내부로 이동하도록 아래 줄로 이동
-1. `mr{[` 가장 가까운 중괄호 쌍 "\{"를 대괄호 "["로 교체
-1. `mi[` 전체 배열 내부 선택
-1. `s` 선택 모드로 진입하여 패턴에 따라 하위 선택 영역 생성
-1. `:` 입력 후 `<enter>`를 눌러 모든 ":"에 커서를 두고 단일 폭 선택 영역 생성
-1. `r,` 각 선택 영역을 ","로 교체 (콜론을 쉼표로 교체)
-1. `be` 각 줄의 이전 단어를 선택하고 각 커서를 각 단어의 끝으로 이동
-1. `ms"` 각 단어를 큰따옴표로 감싸 문자열 생성
-1. `vt,` 각 줄에서 마지막 쉼표를 제외하고 선택
-1. `ms[` 각 선택 영역을 "["로 감싸 배열로 변환
 
 # CSV to SQL
 
@@ -417,7 +584,8 @@ class Calculator:
     class Calculator:
     ```
 
-``````````
+
+````````````
 
 </details>
 
@@ -439,6 +607,42 @@ class Calculator:
 </video>
 
 
+## [Invert Dictionary 2](invert_dictionary_2.md)
+
+딕셔너리의 키-값 쌍을 반전시키는 또 다른 방법입니다.
+
+<video autoplay controls loop>
+  <source src="generated/invert_dictionary_2.mp4">
+</video>
+
+
+## [Invert Dictionary](invert_dictionary.md)
+
+딕셔너리의 키-값 쌍을 반전시킵니다.
+
+<video autoplay controls loop>
+  <source src="generated/invert_dictionary.mp4">
+</video>
+
+
+## [Reverse Golf Example](reverse_golf_example.md)
+
+Helix Golf 예제의 "Before"와 "After" 케이스를 서로 맞바꿉니다.
+
+<video autoplay controls loop>
+  <source src="generated/reverse_golf_example.mp4">
+</video>
+
+
+## [Object into Array](object_into_array.md)
+
+객체를 필드와 값으로 이루어진 튜플 리스트로 변환합니다.
+
+<video autoplay controls loop>
+  <source src="generated/object_into_array.mp4">
+</video>
+
+
 ## [Export from Rust Module](export_from_mod.md)
 
 각 모듈에 포함된 함수를 re-export(pub use)합니다.
@@ -454,15 +658,6 @@ class Calculator:
 
 <video autoplay controls loop>
   <source src="generated/enumerate_and_align.mp4">
-</video>
-
-
-## [Object into Array](object_into_array.md)
-
-객체를 필드와 값으로 이루어진 튜플 리스트로 변환합니다.
-
-<video autoplay controls loop>
-  <source src="generated/object_into_array.mp4">
 </video>
 
 
@@ -482,6 +677,5 @@ class Calculator:
 <video autoplay controls loop>
   <source src="generated/function_into_class.mp4">
 </video>
-
 
 
