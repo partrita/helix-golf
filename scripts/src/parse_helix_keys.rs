@@ -445,7 +445,7 @@ impl KeyEvent {
             span: (0, 4).into(),
         })? {
             keys::BACKSPACE => KeyCode::Backspace,
-            keys::ENTER => KeyCode::Enter,
+            keys::ENTER | keys::RET => KeyCode::Enter,
             keys::LEFT => KeyCode::Left,
             keys::RIGHT => KeyCode::Right,
             keys::UP => KeyCode::Up,
@@ -756,6 +756,7 @@ pub mod keys {
     pub const BACKSPACE: &str = "backspace";
     // NOTE: In Helix, it is "ret"
     pub const ENTER: &str = "enter";
+    pub const RET: &str = "ret";
     pub const LEFT: &str = "left";
     pub const RIGHT: &str = "right";
     pub const UP: &str = "up";
@@ -808,3 +809,17 @@ pub mod keys {
     pub const ISO_LEVEL_3_SHIFT: &str = "isolevel3shift";
     pub const ISO_LEVEL_5_SHIFT: &str = "isolevel5shift";
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_parse_ret_and_enter() {
+        let ret_events = parse_keys("<ret>", "test.md").unwrap();
+        let enter_events = parse_keys("<enter>", "test.md").unwrap();
+        assert_eq!(ret_events, enter_events);
+        assert_eq!(ret_events[0].code, KeyCode::Enter);
+    }
+}
+
