@@ -1,4 +1,6 @@
 //! Scripts for Helix Golf
+#![allow(unused_assignments)]
+
 use std::env;
 
 use miette::miette;

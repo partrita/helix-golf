@@ -26,6 +26,7 @@ which = "7.0.3"
 [lints.rust]
 missing_docs = "warn"
 unused_qualifications = "warn"
+unused_assignments = "allow"
 
 [lints.clippy]
 pedantic = { priority = -1, level = "warn" }
