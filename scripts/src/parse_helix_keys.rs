@@ -388,6 +388,7 @@ use thiserror::Error;
 
 #[derive(Error, Diagnostic, Debug)]
 #[error("Could not parse the keys")]
+#[allow(dead_code)]
 pub struct ParseKeysError {
     #[source_code]
     src: NamedSource<String>,
