@@ -822,4 +822,3 @@ mod tests {
         assert_eq!(ret_events[0].code, KeyCode::Enter);
     }
 }
-
