@@ -4,7 +4,11 @@
 
 - [Helix Golf - Introduction](introduction.md)
 - [snake_case to camelCase](snake_case_to_camel_case.md)
+- [Replace an Identifier](replace_identifier.md)
+- [Replace Surrounding Characters](replace_surround.md)
 - [Text into Array](text_into_array.md)
+- [Replace a Regex-Sensitive Literal](replace_regex_literal.md)
+- [Replace a Selection with the System Clipboard](replace_with_system_clipboard.md)
 - [Invert Dictionary 2](invert_dictionary_2.md)
 - [Invert Dictionary](invert_dictionary.md)
 - [Reverse Golf Example](reverse_golf_example.md)

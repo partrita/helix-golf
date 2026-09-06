@@ -79,6 +79,60 @@ const userProfile = {
 5. `d` 선택 영역 삭제
 6. `~` 대소문자 전환
 
+# Replace an Identifier
+
+커서가 놓인 변수 이름을 다른 이름으로 변경합니다.
+
+## Before
+
+```rs
+count
+```
+
+## After
+
+```rs
+total
+```
+
+## Command
+
+```
+miwctotal<esc>
+```
+
+1. `miw` 단어 내부를 선택
+1. `c` 선택 영역을 변경
+1. `total` 새 변수 이름 입력
+1. `<esc>` 일반 모드로 돌아가기
+
+# Replace Surrounding Characters
+
+같은 형태로 감싸진 여러 텍스트의 괄호를 한 번에 다른 괄호로 변경합니다.
+
+## Before
+
+```text
+(use)
+(use)
+```
+
+## After
+
+```text
+[use]
+[use]
+```
+
+## Command
+
+```
+%suse<ret>mr([
+```
+
+1. `%` 문서 전체를 선택
+1. `suse<ret>` 선택 영역 안의 모든 텍스트를 정규식으로 찾아 다중 선택
+1. `mr([` 선택된 텍스트를 감싸는 괄호를 변경
 # Text into Array
 
 줄바꿈으로 구분된 데이터를 문자열 배열로 결합합니다.
@@ -109,6 +163,82 @@ Helix
 1. `ms"` 각 단어를 큰따옴표로 감싸기
 1. `<alt-J>i,` 선택 영역 내부 라인들을 합치고 삽입된 공백을 선택한 뒤 쉼표(,) 삽입
 1. `<esc>xms[` "[]"로 감싸기
+
+# Replace a Regex-Sensitive Literal
+
+문서 전체에서 정규식 메타문자가 포함된 문자열을 다른 문자열로 한 번에 변경합니다.
+
+## Before
+
+```text
+C++ is widely used.
+I learned C++ before Rust.
+This project does not use C++ anymore.
+```
+
+## After
+
+```text
+Rust is widely used.
+I learned Rust before Rust.
+This project does not use Rust anymore.
+```
+
+## Command
+
+```
+%sC\+\+<ret>cRust<esc>
+```
+
+1. `%` 문서 전체를 하나의 선택 영역으로 만듭니다.
+1. `s` 정규식 선택 명령을 시작합니다.
+1. `C\+\+` 메타문자 플러스를 이스케이프하여 문자 그대로의 C++만 찾습니다.
+1. `<ret>` 정규식을 확정하고 문서 전체의 모든 C++ 일치 항목을 각각의 선택 영역으로 만듭니다.
+1. `c` 선택 영역의 내용을 삭제하고 입력 모드로 진입합니다.
+1. `Rust` 변경할 텍스트를 입력합니다.
+1. `<esc>` 일반 모드로 돌아갑니다.
+
+# Replace a Selection with the System Clipboard
+
+선택 영역을 시스템 클립보드에 복사한 뒤 다른 선택 영역을 클립보드 내용으로 교체합니다. Helix의 `d`는 삭제한 내용을 yank하므로, 시스템 클립보드의 내용을 보존하면서 교체하려면 `<space>R`을 사용합니다.
+
+## Before
+
+```rs
+fn greet() {
+    println!("Hello, world!");
+}
+
+fn main() {
+    println!("Hello, Rust!");
+}
+```
+
+## After
+
+```rs
+fn greet() {
+    println!("Hello, Rust!");
+}
+
+fn main() {
+    println!("Hello, Rust!");
+}
+```
+
+## Command
+
+```
+/Rust<ret><space>ygg/world<ret><space>R
+```
+
+1. `/Rust<ret>` 선택 영역을 검색
+1. `<space>y` 선택 영역을 시스템 클립보드에 복사
+1. `gg` 파일의 첫 줄로 이동
+1. `/world<ret>` 다른 선택 영역을 검색
+1. `<space>R` 시스템 클립보드의 내용으로 선택 영역을 교체
+
+> `<space>R`은 시스템 클립보드의 내용으로 현재 선택 영역을 바로 교체하므로, `d`나 `<alt-d>`로 먼저 삭제할 필요가 없습니다.
 
 # Invert Dictionary 2
 
@@ -598,12 +728,48 @@ class Calculator:
 </video>
 
 
+## [Replace an Identifier](replace_identifier.md)
+
+커서가 놓인 변수 이름을 다른 이름으로 변경합니다.
+
+<video autoplay controls loop>
+  <source src="generated/replace_identifier.mp4">
+</video>
+
+
+## [Replace Surrounding Characters](replace_surround.md)
+
+같은 형태로 감싸진 여러 텍스트의 괄호를 한 번에 다른 괄호로 변경합니다.
+
+<video autoplay controls loop>
+  <source src="generated/replace_surround.mp4">
+</video>
+
+
 ## [Text into Array](text_into_array.md)
 
 줄바꿈으로 구분된 데이터를 문자열 배열로 결합합니다.
 
 <video autoplay controls loop>
   <source src="generated/text_into_array.mp4">
+</video>
+
+
+## [Replace a Regex-Sensitive Literal](replace_regex_literal.md)
+
+문서 전체에서 정규식 메타문자가 포함된 문자열을 다른 문자열로 한 번에 변경합니다.
+
+<video autoplay controls loop>
+  <source src="generated/replace_regex_literal.mp4">
+</video>
+
+
+## [Replace a Selection with the System Clipboard](replace_with_system_clipboard.md)
+
+선택 영역을 시스템 클립보드에 복사한 뒤 다른 선택 영역을 클립보드 내용으로 교체합니다. Helix의 `d`는 삭제한 내용을 yank하므로, 시스템 클립보드의 내용을 보존하면서 교체하려면 `<space>R`을 사용합니다.
+
+<video autoplay controls loop>
+  <source src="generated/replace_with_system_clipboard.mp4">
 </video>
 
 
