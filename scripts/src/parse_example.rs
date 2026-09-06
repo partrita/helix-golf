@@ -143,7 +143,7 @@ impl Expecting {
 /// The markdown file does not conform to the structure that we are expecting.
 #[derive(thiserror::Error, Debug, miette::Diagnostic)]
 #[error("Invalid structure of example, please see README.md for correct structure")]
-#[allow(dead_code)]
+#[allow(dead_code, unused_assignments)]
 struct InvalidStructure {
     /// Contents of the markdown file
     #[source_code]
