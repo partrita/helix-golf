@@ -267,7 +267,7 @@ impl Example {
                                     return Err(expected_err_with_pos(position));
                                 };
 
-                                example.title = value.to_string();
+                                example.title = value.clone();
 
                                 expecting.next(position.clone().unwrap());
                             }
@@ -306,7 +306,7 @@ impl Example {
                                                 "[{}]({url})",
                                                 inline_mdast_into_md_string(children)
                                             ),
-                                            Node::Text(Text { value, .. }) => value.to_string(),
+                                            Node::Text(Text { value, .. }) => value.clone(),
                                             Node::InlineCode(InlineCode { value, .. }) => {
                                                 format!("`{value}`")
                                             }
@@ -330,7 +330,7 @@ impl Example {
                             }) = child
                             {
                                 example.before = if value.ends_with('\n') {
-                                    value.to_string()
+                                    value.clone()
                                 } else {
                                     format!("{value}\n")
                                 };
@@ -365,7 +365,7 @@ impl Example {
                                 ..
                             }) = child
                             {
-                                example.after = value.to_string();
+                                example.after = value.clone();
                                 example.language = lang.clone().unwrap_or_default();
 
                                 expecting.next(position.clone().unwrap());

@@ -42,14 +42,14 @@ fn process_items(items: &mut [Value]) {
                     .and_then(Value::as_str)
                     .and_then(|p| Path::new(p).file_stem()?.to_str().map(str::to_string));
 
-                if let (Some(name), Some(start)) = (path_stem, content.find("## Command")) {
-                    if name != "introduction" {
-                        let (before, after) = content.split_at(start);
-                        let new_content = format!(
-                            "{before}\n## Preview\n\n<video controls>\n  <source src=\"generated/{name}.mp4\" type=\"video/mp4\">\n</video>\n\n{after}"
-                        );
-                        chapter["content"] = Value::String(new_content);
-                    }
+                if let (Some(name), Some(start)) = (path_stem, content.find("## Command"))
+                    && name != "introduction"
+                {
+                    let (before, after) = content.split_at(start);
+                    let new_content = format!(
+                        "{before}\n## Preview\n\n<video controls>\n  <source src=\"generated/{name}.mp4\" type=\"video/mp4\">\n</video>\n\n{after}"
+                    );
+                    chapter["content"] = Value::String(new_content);
                 }
             }
 
