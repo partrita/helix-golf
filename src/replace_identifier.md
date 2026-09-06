@@ -17,9 +17,10 @@ total
 ## Command
 
 ```
-ciwtotal<esc>
+miwctotal<esc>
 ```
 
-1. `ciw` 현재 단어를 선택하여 삽입 모드로 변경
+1. `miw` 단어 내부를 선택
+1. `c` 선택 영역을 변경
 1. `total` 새 변수 이름 입력
 1. `<esc>` 일반 모드로 돌아가기
