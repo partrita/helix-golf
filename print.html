@@ -240,6 +240,33 @@ const userProfile = {
 5. `d` 선택 영역 삭제
 6. `~` 대소문자 전환
 
+# Replace an Identifier
+
+커서가 놓인 변수 이름을 다른 이름으로 변경합니다.
+
+## Before
+
+```rs
+count
+```
+
+## After
+
+```rs
+total
+```
+
+## Command
+
+```
+miwctotal&lt;esc&gt;
+```
+
+1. `miw` 단어 내부를 선택
+1. `c` 선택 영역을 변경
+1. `total` 새 변수 이름 입력
+1. `&lt;esc&gt;` 일반 모드로 돌아가기
+
 # Text into Array
 
 줄바꿈으로 구분된 데이터를 문자열 배열로 결합합니다.
@@ -753,6 +780,11 @@ class Calculator:
 <video autoplay controls loop>
   <source src="generated/snake_case_to_camel_case.mp4">
 </video>
+<h2 id="replace-an-identifier"><a class="header" href="#replace-an-identifier"><a href="replace_identifier.html">Replace an Identifier</a></a></h2>
+<p>커서가 놓인 변수 이름을 다른 이름으로 변경합니다.</p>
+<video autoplay controls loop>
+  <source src="generated/replace_identifier.mp4">
+</video>
 <h2 id="text-into-array"><a class="header" href="#text-into-array"><a href="text_into_array.html">Text into Array</a></a></h2>
 <p>줄바꿈으로 구분된 데이터를 문자열 배열로 결합합니다.</p>
 <video autoplay controls loop>
@@ -846,22 +878,43 @@ class Calculator:
 <li><code>d</code> 선택 영역 삭제</li>
 <li><code>~</code> 대소문자 전환</li>
 </ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="replace-an-identifier-1"><a class="header" href="#replace-an-identifier-1">Replace an Identifier</a></h1>
+<p>커서가 놓인 변수 이름을 다른 이름으로 변경합니다.</p>
+<h2 id="before-1"><a class="header" href="#before-1">Before</a></h2>
+<pre><code class="language-rs">count
+</code></pre>
+<h2 id="after-1"><a class="header" href="#after-1">After</a></h2>
+<pre><code class="language-rs">total
+</code></pre>
+<h2 id="preview-1"><a class="header" href="#preview-1">Preview</a></h2>
+<video controls>
+  <source src="generated/replace_identifier.mp4" type="video/mp4">
+</video>
+<h2 id="command-1"><a class="header" href="#command-1">Command</a></h2>
+<pre><code>miwctotal&lt;esc&gt;
+</code></pre>
+<ol>
+<li><code>miw</code> 단어 내부를 선택</li>
+<li><code>c</code> 선택 영역을 변경</li>
+<li><code>total</code> 새 변수 이름 입력</li>
+<li><code>&lt;esc&gt;</code> 일반 모드로 돌아가기</li>
+</ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="text-into-array-1"><a class="header" href="#text-into-array-1">Text into Array</a></h1>
 <p>줄바꿈으로 구분된 데이터를 문자열 배열로 결합합니다.</p>
-<h2 id="before-1"><a class="header" href="#before-1">Before</a></h2>
+<h2 id="before-2"><a class="header" href="#before-2">Before</a></h2>
 <pre><code>Hello
 This
 Is
 Helix
 </code></pre>
-<h2 id="after-1"><a class="header" href="#after-1">After</a></h2>
+<h2 id="after-2"><a class="header" href="#after-2">After</a></h2>
 <pre><code class="language-js">["Hello", "This", "Is", "Helix"]
 </code></pre>
-<h2 id="preview-1"><a class="header" href="#preview-1">Preview</a></h2>
+<h2 id="preview-2"><a class="header" href="#preview-2">Preview</a></h2>
 <video controls>
   <source src="generated/text_into_array.mp4" type="video/mp4">
 </video>
-<h2 id="command-1"><a class="header" href="#command-1">Command</a></h2>
+<h2 id="command-2"><a class="header" href="#command-2">Command</a></h2>
 <pre><code>%&lt;alt-s&gt;ms"&lt;alt-J&gt;i,&lt;esc&gt;xms[
 </code></pre>
 <ol>
@@ -873,49 +926,6 @@ Helix
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="invert-dictionary-2-1"><a class="header" href="#invert-dictionary-2-1">Invert Dictionary 2</a></h1>
 <p>딕셔너리의 키-값 쌍을 반전시키는 또 다른 방법입니다.</p>
-<h2 id="before-2"><a class="header" href="#before-2">Before</a></h2>
-<pre><code class="language-gdscript">var color_to_points = {
-    "red" = 0,
-    "orange" = 5,
-    "yellow" = 10,
-    "green" = 15,
-    "blue" = 20,
-    "purple" = 30,
-    "black" = 50,
-}
-</code></pre>
-<h2 id="after-2"><a class="header" href="#after-2">After</a></h2>
-<pre><code class="language-gdscript">var points_to_color = {
-    0 = "red",
-    5 = "orange",
-    10 = "yellow",
-    15 = "green",
-    20 = "blue",
-    30 = "purple",
-    50 = "black",
-}
-</code></pre>
-<h2 id="preview-2"><a class="header" href="#preview-2">Preview</a></h2>
-<video controls>
-  <source src="generated/invert_dictionary_2.mp4" type="video/mp4">
-</video>
-<h2 id="command-2"><a class="header" href="#command-2">Command</a></h2>
-<pre><code>webS_to_&lt;enter&gt;&lt;alt-(&gt;
-
-xt}S,|=&lt;enter&gt;_2&lt;alt-(&gt;
-</code></pre>
-<ol>
-<li><code>web</code> 공백을 제외한 두 번째 단어 선택</li>
-<li><code>S</code> 정규식 일치 기준으로 선택 영역 분할. <code>_to_</code>를 정규식으로 입력하고 <code>&lt;enter&gt;</code>를 눌러 두 부분으로 분할</li>
-<li><code>&lt;alt-(&gt;</code> 선택 영역 내용의 순서 회전</li>
-<li><code>x</code> 전체 줄 선택</li>
-<li><code>t}</code> 다음 "}" 문자 바로 앞까지 선택</li>
-<li><code>S</code> 정규식 일치 기준으로 선택 영역 분할. <code>,|=</code>를 정규식으로 입력하고 <code>&lt;enter&gt;</code>를 눌러 하위 선택 영역으로 분할</li>
-<li><code>_</code> 모든 선택 영역의 후행 공백 제거</li>
-<li><code>2&lt;alt-(&gt;</code> 선택 영역 쌍 사이에서만 내용 순서 회전</li>
-</ol>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="invert-dictionary-1"><a class="header" href="#invert-dictionary-1">Invert Dictionary</a></h1>
-<p>딕셔너리의 키-값 쌍을 반전시킵니다.</p>
 <h2 id="before-3"><a class="header" href="#before-3">Before</a></h2>
 <pre><code class="language-gdscript">var color_to_points = {
     "red" = 0,
@@ -940,9 +950,52 @@ xt}S,|=&lt;enter&gt;_2&lt;alt-(&gt;
 </code></pre>
 <h2 id="preview-3"><a class="header" href="#preview-3">Preview</a></h2>
 <video controls>
-  <source src="generated/invert_dictionary.mp4" type="video/mp4">
+  <source src="generated/invert_dictionary_2.mp4" type="video/mp4">
 </video>
 <h2 id="command-3"><a class="header" href="#command-3">Command</a></h2>
+<pre><code>webS_to_&lt;enter&gt;&lt;alt-(&gt;
+
+xt}S,|=&lt;enter&gt;_2&lt;alt-(&gt;
+</code></pre>
+<ol>
+<li><code>web</code> 공백을 제외한 두 번째 단어 선택</li>
+<li><code>S</code> 정규식 일치 기준으로 선택 영역 분할. <code>_to_</code>를 정규식으로 입력하고 <code>&lt;enter&gt;</code>를 눌러 두 부분으로 분할</li>
+<li><code>&lt;alt-(&gt;</code> 선택 영역 내용의 순서 회전</li>
+<li><code>x</code> 전체 줄 선택</li>
+<li><code>t}</code> 다음 "}" 문자 바로 앞까지 선택</li>
+<li><code>S</code> 정규식 일치 기준으로 선택 영역 분할. <code>,|=</code>를 정규식으로 입력하고 <code>&lt;enter&gt;</code>를 눌러 하위 선택 영역으로 분할</li>
+<li><code>_</code> 모든 선택 영역의 후행 공백 제거</li>
+<li><code>2&lt;alt-(&gt;</code> 선택 영역 쌍 사이에서만 내용 순서 회전</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="invert-dictionary-1"><a class="header" href="#invert-dictionary-1">Invert Dictionary</a></h1>
+<p>딕셔너리의 키-값 쌍을 반전시킵니다.</p>
+<h2 id="before-4"><a class="header" href="#before-4">Before</a></h2>
+<pre><code class="language-gdscript">var color_to_points = {
+    "red" = 0,
+    "orange" = 5,
+    "yellow" = 10,
+    "green" = 15,
+    "blue" = 20,
+    "purple" = 30,
+    "black" = 50,
+}
+</code></pre>
+<h2 id="after-4"><a class="header" href="#after-4">After</a></h2>
+<pre><code class="language-gdscript">var points_to_color = {
+    0 = "red",
+    5 = "orange",
+    10 = "yellow",
+    15 = "green",
+    20 = "blue",
+    30 = "purple",
+    50 = "black",
+}
+</code></pre>
+<h2 id="preview-4"><a class="header" href="#preview-4">Preview</a></h2>
+<video controls>
+  <source src="generated/invert_dictionary.mp4" type="video/mp4">
+</video>
+<h2 id="command-4"><a class="header" href="#command-4">Command</a></h2>
 <pre><code>webS_to_&lt;enter&gt;&lt;alt-(&gt;
 
 Qxt,S=&lt;enter&gt;_&lt;alt-(&gt;Q6q
@@ -962,7 +1015,7 @@ Qxt,S=&lt;enter&gt;_&lt;alt-(&gt;Q6q
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="reverse-golf-example-1"><a class="header" href="#reverse-golf-example-1">Reverse Golf Example</a></h1>
 <p>Helix Golf 예제의 "Before"와 "After" 케이스를 서로 맞바꿉니다.</p>
-<h2 id="before-4"><a class="header" href="#before-4">Before</a></h2>
+<h2 id="before-5"><a class="header" href="#before-5">Before</a></h2>
 <pre><code class="language-md"># snake_case to camelCase
 
 Rename all fields to be camelCase.
@@ -979,7 +1032,7 @@ const user_profile = {first_name: "John"};
 const userProfile = {firstName: "John"};
 ```
 </code></pre>
-<h2 id="after-4"><a class="header" href="#after-4">After</a></h2>
+<h2 id="after-5"><a class="header" href="#after-5">After</a></h2>
 <pre><code class="language-md"># camelCase to snake_case
 
 Rename all fields to be snake_case.
@@ -996,11 +1049,11 @@ const userProfile = {firstName: "John"};
 const user_profile = {first_name: "John"};
 ```
 </code></pre>
-<h2 id="preview-4"><a class="header" href="#preview-4">Preview</a></h2>
+<h2 id="preview-5"><a class="header" href="#preview-5">Preview</a></h2>
 <video controls>
   <source src="generated/reverse_golf_example.mp4" type="video/mp4">
 </video>
-<h2 id="command-4"><a class="header" href="#command-4">Command</a></h2>
+<h2 id="command-5"><a class="header" href="#command-5">Command</a></h2>
 <pre><code>ebyxb*Rv""Nn&lt;alt-)&gt;
 
 %s`+j&lt;enter&gt;f;&lt;alt-(&gt;
@@ -1022,25 +1075,25 @@ const user_profile = {first_name: "John"};
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="object-into-array-1"><a class="header" href="#object-into-array-1">Object into Array</a></h1>
 <p>객체를 필드와 값으로 이루어진 튜플 리스트로 변환합니다.</p>
-<h2 id="before-5"><a class="header" href="#before-5">Before</a></h2>
+<h2 id="before-6"><a class="header" href="#before-6">Before</a></h2>
 <pre><code class="language-js">const palette = {
   apricot: "#f47868",
   lightning: "#ffcd1c",
   delta: "6f44f0",
 };
 </code></pre>
-<h2 id="after-5"><a class="header" href="#after-5">After</a></h2>
+<h2 id="after-6"><a class="header" href="#after-6">After</a></h2>
 <pre><code class="language-js">const palette = [
   ["apricot", "#f47868"],
   ["lightning", "#ffcd1c"],
   ["delta", "6f44f0"],
 ];
 </code></pre>
-<h2 id="preview-5"><a class="header" href="#preview-5">Preview</a></h2>
+<h2 id="preview-6"><a class="header" href="#preview-6">Preview</a></h2>
 <video controls>
   <source src="generated/object_into_array.mp4" type="video/mp4">
 </video>
-<h2 id="command-5"><a class="header" href="#command-5">Command</a></h2>
+<h2 id="command-6"><a class="header" href="#command-6">Command</a></h2>
 <pre><code>jmr{[mi[s:&lt;enter&gt;
 
 r,bems"vt,ms[
@@ -1059,12 +1112,12 @@ r,bems"vt,ms[
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="export-from-rust-module-1"><a class="header" href="#export-from-rust-module-1">Export from Rust Module</a></h1>
 <p>각 모듈에 포함된 함수를 re-export(pub use)합니다.</p>
-<h2 id="before-6"><a class="header" href="#before-6">Before</a></h2>
+<h2 id="before-7"><a class="header" href="#before-7">Before</a></h2>
 <pre><code class="language-rs">mod generate_demos;
 mod mdbook_preprocessor;
 mod validate;
 </code></pre>
-<h2 id="after-6"><a class="header" href="#after-6">After</a></h2>
+<h2 id="after-7"><a class="header" href="#after-7">After</a></h2>
 <pre><code class="language-rs">mod generate_demos;
 mod mdbook_preprocessor;
 mod validate;
@@ -1073,11 +1126,11 @@ pub use generate_demos::generate_demos;
 pub use mdbook_preprocessor::mdbook_preprocessor;
 pub use validate::validate;
 </code></pre>
-<h2 id="preview-6"><a class="header" href="#preview-6">Preview</a></h2>
+<h2 id="preview-7"><a class="header" href="#preview-7">Preview</a></h2>
 <video controls>
   <source src="generated/export_from_mod.mp4" type="video/mp4">
 </video>
-<h2 id="command-6"><a class="header" href="#command-6">Command</a></h2>
+<h2 id="command-7"><a class="header" href="#command-7">Command</a></h2>
 <pre><code>%yp[&lt;space&gt;
 
 &lt;alt-s&gt;gse
@@ -1096,7 +1149,7 @@ cpub use&lt;esc&gt;leypi::
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="enumerate-and-align-1"><a class="header" href="#enumerate-and-align-1">Enumerate and Align</a></h1>
 <p>각 객체에 1부터 시작하여 증가하는 <code>rank</code> 필드를 추가하고, 보기 좋게 필드를 정렬합니다.</p>
-<h2 id="before-7"><a class="header" href="#before-7">Before</a></h2>
+<h2 id="before-8"><a class="header" href="#before-8">Before</a></h2>
 <pre><code class="language-js">[
   { word: "a", count: 2565 },
   { word: "and", count: 1777 },
@@ -1111,7 +1164,7 @@ cpub use&lt;esc&gt;leypi::
   { word: "for", count: 630 },
 ];
 </code></pre>
-<h2 id="after-7"><a class="header" href="#after-7">After</a></h2>
+<h2 id="after-8"><a class="header" href="#after-8">After</a></h2>
 <pre><code class="language-js">[
   { rank:  1, word: "a",    count: 2565 },
   { rank:  2, word: "and",  count: 1777 },
@@ -1126,11 +1179,11 @@ cpub use&lt;esc&gt;leypi::
   { rank: 11, word: "for",  count:  630 },
 ];
 </code></pre>
-<h2 id="preview-7"><a class="header" href="#preview-7">Preview</a></h2>
+<h2 id="preview-8"><a class="header" href="#preview-8">Preview</a></h2>
 <video controls>
   <source src="generated/enumerate_and_align.mp4" type="video/mp4">
 </video>
-<h2 id="command-7"><a class="header" href="#command-7">Command</a></h2>
+<h2 id="command-8"><a class="header" href="#command-8">Command</a></h2>
 <pre><code>%s\{&lt;enter&gt;a rank: &lt;ctrl-r&gt;
 
 #,&lt;esc&gt;%s |\d+&lt;enter&gt;&amp;
@@ -1149,21 +1202,21 @@ cpub use&lt;esc&gt;leypi::
 <li><code>&amp;</code> 모든 선택 영역을 열에 맞춰 정렬 (숫자가 우측 정렬됨)</li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="csv-to-sql-1"><a class="header" href="#csv-to-sql-1">CSV to SQL</a></h1>
-<h2 id="before-8"><a class="header" href="#before-8">Before</a></h2>
+<h2 id="before-9"><a class="header" href="#before-9">Before</a></h2>
 <pre><code class="language-csv">id 1,Item 1,cost 1,location 1
 id 2,Item 2,cost 2,location 2
 id 10,Item 10,cost 10,location 10
 </code></pre>
-<h2 id="after-8"><a class="header" href="#after-8">After</a></h2>
+<h2 id="after-9"><a class="header" href="#after-9">After</a></h2>
 <pre><code class="language-sql">INSERT INTO `database`.`table` (`id` ,`item` ,`cost` ,`location`) VALUES ('id 1','Item 1','cost 1','Location 1');
 INSERT INTO `database`.`table` (`id` ,`item` ,`cost` ,`location`) VALUES ('id 2','Item 2','cost 2','Location 2');
 INSERT INTO `database`.`table` (`id` ,`item` ,`cost` ,`location`) VALUES ('id 10','Item 10','cost 10','Location 10');
 </code></pre>
-<h2 id="preview-8"><a class="header" href="#preview-8">Preview</a></h2>
+<h2 id="preview-9"><a class="header" href="#preview-9">Preview</a></h2>
 <video controls>
   <source src="generated/csv_to_sql.mp4" type="video/mp4">
 </video>
-<h2 id="command-8"><a class="header" href="#command-8">Command</a></h2>
+<h2 id="command-9"><a class="header" href="#command-9">Command</a></h2>
 <pre><code>%&lt;alt-s&gt;"yys\d&lt;enter&gt;
 
 dhhbms
@@ -1266,7 +1319,7 @@ AVALUES (&lt;esc&gt;
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="function-into-class-1"><a class="header" href="#function-into-class-1">Function into Class</a></h1>
 <p>3개의 함수를 3개의 메서드를 가진 클래스로 변환합니다.</p>
-<h2 id="before-9"><a class="header" href="#before-9">Before</a></h2>
+<h2 id="before-10"><a class="header" href="#before-10">Before</a></h2>
 <pre><code class="language-py">def calculate_area(length, width):
     result = length * width
     return result
@@ -1279,7 +1332,7 @@ def calculate_volume(length, width, height):
     result = length * width * height
     return result
 </code></pre>
-<h2 id="after-9"><a class="header" href="#after-9">After</a></h2>
+<h2 id="after-10"><a class="header" href="#after-10">After</a></h2>
 <pre><code class="language-py">class Calculator:
     @staticmethod
     def get_area(len, wid):
@@ -1293,11 +1346,11 @@ def calculate_volume(length, width, height):
     def get_volume(len, wid, hei):
         return len * wid * hei
 </code></pre>
-<h2 id="preview-9"><a class="header" href="#preview-9">Preview</a></h2>
+<h2 id="preview-10"><a class="header" href="#preview-10">Preview</a></h2>
 <video controls>
   <source src="generated/function_into_class.mp4" type="video/mp4">
 </video>
-<h2 id="command-9"><a class="header" href="#command-9">Command</a></h2>
+<h2 id="command-10"><a class="header" href="#command-10">Command</a></h2>
 <pre><code>%scalculate&lt;enter&gt;cget&lt;esc&gt;
 
 O@staticmethod&lt;esc&gt;jj
