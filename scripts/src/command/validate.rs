@@ -28,7 +28,7 @@ pub fn validate() -> miette::Result<Vec<Example>> {
     let mut examples = Example::parse_all(&ROOT_DIR, &only_include_these_examples)?;
 
     // We want to sort examples from smallest command count to largest
-    examples.sort_by(|a, b| a.key_events.len().cmp(&b.key_events.len()));
+    examples.sort_by_key(|a| a.key_events.len());
 
     examples
         .iter()

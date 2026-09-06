@@ -267,7 +267,7 @@ impl Example {
                                     return Err(expected_err_with_pos(position));
                                 };
 
-                                example.title = value.clone();
+                                example.title.clone_from(value);
 
                                 expecting.next(position.clone().unwrap());
                             }
@@ -365,7 +365,7 @@ impl Example {
                                 ..
                             }) = child
                             {
-                                example.after = value.clone();
+                                example.after.clone_from(value);
                                 example.language = lang.clone().unwrap_or_default();
 
                                 expecting.next(position.clone().unwrap());
