@@ -187,7 +187,190 @@
 <details>
 <summary>모든 예제는 하나의 코드 블록으로도 제공됩니다</summary>
 <p>인터넷 없이도 Helix에 복사하여 붙여넣고 직접 연습해 볼 수 있습니다!</p>
-<pre><code class="language-md"># snake_case to camelCase
+<pre><code class="language-md"># Toggle Comment
+
+여러 줄을 한 번에 주석으로 바꿉니다.
+
+## Before
+
+```py
+print("a")
+print("b")
+print("c")
+```
+
+## After
+
+```py
+# print("a")
+# print("b")
+# print("c")
+```
+
+## Command
+
+```
+%&lt;ctrl-c&gt;
+```
+
+1. `%` 전체 파일 선택
+1. `&lt;ctrl-c&gt;` 선택 영역을 주석으로 토글
+
+# Swap Lines
+
+두 줄의 순서를 바꿉니다.
+
+## Before
+
+```text
+first
+second
+```
+
+## After
+
+```text
+second
+first
+```
+
+## Command
+
+```
+xdp
+```
+
+1. `x` 현재 줄 선택
+1. `d` 선택 영역 삭제
+1. `p` 삭제한 줄을 뒤에 붙여넣기
+
+# Duplicate Line
+
+한 줄을 복사해 세 줄로 늘립니다.
+
+## Before
+
+```text
+log
+```
+
+## After
+
+```text
+log
+log
+log
+```
+
+## Command
+
+```
+xypp
+```
+
+1. `x` 현재 줄 선택
+1. `y` 선택 영역 복사
+1. `p` 복사한 줄을 뒤에 붙여넣기
+1. `p` 한 번 더 붙여넣기
+
+# Align Assignments
+
+할당 연산자를 열에 맞춰 정렬합니다.
+
+## Before
+
+```text
+a = 1
+longer = 2
+mid = 3
+```
+
+## After
+
+```text
+a      = 1
+longer = 2
+mid    = 3
+```
+
+## Command
+
+```
+%s=&lt;enter&gt;&amp;
+```
+
+1. `%` 전체 파일 선택
+1. `s` 정규식으로 일치 항목 선택
+1. `=` 등호 문자 입력
+1. `&lt;enter&gt;` 정규식 확정하고 모든 등호 선택
+1. `&amp;` 선택 영역을 열에 맞춰 정렬
+
+# Increment Numbers
+
+여러 숫자를 한 번에 1씩 증가시킵니다.
+
+## Before
+
+```text
+0
+0
+0
+```
+
+## After
+
+```text
+1
+1
+1
+```
+
+## Command
+
+```
+%s\d&lt;enter&gt;
+
+&lt;ctrl-a&gt;
+```
+
+1. `%` 전체 파일 선택
+1. `s` 정규식으로 일치 항목 선택
+1. `\d` 숫자 패턴 입력
+1. `&lt;enter&gt;` 정규식 확정하고 모든 숫자 선택
+1. `&lt;ctrl-a&gt;` 커서 아래 숫자를 1씩 증가
+
+# Sort Lines
+
+정렬되지 않은 줄들을 셸 파이프로 정렬합니다.
+
+## Before
+
+```text
+banana
+apple
+cherry
+```
+
+## After
+
+```text
+apple
+banana
+cherry
+```
+
+## Command
+
+```
+%|sort&lt;ret&gt;
+```
+
+1. `%` 전체 파일 선택
+1. `|` 각 선택 영역을 셸 명령으로 파이프
+1. `sort` 정렬 명령 입력
+1. `&lt;ret&gt;` 명령 확정하고 정렬된 결과로 교체
+
+# snake_case to camelCase
 
 모든 필드명을 camelCase로 변경합니다.
 
@@ -880,6 +1063,36 @@ class Calculator:
 
 </code></pre>
 </details>
+<h2 id="toggle-comment"><a class="header" href="#toggle-comment"><a href="toggle_comment.html">Toggle Comment</a></a></h2>
+<p>여러 줄을 한 번에 주석으로 바꿉니다.</p>
+<video autoplay controls loop>
+  <source src="generated/toggle_comment.mp4">
+</video>
+<h2 id="swap-lines"><a class="header" href="#swap-lines"><a href="swap_lines.html">Swap Lines</a></a></h2>
+<p>두 줄의 순서를 바꿉니다.</p>
+<video autoplay controls loop>
+  <source src="generated/swap_lines.mp4">
+</video>
+<h2 id="duplicate-line"><a class="header" href="#duplicate-line"><a href="duplicate_line.html">Duplicate Line</a></a></h2>
+<p>한 줄을 복사해 세 줄로 늘립니다.</p>
+<video autoplay controls loop>
+  <source src="generated/duplicate_line.mp4">
+</video>
+<h2 id="align-assignments"><a class="header" href="#align-assignments"><a href="align_assignments.html">Align Assignments</a></a></h2>
+<p>할당 연산자를 열에 맞춰 정렬합니다.</p>
+<video autoplay controls loop>
+  <source src="generated/align_assignments.mp4">
+</video>
+<h2 id="increment-numbers"><a class="header" href="#increment-numbers"><a href="increment_numbers.html">Increment Numbers</a></a></h2>
+<p>여러 숫자를 한 번에 1씩 증가시킵니다.</p>
+<video autoplay controls loop>
+  <source src="generated/increment_numbers.mp4">
+</video>
+<h2 id="sort-lines"><a class="header" href="#sort-lines"><a href="sort_lines.html">Sort Lines</a></a></h2>
+<p>정렬되지 않은 줄들을 셸 파이프로 정렬합니다.</p>
+<video autoplay controls loop>
+  <source src="generated/sort_lines.mp4">
+</video>
 <h2 id="snake_case-to-camelcase"><a class="header" href="#snake_case-to-camelcase"><a href="snake_case_to_camel_case.html">snake_case to camelCase</a></a></h2>
 <p>모든 필드명을 camelCase로 변경합니다.</p>
 <video autoplay controls loop>
@@ -955,7 +1168,7 @@ class Calculator:
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
 
-                            <a rel="next prefetch" href="snake_case_to_camel_case.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="toggle_comment.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -966,7 +1179,7 @@ class Calculator:
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
 
-                    <a rel="next prefetch" href="snake_case_to_camel_case.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="toggle_comment.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
