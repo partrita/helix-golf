@@ -3,6 +3,12 @@
 # Summary
 
 - [Helix Golf - Introduction](introduction.md)
+- [Toggle Comment](toggle_comment.md)
+- [Swap Lines](swap_lines.md)
+- [Duplicate Line](duplicate_line.md)
+- [Align Assignments](align_assignments.md)
+- [Increment Numbers](increment_numbers.md)
+- [Sort Lines](sort_lines.md)
 - [snake_case to camelCase](snake_case_to_camel_case.md)
 - [Replace an Identifier](replace_identifier.md)
 - [Replace Surrounding Characters](replace_surround.md)

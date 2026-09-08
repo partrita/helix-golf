@@ -24,6 +24,189 @@ Helix Golf는 Rust로 작성된 차세대 터미널 IDE인
 인터넷 없이도 Helix에 복사하여 붙여넣고 직접 연습해 볼 수 있습니다!
 
 ````````````md
+# Toggle Comment
+
+여러 줄을 한 번에 주석으로 바꿉니다.
+
+## Before
+
+```py
+print("a")
+print("b")
+print("c")
+```
+
+## After
+
+```py
+# print("a")
+# print("b")
+# print("c")
+```
+
+## Command
+
+```
+%<ctrl-c>
+```
+
+1. `%` 전체 파일 선택
+1. `<ctrl-c>` 선택 영역을 주석으로 토글
+
+# Swap Lines
+
+두 줄의 순서를 바꿉니다.
+
+## Before
+
+```text
+first
+second
+```
+
+## After
+
+```text
+second
+first
+```
+
+## Command
+
+```
+xdp
+```
+
+1. `x` 현재 줄 선택
+1. `d` 선택 영역 삭제
+1. `p` 삭제한 줄을 뒤에 붙여넣기
+
+# Duplicate Line
+
+한 줄을 복사해 세 줄로 늘립니다.
+
+## Before
+
+```text
+log
+```
+
+## After
+
+```text
+log
+log
+log
+```
+
+## Command
+
+```
+xypp
+```
+
+1. `x` 현재 줄 선택
+1. `y` 선택 영역 복사
+1. `p` 복사한 줄을 뒤에 붙여넣기
+1. `p` 한 번 더 붙여넣기
+
+# Align Assignments
+
+할당 연산자를 열에 맞춰 정렬합니다.
+
+## Before
+
+```text
+a = 1
+longer = 2
+mid = 3
+```
+
+## After
+
+```text
+a      = 1
+longer = 2
+mid    = 3
+```
+
+## Command
+
+```
+%s=<enter>&
+```
+
+1. `%` 전체 파일 선택
+1. `s` 정규식으로 일치 항목 선택
+1. `=` 등호 문자 입력
+1. `<enter>` 정규식 확정하고 모든 등호 선택
+1. `&` 선택 영역을 열에 맞춰 정렬
+
+# Increment Numbers
+
+여러 숫자를 한 번에 1씩 증가시킵니다.
+
+## Before
+
+```text
+0
+0
+0
+```
+
+## After
+
+```text
+1
+1
+1
+```
+
+## Command
+
+```
+%s\d<enter>
+
+<ctrl-a>
+```
+
+1. `%` 전체 파일 선택
+1. `s` 정규식으로 일치 항목 선택
+1. `\d` 숫자 패턴 입력
+1. `<enter>` 정규식 확정하고 모든 숫자 선택
+1. `<ctrl-a>` 커서 아래 숫자를 1씩 증가
+
+# Sort Lines
+
+정렬되지 않은 줄들을 셸 파이프로 정렬합니다.
+
+## Before
+
+```text
+banana
+apple
+cherry
+```
+
+## After
+
+```text
+apple
+banana
+cherry
+```
+
+## Command
+
+```
+%|sort<ret>
+```
+
+1. `%` 전체 파일 선택
+1. `|` 각 선택 영역을 셸 명령으로 파이프
+1. `sort` 정렬 명령 입력
+1. `<ret>` 명령 확정하고 정렬된 결과로 교체
+
 # snake_case to camelCase
 
 모든 필드명을 camelCase로 변경합니다.
@@ -718,6 +901,60 @@ class Calculator:
 ````````````
 
 </details>
+
+## [Toggle Comment](toggle_comment.md)
+
+여러 줄을 한 번에 주석으로 바꿉니다.
+
+<video autoplay controls loop>
+  <source src="generated/toggle_comment.mp4">
+</video>
+
+
+## [Swap Lines](swap_lines.md)
+
+두 줄의 순서를 바꿉니다.
+
+<video autoplay controls loop>
+  <source src="generated/swap_lines.mp4">
+</video>
+
+
+## [Duplicate Line](duplicate_line.md)
+
+한 줄을 복사해 세 줄로 늘립니다.
+
+<video autoplay controls loop>
+  <source src="generated/duplicate_line.mp4">
+</video>
+
+
+## [Align Assignments](align_assignments.md)
+
+할당 연산자를 열에 맞춰 정렬합니다.
+
+<video autoplay controls loop>
+  <source src="generated/align_assignments.mp4">
+</video>
+
+
+## [Increment Numbers](increment_numbers.md)
+
+여러 숫자를 한 번에 1씩 증가시킵니다.
+
+<video autoplay controls loop>
+  <source src="generated/increment_numbers.mp4">
+</video>
+
+
+## [Sort Lines](sort_lines.md)
+
+정렬되지 않은 줄들을 셸 파이프로 정렬합니다.
+
+<video autoplay controls loop>
+  <source src="generated/sort_lines.mp4">
+</video>
+
 
 ## [snake_case to camelCase](snake_case_to_camel_case.md)
 
