@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>CSV to SQL - Helix Golf</title>
+        <title>Swap Quoted Strings - Helix Golf</title>
 
 
         <!-- Custom HTML head -->
@@ -143,7 +143,7 @@
                         <a href="https://github.com/partrita/helix-golf" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        <a href="https://github.com/partrita/helix-golf/edit/main/src/csv_to_sql.md" title="Suggest an edit" aria-label="Suggest an edit">
+                        <a href="https://github.com/partrita/helix-golf/edit/main/src/swap_quoted_strings.md" title="Suggest an edit" aria-label="Suggest an edit">
                             <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
 
@@ -172,133 +172,43 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="csv-to-sql"><a class="header" href="#csv-to-sql">CSV to SQL</a></h1>
+                        <h1 id="swap-quoted-strings"><a class="header" href="#swap-quoted-strings">Swap Quoted Strings</a></h1>
 <!-- difficulty: advanced -->
+<p>명명 레지스터로 두 따옴표 내용을 교환합니다.</p>
 <h2 id="before"><a class="header" href="#before">Before</a></h2>
-<pre><code class="language-csv">id 1,Item 1,cost 1,location 1
-id 2,Item 2,cost 2,location 2
-id 10,Item 10,cost 10,location 10
+<pre><code class="language-text">"foo" "bar"
 </code></pre>
 <h2 id="after"><a class="header" href="#after">After</a></h2>
-<pre><code class="language-sql">INSERT INTO `database`.`table` (`id` ,`item` ,`cost` ,`location`) VALUES ('id 1','Item 1','cost 1','Location 1');
-INSERT INTO `database`.`table` (`id` ,`item` ,`cost` ,`location`) VALUES ('id 2','Item 2','cost 2','Location 2');
-INSERT INTO `database`.`table` (`id` ,`item` ,`cost` ,`location`) VALUES ('id 10','Item 10','cost 10','Location 10');
+<pre><code class="language-text">"bar" "foo"
 </code></pre>
 <h2 id="preview"><a class="header" href="#preview">Preview</a></h2>
 <video controls>
-  <source src="generated/csv_to_sql.mp4" type="video/mp4">
+  <source src="generated/swap_quoted_strings.mp4" type="video/mp4">
 </video>
 <h2 id="command"><a class="header" href="#command">Command</a></h2>
-<pre><code>%&lt;alt-s&gt;"yys\d&lt;enter&gt;
-
-dhhbms
-
-``x_ms(IINSERT INTO `
-
-database&lt;esc&gt;
-
-a.`table&lt;esc&gt;la &lt;esc&gt;
-
-AVALUES (&lt;esc&gt;
-
-"yPS,&lt;enter&gt;ms'A;&lt;esc&gt;Fl;~
+<pre><code>/foo&lt;ret&gt;"ay/bar&lt;ret&gt;"by"aR/foo&lt;ret&gt;"bR
 </code></pre>
 <ol>
-<li>
-<p><code>%</code> 전체 파일 선택</p>
-</li>
-<li>
-<p><code>&lt;alt-s&gt;</code> 줄바꿈을 기준으로 여러 선택 영역으로 분할</p>
-</li>
-<li>
-<p><code>"yy</code> 나중에 사용하기 위해 "y" 레지스터에 복사(yank)</p>
-</li>
-<li>
-<p><code>s</code> 누르고 패턴 <code>\d</code> 입력 후 <code>&lt;enter&gt;</code>를 눌러 모든 숫자에 선택 영역 생성</p>
-</li>
-<li>
-<p><code>d</code> 선택 영역 삭제 (모든 숫자 제거)</p>
-</li>
-<li>
-<p><code>hh</code> 각 단어의 끝에 위치하도록 뒤로 2글자 이동</p>
-</li>
-<li>
-<p><code>b</code> 각 단어의 시작 부분까지 선택하여 모든 단어를 선택</p>
-</li>
-<li>
-<p><code>ms`</code> 각 단어를 백틱으로 감싸기</p>
-</li>
-<li>
-<p><code>`</code> 모든 문자를 소문자로 변환</p>
-</li>
-<li>
-<p><code>x</code> 각 줄을 선택한 다음 <code>_</code>로 끝 공백 제거</p>
-</li>
-<li>
-<p><code>ms(</code> 각 줄을 괄호로 감싸기</p>
-</li>
-<li>
-<p><code>I</code> 각 줄의 맨 앞에서 삽입 모드 진입</p>
-</li>
-<li>
-<p>다음 내용 입력:</p>
-<pre><code>INSERT INTO `database
-</code></pre>
-</li>
-<li>
-<p><code>&lt;esc&gt;</code> 일반 모드로 복귀</p>
-</li>
-<li>
-<p><code>a</code> 백틱 뒤에서 삽입 모드로 진입한 후 다음 입력:</p>
-<pre><code>.`table
-</code></pre>
-</li>
-<li>
-<p><code>&lt;esc&gt;</code> 일반 모드로 복귀 후 <code>la</code>로 여는 괄호 바로 앞에서 삽입 모드 진입</p>
-</li>
-<li>
-<p>공백 <code> </code> 추가 후 다시 <code>&lt;esc&gt;</code>로 일반 모드 복귀</p>
-</li>
-<li>
-<p><code>A</code> 각 줄 끝에서 삽입 모드로 진입하여 다음 입력:</p>
-<pre><code>VALUES (
-</code></pre>
-</li>
-<li>
-<p><code>&lt;esc&gt;</code> 눌러 삽입 모드 종료 (닫는 괄호 위치에 커서 배치)</p>
-</li>
-<li>
-<p><code>"yP</code> "y" 레지스터에 복사해 둔 항목들 붙여넣기</p>
-</li>
-<li>
-<p><code>S,&lt;enter&gt;</code> 각 쉼표를 기준으로 현재 선택 영역을 여러 개로 분할</p>
-</li>
-<li>
-<p><code>ms'</code> 각 항목을 작은따옴표로 감싸기</p>
-</li>
-<li>
-<p><code>A;</code> 각 줄 끝에 세미콜론 추가</p>
-</li>
-<li>
-<p><code>&lt;esc&gt;</code> 일반 모드로 복귀 후 <code>Fl</code>로 각 "location"의 소문자 "l"에 커서 위치</p>
-</li>
-<li>
-<p><code>;</code> 각 선택 영역을 단일 폭 선택 영역으로 축소</p>
-</li>
-<li>
-<p><code>~</code> 각 "l"을 "L"로 대소문자 전환</p>
-</li>
+<li><code>/</code> 정규식 검색 시작</li>
+<li><code>foo</code> 첫 번째 단어 입력</li>
+<li><code>&lt;ret&gt;</code> 검색 확정하고 단어 선택</li>
+<li><code>"ay</code> 선택 영역을 에이 레지스터에 복사</li>
+<li><code>/bar&lt;ret&gt;</code> 두 번째 단어를 검색해 선택</li>
+<li><code>"by</code> 선택 영역을 비 레지스터에 복사</li>
+<li><code>"aR</code> 에이 레지스터 내용으로 교체</li>
+<li><code>/foo&lt;ret&gt;</code> 첫 번째 단어를 검색해 선택</li>
+<li><code>"bR</code> 비 레지스터 내용으로 교체</li>
 </ol>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="swap_quoted_strings.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="object_into_array.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="function_into_class.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="csv_to_sql.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -308,11 +218,11 @@ AVALUES (&lt;esc&gt;
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="swap_quoted_strings.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="object_into_array.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="function_into_class.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="csv_to_sql.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
