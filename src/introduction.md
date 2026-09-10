@@ -146,6 +146,35 @@ jX<alt-d>
 1. `X` 현재 줄 경계까지 선택
 1. `<alt-d>` 선택 영역을 yank 없이 삭제
 
+# Extend Delete Words
+
+선택 모드로 두 단어를 확장해 지웁니다.
+
+<!-- difficulty: intermediate -->
+
+## Before
+
+```text
+one two three four
+```
+
+## After
+
+```text
+three four
+```
+
+## Command
+
+```
+vwwd
+```
+
+1. `v` 선택 모드로 진입
+1. `w` 다음 단어 시작까지 선택 확장
+1. `w` 한 단어 더 확장
+1. `d` 확장한 선택 영역 삭제
+
 # Duplicate Line
 
 <!-- difficulty: beginner -->
@@ -376,6 +405,40 @@ cherry
 1. `r` 선택 영역을 한 글자로 교체
 1. `*` 별표 입력
 
+# CSV to Lines
+
+쉼표로 구분된 한 줄을 여러 줄로 나눕니다.
+
+<!-- difficulty: intermediate -->
+
+## Before
+
+```text
+apple,banana,cherry
+```
+
+## After
+
+```text
+apple
+banana
+cherry
+```
+
+## Command
+
+```
+xs,<enter>c<ret><esc>
+```
+
+1. `x` 현재 줄 선택
+1. `s` 정규식으로 일치 항목 선택
+1. `,` 쉼표 문자 입력
+1. `<enter>` 정규식 확정하고 모든 쉼표 선택
+1. `c` 선택 영역을 변경
+1. `<ret>` 줄바꿈 입력해 쉼표를 줄바꿈으로 교체
+1. `<esc>` 일반 모드로 복귀
+
 # Sort Lines
 
 <!-- difficulty: intermediate -->
@@ -408,6 +471,38 @@ cherry
 1. `|` 각 선택 영역을 셸 명령으로 파이프
 1. `sort` 정렬 명령 입력
 1. `<ret>` 명령 확정하고 정렬된 결과로 교체
+
+# Delete Surround
+
+여러 줄의 감싸는 괄호를 한 번에 제거합니다.
+
+<!-- difficulty: intermediate -->
+
+## Before
+
+```text
+(use)
+(use)
+```
+
+## After
+
+```text
+use
+use
+```
+
+## Command
+
+```
+%suse<ret>md(
+```
+
+1. `%` 전체 파일 선택
+1. `s` 정규식으로 일치 항목 선택
+1. `use` 괄호 안의 텍스트 입력
+1. `<ret>` 정규식 확정하고 두 단어를 각각 선택
+1. `md(` 각 선택 영역을 감싸는 소괄호 삭제
 
 # snake_case to camelCase
 
@@ -557,6 +652,75 @@ sugar is sweet
 1. `<ret>` 검색 확정하고 오타 선택
 1. `c` 선택 영역을 변경
 1. `blue` 올바른 철자 입력
+1. `<esc>` 일반 모드로 복귀
+
+# Rotate Main Selection
+
+주 선택 영역을 옮겨 마지막 숫자만 바꿉니다.
+
+<!-- difficulty: intermediate -->
+
+## Before
+
+```text
+a1 a2 a3
+```
+
+## After
+
+```text
+a1 a2 a9
+```
+
+## Command
+
+```
+%s\d<enter>)),c9<esc>
+```
+
+1. `%` 전체 파일 선택
+1. `s` 정규식으로 일치 항목 선택
+1. `\d` 숫자 패턴 입력
+1. `<enter>` 정규식 확정하고 모든 숫자 선택
+1. `)` 주 선택 영역을 앞으로 회전
+1. `)` 한 번 더 회전해 마지막 숫자로 이동
+1. `,` 주 선택 영역만 남기기
+1. `c` 선택 영역을 변경
+1. `9` 새 숫자 입력
+1. `<esc>` 일반 모드로 복귀
+
+# Multicursor Prefix
+
+아래줄에 커서를 복제해 세 줄에 동시에 입력합니다.
+
+<!-- difficulty: intermediate -->
+
+## Before
+
+```text
+apple
+banana
+cherry
+```
+
+## After
+
+```text
+fruit: apple
+fruit: banana
+fruit: cherry
+```
+
+## Command
+
+```
+xCCIfruit: <esc>
+```
+
+1. `x` 현재 줄 선택
+1. `C` 아래줄에 커서 복제
+1. `C` 한 번 더 복제해 세 커서 만들기
+1. `Ifruit: ` 각 줄 앞에서 삽입 모드로 진입하고 접두사 입력
 1. `<esc>` 일반 모드로 복귀
 
 # Text into Array
@@ -1283,6 +1447,22 @@ class Calculator:
 
 ## Intermediate (중급)
 
+### [Extend Delete Words](extend_delete_words.md)
+
+선택 모드로 두 단어를 확장해 지웁니다.
+
+<video autoplay controls loop>
+  <source src="generated/extend_delete_words.mp4">
+</video>
+
+### [CSV to Lines](csv_to_lines.md)
+
+쉼표로 구분된 한 줄을 여러 줄로 나눕니다.
+
+<video autoplay controls loop>
+  <source src="generated/csv_to_lines.mp4">
+</video>
+
 ### [Sort Lines](sort_lines.md)
 
 정렬되지 않은 줄들을 셸 파이프로 정렬합니다.
@@ -1291,12 +1471,36 @@ class Calculator:
   <source src="generated/sort_lines.mp4">
 </video>
 
+### [Delete Surround](delete_surround.md)
+
+여러 줄의 감싸는 괄호를 한 번에 제거합니다.
+
+<video autoplay controls loop>
+  <source src="generated/delete_surround.mp4">
+</video>
+
 ### [snake_case to camelCase](snake_case_to_camel_case.md)
 
 모든 필드명을 camelCase로 변경합니다.
 
 <video autoplay controls loop>
   <source src="generated/snake_case_to_camel_case.mp4">
+</video>
+
+### [Rotate Main Selection](rotate_main_selection.md)
+
+주 선택 영역을 옮겨 마지막 숫자만 바꿉니다.
+
+<video autoplay controls loop>
+  <source src="generated/rotate_main_selection.mp4">
+</video>
+
+### [Multicursor Prefix](multicursor_prefix.md)
+
+아래줄에 커서를 복제해 세 줄에 동시에 입력합니다.
+
+<video autoplay controls loop>
+  <source src="generated/multicursor_prefix.mp4">
 </video>
 
 ### [Text into Array](text_into_array.md)

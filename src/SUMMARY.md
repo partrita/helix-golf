@@ -23,8 +23,13 @@
 
 # Intermediate (중급)
 
+- [Extend Delete Words](extend_delete_words.md)
+- [CSV to Lines](csv_to_lines.md)
 - [Sort Lines](sort_lines.md)
+- [Delete Surround](delete_surround.md)
 - [snake_case to camelCase](snake_case_to_camel_case.md)
+- [Rotate Main Selection](rotate_main_selection.md)
+- [Multicursor Prefix](multicursor_prefix.md)
 - [Text into Array](text_into_array.md)
 - [Replace a Regex-Sensitive Literal](replace_regex_literal.md)
 - [Replace a Selection with the System Clipboard](replace_with_system_clipboard.md)
