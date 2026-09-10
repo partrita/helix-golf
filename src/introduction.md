@@ -26,6 +26,34 @@ Helix Golf는 Rust로 작성된 차세대 터미널 IDE인
 인터넷 없이도 Helix에 복사하여 붙여넣고 직접 연습해 볼 수 있습니다!
 
 ````````````md
+# Join Lines
+
+두 줄을 한 줄로 합칩니다.
+
+<!-- difficulty: beginner -->
+
+## Before
+
+```text
+hello
+world
+```
+
+## After
+
+```text
+hello world
+```
+
+## Command
+
+```
+%J
+```
+
+1. `%` 전체 파일 선택
+1. `J` 선택 영역 안의 줄들을 합치기
+
 # Toggle Comment
 
 <!-- difficulty: beginner -->
@@ -87,6 +115,37 @@ xdp
 1. `d` 선택 영역 삭제
 1. `p` 삭제한 줄을 뒤에 붙여넣기
 
+# Delete Blank Line
+
+빈 줄을 yank 없이 삭제합니다.
+
+<!-- difficulty: beginner -->
+
+## Before
+
+```text
+apple
+
+banana
+```
+
+## After
+
+```text
+apple
+banana
+```
+
+## Command
+
+```
+jX<alt-d>
+```
+
+1. `j` 아래 줄로 이동
+1. `X` 현재 줄 경계까지 선택
+1. `<alt-d>` 선택 영역을 yank 없이 삭제
+
 # Duplicate Line
 
 <!-- difficulty: beginner -->
@@ -117,6 +176,33 @@ xypp
 1. `y` 선택 영역 복사
 1. `p` 복사한 줄을 뒤에 붙여넣기
 1. `p` 한 번 더 붙여넣기
+
+# Toggle Word Case
+
+단어의 대소문자를 뒤집습니다.
+
+<!-- difficulty: beginner -->
+
+## Before
+
+```text
+hello
+```
+
+## After
+
+```text
+HELLO
+```
+
+## Command
+
+```
+miw~
+```
+
+1. `miw` 단어 내부를 선택
+1. `~` 선택 영역의 대소문자를 전환
 
 # Align Assignments
 
@@ -151,6 +237,40 @@ mid    = 3
 1. `=` 등호 문자 입력
 1. `<enter>` 정규식 확정하고 모든 등호 선택
 1. `&` 선택 영역을 열에 맞춰 정렬
+
+# Add Semicolons
+
+<!-- difficulty: beginner -->
+
+각 줄 끝에 세미콜론을 붙입니다.
+
+## Before
+
+```js
+const a = 1
+const b = 2
+const c = 3
+```
+
+## After
+
+```js
+const a = 1;
+const b = 2;
+const c = 3;
+```
+
+## Command
+
+```
+%<alt-s>A;<esc>
+```
+
+1. `%` 전체 파일 선택
+1. `<alt-s>` 줄바꿈 기준으로 여러 선택 영역으로 분할
+1. `A` 각 줄 끝에서 삽입 모드로 진입
+1. `;` 세미콜론 입력
+1. `<esc>` 일반 모드로 복귀
 
 # Increment Numbers
 
@@ -187,6 +307,74 @@ mid    = 3
 1. `\d` 숫자 패턴 입력
 1. `<enter>` 정규식 확정하고 모든 숫자 선택
 1. `<ctrl-a>` 커서 아래 숫자를 1씩 증가
+
+# Indent Lines
+
+여러 줄을 한 번에 들여씁니다.
+
+<!-- difficulty: beginner -->
+
+## Before
+
+```text
+apple
+banana
+cherry
+```
+
+## After
+
+```text
+  apple
+  banana
+  cherry
+```
+
+## Command
+
+```
+%<alt-s>I  <esc>
+```
+
+1. `%` 전체 파일 선택
+1. `<alt-s>` 줄바꿈 기준으로 여러 선택 영역으로 분할
+1. `I  ` 각 줄 앞에서 삽입 모드로 진입하고 두 칸 공백 입력
+1. `<esc>` 일반 모드로 복귀
+
+# Replace Punctuation
+
+여러 줄의 앞 기호를 한 번에 바꿉니다.
+
+<!-- difficulty: beginner -->
+
+## Before
+
+```text
+- apple
+- banana
+- cherry
+```
+
+## After
+
+```text
+* apple
+* banana
+* cherry
+```
+
+## Command
+
+```
+%s-<ret>r*
+```
+
+1. `%` 전체 파일 선택
+1. `s` 정규식으로 일치 항목 선택
+1. `-` 하이픈 문자 입력
+1. `<ret>` 정규식 확정하고 모든 하이픈 선택
+1. `r` 선택 영역을 한 글자로 교체
+1. `*` 별표 입력
 
 # Sort Lines
 
@@ -336,6 +524,41 @@ miwctotal<esc>
 1. `%` 문서 전체를 선택
 1. `suse<ret>` 선택 영역 안의 모든 텍스트를 정규식으로 찾아 다중 선택
 1. `mr([` 선택된 텍스트를 감싸는 괄호를 변경
+# Fix Typo with Search
+
+검색으로 오타를 찾아 고칩니다.
+
+<!-- difficulty: beginner -->
+
+## Before
+
+```text
+roses are red
+violets are blu
+sugar is sweet
+```
+
+## After
+
+```text
+roses are red
+violets are blue
+sugar is sweet
+```
+
+## Command
+
+```
+/blu<ret>cblue<esc>
+```
+
+1. `/` 정규식 검색 시작
+1. `blu` 오타 입력
+1. `<ret>` 검색 확정하고 오타 선택
+1. `c` 선택 영역을 변경
+1. `blue` 올바른 철자 입력
+1. `<esc>` 일반 모드로 복귀
+
 # Text into Array
 
 <!-- difficulty: intermediate -->
@@ -946,6 +1169,14 @@ class Calculator:
 
 ## Beginner (초급)
 
+### [Join Lines](join_lines.md)
+
+두 줄을 한 줄로 합칩니다.
+
+<video autoplay controls loop>
+  <source src="generated/join_lines.mp4">
+</video>
+
 ### [Toggle Comment](toggle_comment.md)
 
 여러 줄을 한 번에 주석으로 바꿉니다.
@@ -962,12 +1193,28 @@ class Calculator:
   <source src="generated/swap_lines.mp4">
 </video>
 
+### [Delete Blank Line](delete_blank_line.md)
+
+빈 줄을 yank 없이 삭제합니다.
+
+<video autoplay controls loop>
+  <source src="generated/delete_blank_line.mp4">
+</video>
+
 ### [Duplicate Line](duplicate_line.md)
 
 한 줄을 복사해 세 줄로 늘립니다.
 
 <video autoplay controls loop>
   <source src="generated/duplicate_line.mp4">
+</video>
+
+### [Toggle Word Case](toggle_word_case.md)
+
+단어의 대소문자를 뒤집습니다.
+
+<video autoplay controls loop>
+  <source src="generated/toggle_word_case.mp4">
 </video>
 
 ### [Align Assignments](align_assignments.md)
@@ -978,12 +1225,36 @@ class Calculator:
   <source src="generated/align_assignments.mp4">
 </video>
 
+### [Add Semicolons](add_semicolons.md)
+
+각 줄 끝에 세미콜론을 붙입니다.
+
+<video autoplay controls loop>
+  <source src="generated/add_semicolons.mp4">
+</video>
+
 ### [Increment Numbers](increment_numbers.md)
 
 여러 숫자를 한 번에 1씩 증가시킵니다.
 
 <video autoplay controls loop>
   <source src="generated/increment_numbers.mp4">
+</video>
+
+### [Indent Lines](indent_lines.md)
+
+여러 줄을 한 번에 들여씁니다.
+
+<video autoplay controls loop>
+  <source src="generated/indent_lines.mp4">
+</video>
+
+### [Replace Punctuation](replace_punctuation.md)
+
+여러 줄의 앞 기호를 한 번에 바꿉니다.
+
+<video autoplay controls loop>
+  <source src="generated/replace_punctuation.mp4">
 </video>
 
 ### [Replace an Identifier](replace_identifier.md)
@@ -1000,6 +1271,14 @@ class Calculator:
 
 <video autoplay controls loop>
   <source src="generated/replace_surround.mp4">
+</video>
+
+### [Fix Typo with Search](fix_typo_with_search.md)
+
+검색으로 오타를 찾아 고칩니다.
+
+<video autoplay controls loop>
+  <source src="generated/fix_typo_with_search.mp4">
 </video>
 
 ## Intermediate (중급)

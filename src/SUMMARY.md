@@ -6,13 +6,20 @@
 
 # Beginner (초급)
 
+- [Join Lines](join_lines.md)
 - [Toggle Comment](toggle_comment.md)
 - [Swap Lines](swap_lines.md)
+- [Delete Blank Line](delete_blank_line.md)
 - [Duplicate Line](duplicate_line.md)
+- [Toggle Word Case](toggle_word_case.md)
 - [Align Assignments](align_assignments.md)
+- [Add Semicolons](add_semicolons.md)
 - [Increment Numbers](increment_numbers.md)
+- [Indent Lines](indent_lines.md)
+- [Replace Punctuation](replace_punctuation.md)
 - [Replace an Identifier](replace_identifier.md)
 - [Replace Surrounding Characters](replace_surround.md)
+- [Fix Typo with Search](fix_typo_with_search.md)
 
 # Intermediate (중급)
 
