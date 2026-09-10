@@ -439,6 +439,39 @@ xs,<enter>c<ret><esc>
 1. `<ret>` 줄바꿈 입력해 쉼표를 줄바꿈으로 교체
 1. `<esc>` 일반 모드로 복귀
 
+# Swap Columns
+
+두 열의 순서를 바꿉니다.
+
+<!-- difficulty: advanced -->
+
+## Before
+
+```text
+apple 1
+banana 2
+```
+
+## After
+
+```text
+1 apple
+2 banana
+```
+
+## Command
+
+```
+%<alt-s>S<space><enter>2<alt-(>
+```
+
+1. `%` 전체 파일 선택
+1. `<alt-s>` 줄바꿈 기준으로 여러 선택 영역으로 분할
+1. `S` 정규식 기준으로 선택 영역 분할
+1. `<space>` 공백 문자 입력
+1. `<enter>` 정규식 확정하고 각 줄을 두 열로 분할
+1. `2<alt-(>` 두 선택 영역씩 묶어 내용 순서 회전
+
 # Sort Lines
 
 <!-- difficulty: intermediate -->
@@ -471,6 +504,70 @@ cherry
 1. `|` 각 선택 영역을 셸 명령으로 파이프
 1. `sort` 정렬 명령 입력
 1. `<ret>` 명령 확정하고 정렬된 결과로 교체
+
+# Format JSON with jq
+
+한 줄 JSON을 셸 필터로 보기 좋게 펼칩니다.
+
+<!-- difficulty: advanced -->
+
+## Before
+
+```json
+{"name": "helix", "stars": 100}
+```
+
+## After
+
+```json
+{
+  "name": "helix",
+  "stars": 100
+}
+```
+
+## Command
+
+```
+%|jq .<ret>
+```
+
+1. `%` 전체 파일 선택
+1. `|` 각 선택 영역을 셸 명령으로 파이프
+1. `jq .` 제이슨 포맷 명령 입력
+1. `<ret>` 명령 확정하고 포맷 결과로 교체
+
+# Insert Sequence
+
+셸 출력을 커서 앞에 삽입합니다.
+
+<!-- difficulty: advanced -->
+
+## Before
+
+```text
+items:
+```
+
+## After
+
+```text
+1
+2
+3
+items:
+```
+
+## Command
+
+```
+x!seq 3<ret>
+```
+
+1. `x` 현재 줄 선택
+1. `!` 셸 명령의 출력을 선택 영역 앞에 삽입
+1. `seq 3` 일부터 삼까지 출력하는 명령 입력
+1. `<ret>` 명령 확정하고 출력 삽입
 
 # Delete Surround
 
@@ -791,6 +888,41 @@ This project does not use Rust anymore.
 1. `c` 선택 영역의 내용을 삭제하고 입력 모드로 진입합니다.
 1. `Rust` 변경할 텍스트를 입력합니다.
 1. `<esc>` 일반 모드로 돌아갑니다.
+
+# Wrap with Tag
+
+각 줄을 여는 태그와 닫는 태그로 감쌉니다.
+
+<!-- difficulty: advanced -->
+
+## Before
+
+```text
+apple
+banana
+```
+
+## After
+
+```text
+<li>apple</li>
+<li>banana</li>
+```
+
+## Command
+
+```
+%<alt-s>I<lt>li><esc>%<alt-s>A<lt>/li><esc>
+```
+
+1. `%` 전체 파일 선택
+1. `<alt-s>` 줄바꿈 기준으로 여러 선택 영역으로 분할
+1. `I<lt>li>` 각 줄 앞에서 삽입 모드로 진입하고 여는 태그 입력
+1. `<esc>` 일반 모드로 복귀
+1. `%` 전체 파일 다시 선택
+1. `<alt-s>` 줄바꿈 기준으로 여러 선택 영역으로 분할
+1. `A<lt>/li>` 각 줄 끝에서 삽입 모드로 진입하고 닫는 태그 입력
+1. `<esc>` 일반 모드로 복귀
 
 # Replace a Selection with the System Clipboard
 
@@ -1160,6 +1292,40 @@ cpub use<esc>leypi::
 1. `%s` 다시 선택 모드로 진입
 1. ` |\d+` 모든 공백과 숫자를 선택하는 정규식을 입력하고 `<enter>` 누르기
 1. `&` 모든 선택 영역을 열에 맞춰 정렬 (숫자가 우측 정렬됨)
+
+# Swap Quoted Strings
+
+<!-- difficulty: advanced -->
+
+명명 레지스터로 두 따옴표 내용을 교환합니다.
+
+## Before
+
+```text
+"foo" "bar"
+```
+
+## After
+
+```text
+"bar" "foo"
+```
+
+## Command
+
+```
+/foo<ret>"ay/bar<ret>"by"aR/foo<ret>"bR
+```
+
+1. `/` 정규식 검색 시작
+1. `foo` 첫 번째 단어 입력
+1. `<ret>` 검색 확정하고 단어 선택
+1. `"ay` 선택 영역을 에이 레지스터에 복사
+1. `/bar<ret>` 두 번째 단어를 검색해 선택
+1. `"by` 선택 영역을 비 레지스터에 복사
+1. `"aR` 에이 레지스터 내용으로 교체
+1. `/foo<ret>` 첫 번째 단어를 검색해 선택
+1. `"bR` 비 레지스터 내용으로 교체
 
 # CSV to SQL
 
@@ -1545,6 +1711,38 @@ class Calculator:
 
 ## Advanced (고급)
 
+### [Swap Columns](swap_columns.md)
+
+두 열의 순서를 바꿉니다.
+
+<video autoplay controls loop>
+  <source src="generated/swap_columns.mp4">
+</video>
+
+### [Format JSON with jq](format_json_jq.md)
+
+한 줄 JSON을 셸 필터로 보기 좋게 펼칩니다.
+
+<video autoplay controls loop>
+  <source src="generated/format_json_jq.mp4">
+</video>
+
+### [Insert Sequence](insert_sequence.md)
+
+셸 출력을 커서 앞에 삽입합니다.
+
+<video autoplay controls loop>
+  <source src="generated/insert_sequence.mp4">
+</video>
+
+### [Wrap with Tag](wrap_with_tag.md)
+
+각 줄을 여는 태그와 닫는 태그로 감쌉니다.
+
+<video autoplay controls loop>
+  <source src="generated/wrap_with_tag.mp4">
+</video>
+
 ### [Invert Dictionary 2](invert_dictionary_2.md)
 
 딕셔너리의 키-값 쌍을 반전시키는 또 다른 방법입니다.
@@ -1575,6 +1773,14 @@ Helix Golf 예제의 "Before"와 "After" 케이스를 서로 맞바꿉니다.
 
 <video autoplay controls loop>
   <source src="generated/object_into_array.mp4">
+</video>
+
+### [Swap Quoted Strings](swap_quoted_strings.md)
+
+명명 레지스터로 두 따옴표 내용을 교환합니다.
+
+<video autoplay controls loop>
+  <source src="generated/swap_quoted_strings.mp4">
 </video>
 
 ### [CSV to SQL](csv_to_sql.md)

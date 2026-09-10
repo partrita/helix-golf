@@ -38,9 +38,14 @@
 
 # Advanced (고급)
 
+- [Swap Columns](swap_columns.md)
+- [Format JSON with jq](format_json_jq.md)
+- [Insert Sequence](insert_sequence.md)
+- [Wrap with Tag](wrap_with_tag.md)
 - [Invert Dictionary 2](invert_dictionary_2.md)
 - [Invert Dictionary](invert_dictionary.md)
 - [Reverse Golf Example](reverse_golf_example.md)
 - [Object into Array](object_into_array.md)
+- [Swap Quoted Strings](swap_quoted_strings.md)
 - [CSV to SQL](csv_to_sql.md)
 - [Function into Class](function_into_class.md)
