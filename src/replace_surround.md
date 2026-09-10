@@ -1,5 +1,7 @@
 # Replace Surrounding Characters
 
+<!-- difficulty: beginner -->
+
 같은 형태로 감싸진 여러 텍스트의 괄호를 한 번에 다른 괄호로 변경합니다.
 
 ## Before

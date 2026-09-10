@@ -1,5 +1,7 @@
 # Swap Lines
 
+<!-- difficulty: beginner -->
+
 두 줄의 순서를 바꿉니다.
 
 ## Before

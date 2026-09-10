@@ -1,5 +1,7 @@
 # Reverse Golf Example
 
+<!-- difficulty: advanced -->
+
 Helix Golf 예제의 "Before"와 "After" 케이스를 서로 맞바꿉니다.
 
 ## Before

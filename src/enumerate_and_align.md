@@ -1,5 +1,7 @@
 # Enumerate and Align
 
+<!-- difficulty: intermediate -->
+
 각 객체에 1부터 시작하여 증가하는 `rank` 필드를 추가하고, 보기 좋게 필드를 정렬합니다.
 
 ## Before

@@ -1,5 +1,7 @@
 # Invert Dictionary
 
+<!-- difficulty: advanced -->
+
 딕셔너리의 키-값 쌍을 반전시킵니다.
 
 ## Before

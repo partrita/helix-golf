@@ -1,5 +1,7 @@
 # Duplicate Line
 
+<!-- difficulty: beginner -->
+
 한 줄을 복사해 세 줄로 늘립니다.
 
 ## Before

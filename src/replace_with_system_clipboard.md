@@ -1,5 +1,7 @@
 # Replace a Selection with the System Clipboard
 
+<!-- difficulty: intermediate -->
+
 선택 영역을 시스템 클립보드에 복사한 뒤 다른 선택 영역을 클립보드 내용으로 교체합니다. Helix의 `d`는 삭제한 내용을 yank하므로, 시스템 클립보드의 내용을 보존하면서 교체하려면 `<space>R`을 사용합니다.
 
 ## Before

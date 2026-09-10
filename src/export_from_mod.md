@@ -1,5 +1,7 @@
 # Export from Rust Module
 
+<!-- difficulty: intermediate -->
+
 각 모듈에 포함된 함수를 re-export(pub use)합니다.
 
 ## Before

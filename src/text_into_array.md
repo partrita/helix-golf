@@ -1,5 +1,7 @@
 # Text into Array
 
+<!-- difficulty: intermediate -->
+
 줄바꿈으로 구분된 데이터를 문자열 배열로 결합합니다.
 
 ## Before

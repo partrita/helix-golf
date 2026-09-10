@@ -1,5 +1,7 @@
 # Function into Class
 
+<!-- difficulty: advanced -->
+
 3개의 함수를 3개의 메서드를 가진 클래스로 변환합니다.
 
 ## Before

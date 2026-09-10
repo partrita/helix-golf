@@ -1,5 +1,7 @@
 # Toggle Comment
 
+<!-- difficulty: beginner -->
+
 여러 줄을 한 번에 주석으로 바꿉니다.
 
 ## Before

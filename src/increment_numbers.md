@@ -1,5 +1,7 @@
 # Increment Numbers
 
+<!-- difficulty: beginner -->
+
 여러 숫자를 한 번에 1씩 증가시킵니다.
 
 ## Before

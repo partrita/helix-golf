@@ -1,5 +1,7 @@
 # snake_case to camelCase
 
+<!-- difficulty: intermediate -->
+
 모든 필드명을 camelCase로 변경합니다.
 
 ## Before

@@ -4,7 +4,7 @@ use std::{collections::HashSet, fs, path::Path};
 
 use markdown::{
     ParseOptions,
-    mdast::{Code, Emphasis, Heading, InlineCode, Link, List, Node, Paragraph, Strong, Text},
+    mdast::{Code, Emphasis, Heading, Html, InlineCode, Link, List, Node, Paragraph, Strong, Text},
     unist::{Point, Position},
 };
 use miette::{Context as _, NamedSource, SourceSpan, miette};
@@ -155,6 +155,86 @@ struct InvalidStructure {
     span: SourceSpan,
 }
 
+/// Difficulty level of an example.
+///
+/// Declared in the example file itself with an HTML comment
+/// right after the title:
+///
+/// ```md
+/// # Sort Lines
+///
+/// <!-- difficulty: intermediate -->
+/// ```
+///
+/// If the comment is missing, [`Difficulty::fallback`] infers a level
+/// from the command length when the book index is generated.
+#[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord)]
+pub enum Difficulty {
+    Beginner,
+    Intermediate,
+    Advanced,
+}
+
+impl Difficulty {
+    /// All levels, from easiest to hardest.
+    pub const ALL: [Self; 3] = [Self::Beginner, Self::Intermediate, Self::Advanced];
+
+    /// Heading shown in the book for this level.
+    pub fn title(self) -> &'static str {
+        match self {
+            Self::Beginner => "Beginner (초급)",
+            Self::Intermediate => "Intermediate (중급)",
+            Self::Advanced => "Advanced (고급)",
+        }
+    }
+
+    /// Parse the level from a `difficulty: ...` comment body.
+    fn parse(value: &str) -> Option<Self> {
+        match value.trim().to_lowercase().as_str() {
+            "beginner" => Some(Self::Beginner),
+            "intermediate" => Some(Self::Intermediate),
+            "advanced" => Some(Self::Advanced),
+            _ => None,
+        }
+    }
+
+    /// Rough level for examples without an explicit comment.
+    pub fn fallback(key_count: usize) -> Self {
+        if key_count <= 8 {
+            Self::Beginner
+        } else if key_count <= 20 {
+            Self::Intermediate
+        } else {
+            Self::Advanced
+        }
+    }
+}
+
+/// Extract the difficulty from a block HTML comment.
+///
+/// Returns `Some` only for well-formed `<!-- difficulty: ... -->` comments
+/// with a valid level.
+fn difficulty_from_html(value: &str) -> Option<Difficulty> {
+    value
+        .trim()
+        .strip_prefix("<!--")
+        .and_then(|inner| inner.strip_suffix("-->"))
+        .and_then(|inner| inner.trim().strip_prefix("difficulty:"))
+        .and_then(Difficulty::parse)
+}
+
+/// Whether the HTML comment looks like a (possibly misspelled) difficulty declaration.
+///
+/// Used to reject typos instead of silently ignoring them.
+/// Any other HTML comment is ignored.
+fn is_difficulty_comment(value: &str) -> bool {
+    value
+        .trim()
+        .strip_prefix("<!--")
+        .and_then(|inner| inner.strip_suffix("-->"))
+        .is_some_and(|inner| inner.trim().to_lowercase().starts_with("difficulty"))
+}
+
 /// Represents a single Helix Golf example
 #[derive(Default, Debug)]
 pub struct Example {
@@ -174,6 +254,8 @@ pub struct Example {
     pub language: String,
     /// Command to go from `before` -> `after`
     pub command: String,
+    /// Difficulty declared via `<!-- difficulty: ... -->`, if any.
+    pub difficulty: Option<Difficulty>,
     /// Parsed `command` into a structure that can be converted into a `.tape` file
     pub key_events: Vec<KeyEvent>,
 }
@@ -322,6 +404,29 @@ impl Example {
                                 }
 
                                 example.description = Some(inline_mdast_into_md_string(children));
+                            // optional difficulty, e.g. `<!-- difficulty: beginner -->`
+                            // After the `# Title` of the example
+                            // but before the `## Before`
+                            } else if let Node::Html(Html { value, position }) = child {
+                                match difficulty_from_html(value) {
+                                    Some(level) => {
+                                        if example.difficulty.replace(level).is_some() {
+                                            return Err((
+                                                position.clone().unwrap(),
+                                                "duplicate `difficulty` comment".to_string(),
+                                            ));
+                                        }
+                                    }
+                                    None if is_difficulty_comment(value) => {
+                                        return Err((
+                                            position.clone().unwrap(),
+                                            "expected `<!-- difficulty: \
+                                             beginner|intermediate|advanced -->`"
+                                                .to_string(),
+                                        ));
+                                    }
+                                    None => (),
+                                }
                             }
                         }
                         Expecting::CodeBefore(_) => {

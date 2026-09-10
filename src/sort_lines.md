@@ -1,5 +1,7 @@
 # Sort Lines
 
+<!-- difficulty: intermediate -->
+
 정렬되지 않은 줄들을 셸 파이프로 정렬합니다.
 
 ## Before

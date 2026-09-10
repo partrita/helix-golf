@@ -1,5 +1,7 @@
 # Align Assignments
 
+<!-- difficulty: beginner -->
+
 할당 연산자를 열에 맞춰 정렬합니다.
 
 ## Before

@@ -1,5 +1,7 @@
 # Replace an Identifier
 
+<!-- difficulty: beginner -->
+
 커서가 놓인 변수 이름을 다른 이름으로 변경합니다.
 
 ## Before

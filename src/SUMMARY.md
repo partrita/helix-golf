@@ -3,23 +3,32 @@
 # Summary
 
 - [Helix Golf - Introduction](introduction.md)
+
+# Beginner (초급)
+
 - [Toggle Comment](toggle_comment.md)
 - [Swap Lines](swap_lines.md)
 - [Duplicate Line](duplicate_line.md)
 - [Align Assignments](align_assignments.md)
 - [Increment Numbers](increment_numbers.md)
-- [Sort Lines](sort_lines.md)
-- [snake_case to camelCase](snake_case_to_camel_case.md)
 - [Replace an Identifier](replace_identifier.md)
 - [Replace Surrounding Characters](replace_surround.md)
+
+# Intermediate (중급)
+
+- [Sort Lines](sort_lines.md)
+- [snake_case to camelCase](snake_case_to_camel_case.md)
 - [Text into Array](text_into_array.md)
 - [Replace a Regex-Sensitive Literal](replace_regex_literal.md)
 - [Replace a Selection with the System Clipboard](replace_with_system_clipboard.md)
+- [Export from Rust Module](export_from_mod.md)
+- [Enumerate and Align](enumerate_and_align.md)
+
+# Advanced (고급)
+
 - [Invert Dictionary 2](invert_dictionary_2.md)
 - [Invert Dictionary](invert_dictionary.md)
 - [Reverse Golf Example](reverse_golf_example.md)
 - [Object into Array](object_into_array.md)
-- [Export from Rust Module](export_from_mod.md)
-- [Enumerate and Align](enumerate_and_align.md)
 - [CSV to SQL](csv_to_sql.md)
 - [Function into Class](function_into_class.md)

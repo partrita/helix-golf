@@ -1,5 +1,7 @@
 # Object into Array
 
+<!-- difficulty: advanced -->
+
 객체를 필드와 값으로 이루어진 튜플 리스트로 변환합니다.
 
 ## Before

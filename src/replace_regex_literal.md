@@ -1,5 +1,7 @@
 # Replace a Regex-Sensitive Literal
 
+<!-- difficulty: intermediate -->
+
 문서 전체에서 정규식 메타문자가 포함된 문자열을 다른 문자열로 한 번에 변경합니다.
 
 ## Before

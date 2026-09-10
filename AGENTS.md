@@ -12,6 +12,13 @@
   1. `## Before`
   2. `## After`
   3. `## Command`
+- 제목 바로 아래에 난이도 주석을 추가합니다. 값은 `beginner`, `intermediate`, `advanced` 중 하나입니다.
+  ```md
+  # Sort Lines
+
+  <!-- difficulty: intermediate -->
+  ```
+  주석을 생략하면 명령 길이를 기준으로 자동 분류됩니다.
 - `## Steps`는 필요할 때만 추가합니다. 기존 예제처럼 `Command` 아래 번호 목록으로 단계를 설명해도 됩니다.
 
 ## Before / After
@@ -115,6 +122,7 @@ cargo generate-demos <problem_name>
 새 문제를 제출하기 전에 모두 확인하세요.
 
 - [ ] `src/<problem_name>.md` 파일명이 `snake_case`인가?
+- [ ] 제목 바로 아래에 난이도 주석(`<!-- difficulty: ... -->`)이 있는가?
 - [ ] 제목과 설명만 읽어도 편집 목표가 이해되는가?
 - [ ] `Before`와 `After`가 공백/줄바꿈까지 정확히 대응하는가?
 - [ ] `Command` 바로 아래에 명령 fenced code block이 있는가?

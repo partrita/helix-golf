@@ -1,5 +1,7 @@
 # CSV to SQL
 
+<!-- difficulty: advanced -->
+
 ## Before
 
 ```csv

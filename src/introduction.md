@@ -15,6 +15,8 @@ Helix Golf는 Rust로 작성된 차세대 터미널 IDE인
 완벽한 맥가이버 칼 같은 텍스트 에디터로 만들어 줍니다.
 생산성이 향상될 뿐만 아니라 정말 재미있습니다!
 
+예제는 난이도별로 세 그룹으로 나뉩니다. 처음이라면 Beginner부터 순서대로 풀어보세요.
+
 # 각 예제 데모
 
 <details>
@@ -25,6 +27,8 @@ Helix Golf는 Rust로 작성된 차세대 터미널 IDE인
 
 ````````````md
 # Toggle Comment
+
+<!-- difficulty: beginner -->
 
 여러 줄을 한 번에 주석으로 바꿉니다.
 
@@ -55,6 +59,8 @@ print("c")
 
 # Swap Lines
 
+<!-- difficulty: beginner -->
+
 두 줄의 순서를 바꿉니다.
 
 ## Before
@@ -82,6 +88,8 @@ xdp
 1. `p` 삭제한 줄을 뒤에 붙여넣기
 
 # Duplicate Line
+
+<!-- difficulty: beginner -->
 
 한 줄을 복사해 세 줄로 늘립니다.
 
@@ -111,6 +119,8 @@ xypp
 1. `p` 한 번 더 붙여넣기
 
 # Align Assignments
+
+<!-- difficulty: beginner -->
 
 할당 연산자를 열에 맞춰 정렬합니다.
 
@@ -143,6 +153,8 @@ mid    = 3
 1. `&` 선택 영역을 열에 맞춰 정렬
 
 # Increment Numbers
+
+<!-- difficulty: beginner -->
 
 여러 숫자를 한 번에 1씩 증가시킵니다.
 
@@ -178,6 +190,8 @@ mid    = 3
 
 # Sort Lines
 
+<!-- difficulty: intermediate -->
+
 정렬되지 않은 줄들을 셸 파이프로 정렬합니다.
 
 ## Before
@@ -208,6 +222,8 @@ cherry
 1. `<ret>` 명령 확정하고 정렬된 결과로 교체
 
 # snake_case to camelCase
+
+<!-- difficulty: intermediate -->
 
 모든 필드명을 camelCase로 변경합니다.
 
@@ -264,6 +280,8 @@ const userProfile = {
 
 # Replace an Identifier
 
+<!-- difficulty: beginner -->
+
 커서가 놓인 변수 이름을 다른 이름으로 변경합니다.
 
 ## Before
@@ -291,6 +309,8 @@ miwctotal<esc>
 
 # Replace Surrounding Characters
 
+<!-- difficulty: beginner -->
+
 같은 형태로 감싸진 여러 텍스트의 괄호를 한 번에 다른 괄호로 변경합니다.
 
 ## Before
@@ -317,6 +337,8 @@ miwctotal<esc>
 1. `suse<ret>` 선택 영역 안의 모든 텍스트를 정규식으로 찾아 다중 선택
 1. `mr([` 선택된 텍스트를 감싸는 괄호를 변경
 # Text into Array
+
+<!-- difficulty: intermediate -->
 
 줄바꿈으로 구분된 데이터를 문자열 배열로 결합합니다.
 
@@ -348,6 +370,8 @@ Helix
 1. `<esc>xms[` "[]"로 감싸기
 
 # Replace a Regex-Sensitive Literal
+
+<!-- difficulty: intermediate -->
 
 문서 전체에서 정규식 메타문자가 포함된 문자열을 다른 문자열로 한 번에 변경합니다.
 
@@ -382,6 +406,8 @@ This project does not use Rust anymore.
 1. `<esc>` 일반 모드로 돌아갑니다.
 
 # Replace a Selection with the System Clipboard
+
+<!-- difficulty: intermediate -->
 
 선택 영역을 시스템 클립보드에 복사한 뒤 다른 선택 영역을 클립보드 내용으로 교체합니다. Helix의 `d`는 삭제한 내용을 yank하므로, 시스템 클립보드의 내용을 보존하면서 교체하려면 `<space>R`을 사용합니다.
 
@@ -424,6 +450,8 @@ fn main() {
 > `<space>R`은 시스템 클립보드의 내용으로 현재 선택 영역을 바로 교체하므로, `d`나 `<alt-d>`로 먼저 삭제할 필요가 없습니다.
 
 # Invert Dictionary 2
+
+<!-- difficulty: advanced -->
 
 딕셔너리의 키-값 쌍을 반전시키는 또 다른 방법입니다.
 
@@ -473,6 +501,8 @@ xt}S,|=<enter>_2<alt-(>
 1. `2<alt-(>` 선택 영역 쌍 사이에서만 내용 순서 회전
 
 # Invert Dictionary
+
+<!-- difficulty: advanced -->
 
 딕셔너리의 키-값 쌍을 반전시킵니다.
 
@@ -525,6 +555,8 @@ Qxt,S=<enter>_<alt-(>Q6q
 1. `6q` 녹화된 매크로 시퀀스를 6회 반복
 
 # Reverse Golf Example
+
+<!-- difficulty: advanced -->
 
 Helix Golf 예제의 "Before"와 "After" 케이스를 서로 맞바꿉니다.
 
@@ -592,6 +624,8 @@ ebyxb*Rv""Nn<alt-)>
 
 # Object into Array
 
+<!-- difficulty: advanced -->
+
 객체를 필드와 값으로 이루어진 튜플 리스트로 변환합니다.
 
 ## Before
@@ -635,6 +669,8 @@ r,bems"vt,ms[
 
 # Export from Rust Module
 
+<!-- difficulty: intermediate -->
+
 각 모듈에 포함된 함수를 re-export(pub use)합니다.
 
 ## Before
@@ -677,6 +713,8 @@ cpub use<esc>leypi::
 1. `i::` 사이에 더블 콜론(::) 경로 구분자 삽입
 
 # Enumerate and Align
+
+<!-- difficulty: intermediate -->
 
 각 객체에 1부터 시작하여 증가하는 `rank` 필드를 추가하고, 보기 좋게 필드를 정렬합니다.
 
@@ -737,6 +775,8 @@ cpub use<esc>leypi::
 1. `&` 모든 선택 영역을 열에 맞춰 정렬 (숫자가 우측 정렬됨)
 
 # CSV to SQL
+
+<!-- difficulty: advanced -->
 
 ## Before
 
@@ -815,6 +855,8 @@ AVALUES (<esc>
 1. `~` 각 "l"을 "L"로 대소문자 전환
 
 # Function into Class
+
+<!-- difficulty: advanced -->
 
 3개의 함수를 3개의 메서드를 가진 클래스로 변환합니다.
 
@@ -902,7 +944,9 @@ class Calculator:
 
 </details>
 
-## [Toggle Comment](toggle_comment.md)
+## Beginner (초급)
+
+### [Toggle Comment](toggle_comment.md)
 
 여러 줄을 한 번에 주석으로 바꿉니다.
 
@@ -910,8 +954,7 @@ class Calculator:
   <source src="generated/toggle_comment.mp4">
 </video>
 
-
-## [Swap Lines](swap_lines.md)
+### [Swap Lines](swap_lines.md)
 
 두 줄의 순서를 바꿉니다.
 
@@ -919,8 +962,7 @@ class Calculator:
   <source src="generated/swap_lines.mp4">
 </video>
 
-
-## [Duplicate Line](duplicate_line.md)
+### [Duplicate Line](duplicate_line.md)
 
 한 줄을 복사해 세 줄로 늘립니다.
 
@@ -928,8 +970,7 @@ class Calculator:
   <source src="generated/duplicate_line.mp4">
 </video>
 
-
-## [Align Assignments](align_assignments.md)
+### [Align Assignments](align_assignments.md)
 
 할당 연산자를 열에 맞춰 정렬합니다.
 
@@ -937,8 +978,7 @@ class Calculator:
   <source src="generated/align_assignments.mp4">
 </video>
 
-
-## [Increment Numbers](increment_numbers.md)
+### [Increment Numbers](increment_numbers.md)
 
 여러 숫자를 한 번에 1씩 증가시킵니다.
 
@@ -946,26 +986,7 @@ class Calculator:
   <source src="generated/increment_numbers.mp4">
 </video>
 
-
-## [Sort Lines](sort_lines.md)
-
-정렬되지 않은 줄들을 셸 파이프로 정렬합니다.
-
-<video autoplay controls loop>
-  <source src="generated/sort_lines.mp4">
-</video>
-
-
-## [snake_case to camelCase](snake_case_to_camel_case.md)
-
-모든 필드명을 camelCase로 변경합니다.
-
-<video autoplay controls loop>
-  <source src="generated/snake_case_to_camel_case.mp4">
-</video>
-
-
-## [Replace an Identifier](replace_identifier.md)
+### [Replace an Identifier](replace_identifier.md)
 
 커서가 놓인 변수 이름을 다른 이름으로 변경합니다.
 
@@ -973,8 +994,7 @@ class Calculator:
   <source src="generated/replace_identifier.mp4">
 </video>
 
-
-## [Replace Surrounding Characters](replace_surround.md)
+### [Replace Surrounding Characters](replace_surround.md)
 
 같은 형태로 감싸진 여러 텍스트의 괄호를 한 번에 다른 괄호로 변경합니다.
 
@@ -982,8 +1002,25 @@ class Calculator:
   <source src="generated/replace_surround.mp4">
 </video>
 
+## Intermediate (중급)
 
-## [Text into Array](text_into_array.md)
+### [Sort Lines](sort_lines.md)
+
+정렬되지 않은 줄들을 셸 파이프로 정렬합니다.
+
+<video autoplay controls loop>
+  <source src="generated/sort_lines.mp4">
+</video>
+
+### [snake_case to camelCase](snake_case_to_camel_case.md)
+
+모든 필드명을 camelCase로 변경합니다.
+
+<video autoplay controls loop>
+  <source src="generated/snake_case_to_camel_case.mp4">
+</video>
+
+### [Text into Array](text_into_array.md)
 
 줄바꿈으로 구분된 데이터를 문자열 배열로 결합합니다.
 
@@ -991,8 +1028,7 @@ class Calculator:
   <source src="generated/text_into_array.mp4">
 </video>
 
-
-## [Replace a Regex-Sensitive Literal](replace_regex_literal.md)
+### [Replace a Regex-Sensitive Literal](replace_regex_literal.md)
 
 문서 전체에서 정규식 메타문자가 포함된 문자열을 다른 문자열로 한 번에 변경합니다.
 
@@ -1000,8 +1036,7 @@ class Calculator:
   <source src="generated/replace_regex_literal.mp4">
 </video>
 
-
-## [Replace a Selection with the System Clipboard](replace_with_system_clipboard.md)
+### [Replace a Selection with the System Clipboard](replace_with_system_clipboard.md)
 
 선택 영역을 시스템 클립보드에 복사한 뒤 다른 선택 영역을 클립보드 내용으로 교체합니다. Helix의 `d`는 삭제한 내용을 yank하므로, 시스템 클립보드의 내용을 보존하면서 교체하려면 `<space>R`을 사용합니다.
 
@@ -1009,44 +1044,7 @@ class Calculator:
   <source src="generated/replace_with_system_clipboard.mp4">
 </video>
 
-
-## [Invert Dictionary 2](invert_dictionary_2.md)
-
-딕셔너리의 키-값 쌍을 반전시키는 또 다른 방법입니다.
-
-<video autoplay controls loop>
-  <source src="generated/invert_dictionary_2.mp4">
-</video>
-
-
-## [Invert Dictionary](invert_dictionary.md)
-
-딕셔너리의 키-값 쌍을 반전시킵니다.
-
-<video autoplay controls loop>
-  <source src="generated/invert_dictionary.mp4">
-</video>
-
-
-## [Reverse Golf Example](reverse_golf_example.md)
-
-Helix Golf 예제의 "Before"와 "After" 케이스를 서로 맞바꿉니다.
-
-<video autoplay controls loop>
-  <source src="generated/reverse_golf_example.mp4">
-</video>
-
-
-## [Object into Array](object_into_array.md)
-
-객체를 필드와 값으로 이루어진 튜플 리스트로 변환합니다.
-
-<video autoplay controls loop>
-  <source src="generated/object_into_array.mp4">
-</video>
-
-
-## [Export from Rust Module](export_from_mod.md)
+### [Export from Rust Module](export_from_mod.md)
 
 각 모듈에 포함된 함수를 re-export(pub use)합니다.
 
@@ -1054,8 +1052,7 @@ Helix Golf 예제의 "Before"와 "After" 케이스를 서로 맞바꿉니다.
   <source src="generated/export_from_mod.mp4">
 </video>
 
-
-## [Enumerate and Align](enumerate_and_align.md)
+### [Enumerate and Align](enumerate_and_align.md)
 
 각 객체에 1부터 시작하여 증가하는 `rank` 필드를 추가하고, 보기 좋게 필드를 정렬합니다.
 
@@ -1063,8 +1060,41 @@ Helix Golf 예제의 "Before"와 "After" 케이스를 서로 맞바꿉니다.
   <source src="generated/enumerate_and_align.mp4">
 </video>
 
+## Advanced (고급)
 
-## [CSV to SQL](csv_to_sql.md)
+### [Invert Dictionary 2](invert_dictionary_2.md)
+
+딕셔너리의 키-값 쌍을 반전시키는 또 다른 방법입니다.
+
+<video autoplay controls loop>
+  <source src="generated/invert_dictionary_2.mp4">
+</video>
+
+### [Invert Dictionary](invert_dictionary.md)
+
+딕셔너리의 키-값 쌍을 반전시킵니다.
+
+<video autoplay controls loop>
+  <source src="generated/invert_dictionary.mp4">
+</video>
+
+### [Reverse Golf Example](reverse_golf_example.md)
+
+Helix Golf 예제의 "Before"와 "After" 케이스를 서로 맞바꿉니다.
+
+<video autoplay controls loop>
+  <source src="generated/reverse_golf_example.mp4">
+</video>
+
+### [Object into Array](object_into_array.md)
+
+객체를 필드와 값으로 이루어진 튜플 리스트로 변환합니다.
+
+<video autoplay controls loop>
+  <source src="generated/object_into_array.mp4">
+</video>
+
+### [CSV to SQL](csv_to_sql.md)
 
 
 
@@ -1072,13 +1102,11 @@ Helix Golf 예제의 "Before"와 "After" 케이스를 서로 맞바꿉니다.
   <source src="generated/csv_to_sql.mp4">
 </video>
 
-
-## [Function into Class](function_into_class.md)
+### [Function into Class](function_into_class.md)
 
 3개의 함수를 3개의 메서드를 가진 클래스로 변환합니다.
 
 <video autoplay controls loop>
   <source src="generated/function_into_class.mp4">
 </video>
-
 
