@@ -395,40 +395,6 @@ xypp
 1. `p` 복사한 줄을 뒤에 붙여넣기
 1. `p` 한 번 더 붙여넣기
 
-# Align Assignments
-
-&lt;!-- difficulty: beginner --&gt;
-
-할당 연산자를 열에 맞춰 정렬합니다.
-
-## Before
-
-```text
-a = 1
-longer = 2
-mid = 3
-```
-
-## After
-
-```text
-a      = 1
-longer = 2
-mid    = 3
-```
-
-## Command
-
-```
-%s=&lt;enter&gt;&amp;
-```
-
-1. `%` 전체 파일 선택
-1. `s` 정규식으로 일치 항목 선택
-1. `=` 등호 문자 입력
-1. `&lt;enter&gt;` 정규식 확정하고 모든 등호 선택
-1. `&amp;` 선택 영역을 열에 맞춰 정렬
-
 # Add Semicolons
 
 &lt;!-- difficulty: beginner --&gt;
@@ -463,38 +429,39 @@ const c = 3;
 1. `;` 세미콜론 입력
 1. `&lt;esc&gt;` 일반 모드로 복귀
 
-# Indent Lines
-
-여러 줄을 한 번에 들여씁니다.
+# Align Assignments
 
 &lt;!-- difficulty: beginner --&gt;
+
+할당 연산자를 열에 맞춰 정렬합니다.
 
 ## Before
 
 ```text
-apple
-banana
-cherry
+a = 1
+longer = 2
+mid = 3
 ```
 
 ## After
 
 ```text
-  apple
-  banana
-  cherry
+a      = 1
+longer = 2
+mid    = 3
 ```
 
 ## Command
 
 ```
-%&lt;alt-s&gt;I  &lt;esc&gt;
+%s=&lt;enter&gt;&amp;
 ```
 
 1. `%` 전체 파일 선택
-1. `&lt;alt-s&gt;` 줄바꿈 기준으로 여러 선택 영역으로 분할
-1. `I  ` 각 줄 앞에서 삽입 모드로 진입하고 두 칸 공백 입력
-1. `&lt;esc&gt;` 일반 모드로 복귀
+1. `s` 정규식으로 일치 항목 선택
+1. `=` 등호 문자 입력
+1. `&lt;enter&gt;` 정규식 확정하고 모든 등호 선택
+1. `&amp;` 선택 영역을 열에 맞춰 정렬
 
 # Replace Punctuation
 
@@ -567,38 +534,38 @@ cherry
 1. `&lt;enter&gt;` 정규식 확정하고 모든 숫자 선택
 1. `&lt;ctrl-a&gt;` 커서 아래 숫자를 1씩 증가
 
-# Sort Lines
+# Indent Lines
 
-&lt;!-- difficulty: intermediate --&gt;
+여러 줄을 한 번에 들여씁니다.
 
-정렬되지 않은 줄들을 셸 파이프로 정렬합니다.
+&lt;!-- difficulty: beginner --&gt;
 
 ## Before
 
 ```text
-banana
 apple
+banana
 cherry
 ```
 
 ## After
 
 ```text
-apple
-banana
-cherry
+  apple
+  banana
+  cherry
 ```
 
 ## Command
 
 ```
-%|sort&lt;ret&gt;
+%&lt;alt-s&gt;I  &lt;esc&gt;
 ```
 
 1. `%` 전체 파일 선택
-1. `|` 각 선택 영역을 셸 명령으로 파이프
-1. `sort` 정렬 명령 입력
-1. `&lt;ret&gt;` 명령 확정하고 정렬된 결과로 교체
+1. `&lt;alt-s&gt;` 줄바꿈 기준으로 여러 선택 영역으로 분할
+1. `I  ` 각 줄 앞에서 삽입 모드로 진입하고 두 칸 공백 입력
+1. `&lt;esc&gt;` 일반 모드로 복귀
 
 # Format JSON with jq
 
@@ -631,39 +598,6 @@ cherry
 1. `|` 각 선택 영역을 셸 명령으로 파이프
 1. `jq .` 제이슨 포맷 명령 입력
 1. `&lt;ret&gt;` 명령 확정하고 포맷 결과로 교체
-
-# Swap Columns
-
-두 열의 순서를 바꿉니다.
-
-&lt;!-- difficulty: advanced --&gt;
-
-## Before
-
-```text
-apple 1
-banana 2
-```
-
-## After
-
-```text
-1 apple
-2 banana
-```
-
-## Command
-
-```
-%&lt;alt-s&gt;S&lt;space&gt;&lt;enter&gt;2&lt;alt-(&gt;
-```
-
-1. `%` 전체 파일 선택
-1. `&lt;alt-s&gt;` 줄바꿈 기준으로 여러 선택 영역으로 분할
-1. `S` 정규식 기준으로 선택 영역 분할
-1. `&lt;space&gt;` 공백 문자 입력
-1. `&lt;enter&gt;` 정규식 확정하고 각 줄을 두 열로 분할
-1. `2&lt;alt-(&gt;` 두 선택 영역씩 묶어 내용 순서 회전
 
 # CSV to Lines
 
@@ -699,6 +633,72 @@ xs,&lt;enter&gt;c&lt;ret&gt;&lt;esc&gt;
 1. `&lt;ret&gt;` 줄바꿈 입력해 쉼표를 줄바꿈으로 교체
 1. `&lt;esc&gt;` 일반 모드로 복귀
 
+# Swap Columns
+
+두 열의 순서를 바꿉니다.
+
+&lt;!-- difficulty: advanced --&gt;
+
+## Before
+
+```text
+apple 1
+banana 2
+```
+
+## After
+
+```text
+1 apple
+2 banana
+```
+
+## Command
+
+```
+%&lt;alt-s&gt;S&lt;space&gt;&lt;enter&gt;2&lt;alt-(&gt;
+```
+
+1. `%` 전체 파일 선택
+1. `&lt;alt-s&gt;` 줄바꿈 기준으로 여러 선택 영역으로 분할
+1. `S` 정규식 기준으로 선택 영역 분할
+1. `&lt;space&gt;` 공백 문자 입력
+1. `&lt;enter&gt;` 정규식 확정하고 각 줄을 두 열로 분할
+1. `2&lt;alt-(&gt;` 두 선택 영역씩 묶어 내용 순서 회전
+
+# Sort Lines
+
+&lt;!-- difficulty: intermediate --&gt;
+
+정렬되지 않은 줄들을 셸 파이프로 정렬합니다.
+
+## Before
+
+```text
+banana
+apple
+cherry
+```
+
+## After
+
+```text
+apple
+banana
+cherry
+```
+
+## Command
+
+```
+%|sort&lt;ret&gt;
+```
+
+1. `%` 전체 파일 선택
+1. `|` 각 선택 영역을 셸 명령으로 파이프
+1. `sort` 정렬 명령 입력
+1. `&lt;ret&gt;` 명령 확정하고 정렬된 결과로 교체
+
 # Insert Sequence
 
 셸 출력을 커서 앞에 삽입합니다.
@@ -730,6 +730,38 @@ x!seq 3&lt;ret&gt;
 1. `!` 셸 명령의 출력을 선택 영역 앞에 삽입
 1. `seq 3` 일부터 삼까지 출력하는 명령 입력
 1. `&lt;ret&gt;` 명령 확정하고 출력 삽입
+
+# Delete Surround
+
+여러 줄의 감싸는 괄호를 한 번에 제거합니다.
+
+&lt;!-- difficulty: intermediate --&gt;
+
+## Before
+
+```text
+(use)
+(use)
+```
+
+## After
+
+```text
+use
+use
+```
+
+## Command
+
+```
+%suse&lt;ret&gt;md(
+```
+
+1. `%` 전체 파일 선택
+1. `s` 정규식으로 일치 항목 선택
+1. `use` 괄호 안의 텍스트 입력
+1. `&lt;ret&gt;` 정규식 확정하고 두 단어를 각각 선택
+1. `md(` 각 선택 영역을 감싸는 소괄호 삭제
 
 # snake_case to camelCase
 
@@ -787,38 +819,6 @@ const userProfile = {
 4. `&lt;alt-,&gt;` 유지하려는 단독 밑줄(주 선택 영역) 제거
 5. `d` 선택 영역 삭제
 6. `~` 대소문자 전환
-
-# Delete Surround
-
-여러 줄의 감싸는 괄호를 한 번에 제거합니다.
-
-&lt;!-- difficulty: intermediate --&gt;
-
-## Before
-
-```text
-(use)
-(use)
-```
-
-## After
-
-```text
-use
-use
-```
-
-## Command
-
-```
-%suse&lt;ret&gt;md(
-```
-
-1. `%` 전체 파일 선택
-1. `s` 정규식으로 일치 항목 선택
-1. `use` 괄호 안의 텍스트 입력
-1. `&lt;ret&gt;` 정규식 확정하고 두 단어를 각각 선택
-1. `md(` 각 선택 영역을 감싸는 소괄호 삭제
 
 # Replace Surrounding Characters
 
@@ -1688,20 +1688,15 @@ class Calculator:
 <video autoplay controls loop>
   <source src="generated/duplicate_line.mp4">
 </video>
-<h3 id="align-assignments"><a class="header" href="#align-assignments"><a href="align_assignments.html">Align Assignments</a></a></h3>
-<p>할당 연산자를 열에 맞춰 정렬합니다.</p>
-<video autoplay controls loop>
-  <source src="generated/align_assignments.mp4">
-</video>
 <h3 id="add-semicolons"><a class="header" href="#add-semicolons"><a href="add_semicolons.html">Add Semicolons</a></a></h3>
 <p>각 줄 끝에 세미콜론을 붙입니다.</p>
 <video autoplay controls loop>
   <source src="generated/add_semicolons.mp4">
 </video>
-<h3 id="indent-lines"><a class="header" href="#indent-lines"><a href="indent_lines.html">Indent Lines</a></a></h3>
-<p>여러 줄을 한 번에 들여씁니다.</p>
+<h3 id="align-assignments"><a class="header" href="#align-assignments"><a href="align_assignments.html">Align Assignments</a></a></h3>
+<p>할당 연산자를 열에 맞춰 정렬합니다.</p>
 <video autoplay controls loop>
-  <source src="generated/indent_lines.mp4">
+  <source src="generated/align_assignments.mp4">
 </video>
 <h3 id="replace-punctuation"><a class="header" href="#replace-punctuation"><a href="replace_punctuation.html">Replace Punctuation</a></a></h3>
 <p>여러 줄의 앞 기호를 한 번에 바꿉니다.</p>
@@ -1712,6 +1707,11 @@ class Calculator:
 <p>여러 숫자를 한 번에 1씩 증가시킵니다.</p>
 <video autoplay controls loop>
   <source src="generated/increment_numbers.mp4">
+</video>
+<h3 id="indent-lines"><a class="header" href="#indent-lines"><a href="indent_lines.html">Indent Lines</a></a></h3>
+<p>여러 줄을 한 번에 들여씁니다.</p>
+<video autoplay controls loop>
+  <source src="generated/indent_lines.mp4">
 </video>
 <h3 id="replace-surrounding-characters"><a class="header" href="#replace-surrounding-characters"><a href="replace_surround.html">Replace Surrounding Characters</a></a></h3>
 <p>같은 형태로 감싸진 여러 텍스트의 괄호를 한 번에 다른 괄호로 변경합니다.</p>
@@ -1734,25 +1734,25 @@ class Calculator:
 <video autoplay controls loop>
   <source src="generated/extend_delete_words.mp4">
 </video>
-<h3 id="sort-lines"><a class="header" href="#sort-lines"><a href="sort_lines.html">Sort Lines</a></a></h3>
-<p>정렬되지 않은 줄들을 셸 파이프로 정렬합니다.</p>
-<video autoplay controls loop>
-  <source src="generated/sort_lines.mp4">
-</video>
 <h3 id="csv-to-lines"><a class="header" href="#csv-to-lines"><a href="csv_to_lines.html">CSV to Lines</a></a></h3>
 <p>쉼표로 구분된 한 줄을 여러 줄로 나눕니다.</p>
 <video autoplay controls loop>
   <source src="generated/csv_to_lines.mp4">
 </video>
-<h3 id="snake_case-to-camelcase"><a class="header" href="#snake_case-to-camelcase"><a href="snake_case_to_camel_case.html">snake_case to camelCase</a></a></h3>
-<p>모든 필드명을 camelCase로 변경합니다.</p>
+<h3 id="sort-lines"><a class="header" href="#sort-lines"><a href="sort_lines.html">Sort Lines</a></a></h3>
+<p>정렬되지 않은 줄들을 셸 파이프로 정렬합니다.</p>
 <video autoplay controls loop>
-  <source src="generated/snake_case_to_camel_case.mp4">
+  <source src="generated/sort_lines.mp4">
 </video>
 <h3 id="delete-surround"><a class="header" href="#delete-surround"><a href="delete_surround.html">Delete Surround</a></a></h3>
 <p>여러 줄의 감싸는 괄호를 한 번에 제거합니다.</p>
 <video autoplay controls loop>
   <source src="generated/delete_surround.mp4">
+</video>
+<h3 id="snake_case-to-camelcase"><a class="header" href="#snake_case-to-camelcase"><a href="snake_case_to_camel_case.html">snake_case to camelCase</a></a></h3>
+<p>모든 필드명을 camelCase로 변경합니다.</p>
+<video autoplay controls loop>
+  <source src="generated/snake_case_to_camel_case.mp4">
 </video>
 <h3 id="rotate-main-selection"><a class="header" href="#rotate-main-selection"><a href="rotate_main_selection.html">Rotate Main Selection</a></a></h3>
 <p>주 선택 영역을 옮겨 마지막 숫자만 바꿉니다.</p>
